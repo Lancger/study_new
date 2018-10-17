@@ -45,3 +45,5 @@ sqladvisor -h 127.0.0.1  -P 3306  -u root -p '123456' -d test -q "sql语句" -v 
 ## 5、官方文档学习
 
 https://github.com/Meituan-Dianping/SQLAdvisor/blob/master/doc/QUICK_START.md
+
+https://user.qzone.qq.com/303350019/infocenter
