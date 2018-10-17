@@ -60,4 +60,4 @@ systemctl daemon-reload
 #3.3、配置镜像加速器
 vim /etc/sysconfig/docker
 添加下面这一行
-OPTIONS='--selinux-enabled --registry-mirror=http://7cc19f93.m.daocloud.io'
+OPTIONS='--selinux-enabled --registry-mirror=https://i37dz0y4.mirror.aliyuncs.com'
