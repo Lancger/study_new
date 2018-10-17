@@ -22,6 +22,10 @@ systemctl start docker
 systemctl enable docker
 #Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
 
+#查看是否成功设置docker服务开启自启
+systemctl list-unit-files|grep docker
+docker.service                                enabled
+
 #关闭docker服务开启自启
 systemctl disable docker
 #Removed symlink /etc/systemd/system/multi-user.target.wants/docker.service.
