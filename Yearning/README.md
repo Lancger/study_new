@@ -17,3 +17,13 @@ docker-compose up -d
     默认用户admin 密码: Yearning_admin
 
     登陆后请通过设置页面设置inception及其他配置信息
+
+
+# 二、inception
+
+因为db和nginx+python放在2个容器里面，用127.0.0.1是访问不道到（nginx+python的容器没有mysql），所以inception放在数据库所在服务器
+```bash
+tar xvf inception.tar -C /usr/local/
+
+nohup /usr/local/inception/bin/Inception --defaults-file=/usr/local/inception/bin/inc.cnf &
+```
