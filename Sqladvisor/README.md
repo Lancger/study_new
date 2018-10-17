@@ -37,7 +37,6 @@ make
 ## 4、完成测试
 ```bash
 cp /usr/local/src/SQLAdvisor/sqladvisor/sqladvisor /usr/bin/sqladvisor
-cp /usr/local/src/SQLAdvisor/sqladvisor/sqladvisor /bin/sqladvisor
 
 sqladvisor -h 127.0.0.1  -P 3306  -u root -p '123456' -d test -q "sql语句" -v 1
 ```
