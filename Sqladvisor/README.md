@@ -12,6 +12,7 @@ yum install -y cmake libaio-devel libffi-devel glib2 glib2-devel bison
 
 # 移除mysql-community库(无用途且和Percona-Server有冲突)
 yum remove -y mysql-community-client mysql-community-server mysql-community-common mysql-community-libs
+yum -y remove mariadb-libs
 
 #yum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
 rpm -Uvh https://www.percona.com/redir/downloads/percona-release/redhat/percona-release-0.1-3.noarch.rpm
