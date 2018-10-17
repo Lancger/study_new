@@ -59,6 +59,9 @@ ExecStart=/usr/bin/dockerd
 ExecStart=/usr/bin/dockerd $OPTIONS
 ```
 ## 3.1 最终的配置
+
+    注意，有变量的地方需要使用转义符号
+    
     cat > /usr/lib/systemd/system/docker.service << EOF
     [Unit]
     Description=Docker Application Container Engine
