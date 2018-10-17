@@ -13,11 +13,14 @@ yum install -y cmake libaio-devel libffi-devel glib2 glib2-devel bison
 # 移除mysql-community库(无用途且和Percona-Server有冲突)
 yum remove -y mysql-community-client mysql-community-server mysql-community-common mysql-community-libs
 
+#yum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
+rpm -Uvh https://www.percona.com/redir/downloads/percona-release/redhat/percona-release-0.1-3.noarch.rpm
+
+yum install Percona-Server-shared-56
+
 cd /usr/lib64/ 
 ln -s libperconaserverclient_r.so.18 libperconaserverclient_r.so 
 
-yum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
-yum install Percona-Server-shared-56
 cd /usr/local/src/SQLAdvisor/
 cmake -DBUILD_CONFIG=mysql_release -DCMAKE_BUILD_TYPE=debug -DCMAKE_INSTALL_PREFIX=/usr/local/sqlparser ./
 make && make install
