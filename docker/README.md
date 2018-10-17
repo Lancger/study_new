@@ -7,5 +7,4 @@ curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compo
 chmod +x /usr/local/bin/docker-compose
 
 docker-compose --version
-docker-compose version 1.22.0, build 1719ceb
 ```
