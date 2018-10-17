@@ -9,10 +9,13 @@ git clone https://github.com/Meituan-Dianping/SQLAdvisor.git
 ## 2、安装依赖
 ```bash
 yum install -y cmake libaio-devel libffi-devel glib2 glib2-devel bison
+
 # 移除mysql-community库(无用途且和Percona-Server有冲突)
 yum remove -y mysql-community-client mysql-community-server mysql-community-common mysql-community-libs
+
 cd /usr/lib64/ 
 ln -s libperconaserverclient_r.so.18 libperconaserverclient_r.so 
+
 yum install http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
 yum install Percona-Server-shared-56
 cd /usr/local/src/SQLAdvisor/
