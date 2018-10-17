@@ -8,7 +8,7 @@ git clone https://github.com/Meituan-Dianping/SQLAdvisor.git
 
 ## 2、安装依赖
 ```bash
-yum install -y cmake libaio-devel libffi-devel glib2 glib2-devel bison
+yum install -y cmake libaio-devel libffi-devel glib2 glib2-devel bison mysql-devel
 
 # 移除mysql-community库(无用途且和Percona-Server有冲突)
 yum remove -y mysql-community-client mysql-community-server mysql-community-common mysql-community-libs
