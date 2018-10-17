@@ -42,3 +42,8 @@ inception_ddl_support=1
 inception_enable_blob_type=1
 inception_check_column_default_value=1
 ```
+
+## 2.3 启动服务
+```bash
+nohup /usr/local/inception-master/builddir/mysql/bin/Inception --defaults-file=/etc/inc.cnf &
+```
