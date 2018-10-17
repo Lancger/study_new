@@ -19,6 +19,7 @@ sh inception_build.sh builddir linux
 ### 2.2 修改配置
 编辑文件 /etc/inc.cnf ,内容如下
 ```bash
+tee /etc/inc.cnf <<-'EOF'
 [inception]
 general_log=1
 general_log_file=inc.log
@@ -41,6 +42,7 @@ inception_osc_chunk_time=0.1
 inception_ddl_support=1
 inception_enable_blob_type=1
 inception_check_column_default_value=1
+EOF
 ```
 
 ## 2.3 启动服务
