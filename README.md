@@ -61,3 +61,9 @@ systemctl daemon-reload
 vim /etc/sysconfig/docker
 添加下面这一行
 OPTIONS='--selinux-enabled --registry-mirror=https://i37dz0y4.mirror.aliyuncs.com'
+```
+
+## 4.通过测试镜像运行一个容器来验证Docker是否安装正确
+```bash
+docker run hello-world
+```
