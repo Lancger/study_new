@@ -8,7 +8,7 @@
 # mkdir /usr/local/inception/data -p      --这里创建的是Inception的安装目录。可根据自己的情况自行决定
 # mkdir inception
 # cd inception
-# wget https://github.com/mysql-inception/inception/archive/master.zip
+# wget https://github.com/Lancger/inception/archive/master.zip
 # unzip master
 # cd inception-master/  
 # cmake .
