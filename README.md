@@ -57,8 +57,10 @@ ExecStart=/usr/bin/dockerd
 
 #2、修改ExecStart=/usr/bin/dockerd 为 
 ExecStart=/usr/bin/dockerd $OPTIONS
+```
 
 #3、最终的配置
+```bash
 cat > /usr/lib/systemd/system/docker.service << EOF
 [Unit]
 Description=Docker Application Container Engine
@@ -95,7 +97,7 @@ StartLimitInterval=60s
 [Install]
 WantedBy=multi-user.target
 EOF
-
+```
 #3.2、重新加载docker的配置文件
 systemctl daemon-reload
 
