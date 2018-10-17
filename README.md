@@ -1,5 +1,4 @@
 # study_docker
-docker合集
 
 ## 1.安装Docker
 
@@ -27,3 +26,37 @@ systemctl enable docker
 systemctl disable docker
 #Removed symlink /etc/systemd/system/multi-user.target.wants/docker.service.
 ```
+
+## 2.脚本安装Docker
+```bash
+Docker官方安装脚本
+$ curl -sSL https://get.docker.com/ | sh
+#这个脚本会添加docker.repo仓库并且安装Docker
+
+2.2、阿里云的安装脚本
+curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -
+
+2.3、DaoCloud 的安装脚本
+curl -sSL https://get.daocloud.io/docker | sh
+
+```
+
+## 3.配置docker
+```bash
+3.1、修改docker配置文件
+$ vim /usr/lib/systemd/system/docker.service
+
+1、在ExecStart前面添加下面这一行
+EnvironmentFile=/etc/sysconfig/docker
+ExecStart=/usr/bin/dockerd
+
+2、修改ExecStart=/usr/bin/dockerd 为 
+ExecStart=/usr/bin/dockerd $OPTIONS
+
+3.2、重新加载docker的配置文件
+$ systemctl daemon-reload
+
+3.3、配置镜像加速器
+$ vim /etc/sysconfig/docker
+添加下面这一行
+OPTIONS='--selinux-enabled --registry-mirror=http://7cc19f93.m.daocloud.io'
