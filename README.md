@@ -57,10 +57,8 @@ ExecStart=/usr/bin/dockerd
 
 #2、修改ExecStart=/usr/bin/dockerd 为 
 ExecStart=/usr/bin/dockerd $OPTIONS
-```
 
 #3、最终的配置
-```bash
 cat > /usr/lib/systemd/system/docker.service << EOF
 [Unit]
 Description=Docker Application Container Engine
@@ -74,8 +72,8 @@ Type=notify
 # exists and systemd currently does not support the cgroup feature set required
 # for containers run by docker
 EnvironmentFile=/etc/sysconfig/docker
-ExecStart=/usr/bin/dockerd $OPTIONS
-ExecReload=/bin/kill -s HUP $MAINPID
+ExecStart=/usr/bin/dockerd \$OPTIONS
+ExecReload=/bin/kill -s HUP \$MAINPID
 # Having non-zero Limit*s causes performance problems due to accounting overhead
 # in the kernel. We recommend using cgroups to do container-local accounting.
 LimitNOFILE=infinity
@@ -97,7 +95,7 @@ StartLimitInterval=60s
 [Install]
 WantedBy=multi-user.target
 EOF
-```
+
 #3.2、重新加载docker的配置文件
 systemctl daemon-reload
 
