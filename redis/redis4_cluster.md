@@ -110,21 +110,68 @@
     ps -ef | grep redis           //redis是否启动成功
     netstat -tnlp | grep redis    //监听redis端口
 
-## 安装 Ruby
+## 七、安装 Ruby
+
     yum -y install ruby ruby-devel rubygems rpm-build
     gem install redis
 
+## 八、创建集群
 
-## 创建集群
+### 注意：在任意一台上运行 不要在每台机器上都运行，一台就够了
 
-## 关闭集群
+    #Redis 官方提供了 redis-trib.rb 这个工具，就在解压目录的 src 目录中
+    /opt/redis-4.0.1/src/redis-trib.rb create --replicas 1 192.168.56.11:7000 192.168.56.11:7001 192.168.56.11:7002 192.168.56.12:7000 192.168.56.12:7001 192.168.56.12:7002 192.168.56.13:7000 192.168.56.13:7001 192.168.56.13:7002
+    
+    出现以下内容
+    
+    输入 yes
+    
+## 九、关闭集群
 
-## 集群验证
+    #这样也可以，推荐
+    pkill redis
+    
+    #循环节点逐个关闭
+    for((i=0;i<=2;i++)); do /opt/redis-4.0.1/src/redis-cli -c -h 192.168.56.11 -p 700$i shutdown; done
+
+    for((i=0;i<=2;i++)); do /opt/redis-4.0.1/src/redis-cli -c -h 192.168.56.12 -p 700$i shutdown; done
+
+    for((i=0;i<=2;i++)); do /opt/redis-4.0.1/src/redis-cli -c -h 192.168.56.13 -p 700$i shutdown; done
+
+
+## 十、集群验证
 
 ### 连接集群测试
+
+    参数 -C 可连接到集群，因为 redis.conf 将 bind 改为了ip地址，所以 -h 参数不可以省略，-p 参数为端口号
+
+    #1、我们在192.168.252.101机器redis 7000 的节点set 一个key
+    
+    /opt/redis-4.0.1/src/redis-cli -h 192.168.56.11 -c -p 7000
+    
+    发现redis set name 之后重定向到192.168.252.102机器 redis 7003 这个节点
+    
+    
+    #2、我们在192.168.252.103机器redis 7008 的节点get一个key
+    
+    发现redis get name 重定向到192.168.252.102机器 redis 7003 这个节点
+
+    如果您看到这样的现象，说明集群已经是可用的了
+
 ### 检查集群状态
+
+    /opt/redis-4.0.1/src/redis-trib.rb check 192.168.252.101:7000
+
 ### 列出集群节点
 
+    列出集群当前已知的所有节点（node），以及这些节点的相关信息
+    
+    $ /opt/redis-4.0.1/src/redis-cli -h 192.168.252.101 -c -p 7000
+
+    192.168.252.101:7000> cluster nodes
+
 ### 打印集群信息
+
+    192.168.252.101:7000> cluster info
 
 ## 集群命令
