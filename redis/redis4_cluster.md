@@ -52,8 +52,8 @@
     vi 7001/redis.conf
     vi 7002/redis.conf
     
-#### redis.conf 配置
-    ```bash
+    #3.1、redis.conf 配置
+    ##########################
     port 7000
     bind 192.168.56.11
     daemonize yes
@@ -62,10 +62,10 @@
     cluster-config-file nodes_7000.conf
     cluster-node-timeout 10100
     appendonly yes
-   ```
-   
-#### redis.conf 配置说明
-
+    ##########################
+    
+    #3.2、redis.conf 配置说明
+    ##########################
     #端口7000,7001,7002
     port 7000
 
@@ -89,6 +89,7 @@
 
     #aof日志开启，有需要就开启，它会每次写操作都记录一条日志
     appendonly yes
+    ##########################
     
     #4、接着在另外两台机器上(192.168.56.12，192.168.56.13)重复以上三步，对应的配置文件的IP修改下即可
     
