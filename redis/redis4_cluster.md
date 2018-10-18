@@ -114,6 +114,45 @@
 
     yum -y install ruby ruby-devel rubygems rpm-build
     gem install redis
+    
+    #redis requires Ruby version >= 2.2.2的报错，查了资料发现是Centos默认支持ruby到2.0.0，可gem 安装redis需要最低是2.2.2
+
+    解决办法是 先安装rvm，再把ruby版本提升至2.3.3
+
+    1.安装curl
+
+    sudo yum install curl
+
+    2. 安装RVM
+
+    curl -L get.rvm.io | bash -s stable 
+
+    3. 加载环境变量
+
+    source /usr/local/rvm/scripts/rvm
+
+    4. 查看rvm库中已知的ruby版本
+
+    rvm list known
+
+    5. 安装一个ruby版本
+
+    rvm install 2.3.3
+
+    6. 使用一个ruby版本
+
+    rvm use 2.3.3
+
+    7. 设置默认版本
+
+    rvm remove 2.0.0
+
+    8. 卸载一个已知版本
+
+    ruby --version
+
+    9. 再安装redis就可以了
+    gem install redis
 
 ## 八、创建集群
 
