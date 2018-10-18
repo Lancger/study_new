@@ -52,8 +52,8 @@
     vi 7001/redis.conf
     vi 7002/redis.conf
     
-    #redis.conf 配置
-    
+#### redis.conf 配置
+    ```bash
     port 7000
     bind 192.168.56.11
     daemonize yes
@@ -62,8 +62,10 @@
     cluster-config-file nodes_7000.conf
     cluster-node-timeout 10100
     appendonly yes
-    
-    #redis.conf 配置说明
+   ```
+   
+#### redis.conf 配置说明
+
     #端口7000,7001,7002
     port 7000
 
