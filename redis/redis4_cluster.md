@@ -95,9 +95,25 @@
     
 ## 五、启动集群
 
+    #第一台机器上执行 3个节点
+    for((i=0;i<=2;i++)); do /opt/redis-4.0.1/src/redis-server /opt/redis-4.0.1/redis-cluster/700$i/redis.conf; done
+
+    #第二台机器上执行 3个节点
+    for((i=0;i<=2;i++)); do /opt/redis-4.0.1/src/redis-server /opt/redis-4.0.1/redis-cluster/700$i/redis.conf; done
+
+    #第三台机器上执行 3个节点 
+    for((i=0;i<=2;i++)); do /opt/redis-4.0.1/src/redis-server /opt/redis-4.0.1/redis-cluster/700$i/redis.conf; done
+
 ## 六、检查服务
 
+    #检查各 Redis 各个节点启动情况
+    ps -ef | grep redis           //redis是否启动成功
+    netstat -tnlp | grep redis    //监听redis端口
+
 ## 安装 Ruby
+    yum -y install ruby ruby-devel rubygems rpm-build
+    gem install redis
+
 
 ## 创建集群
 
