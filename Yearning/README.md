@@ -1,7 +1,12 @@
 # 一、部署文档
 ```bash
-cd /opt/
+#1.先安装 docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+docker-compose --version
 
+#2.克隆源码
+cd /opt/
 git clone https://github.com/cookieY/Yearning.git
 
 #下载Yearning,进入install/yearning-docker-compose目录
