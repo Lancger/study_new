@@ -125,7 +125,14 @@
 
     2. 安装RVM
 
-    curl -L get.rvm.io | bash -s stable 
+    #curl -L get.rvm.io | bash -s stable 
+    
+    #建议使用这个
+    cd /usr/local/src/
+    wget https://github.com/rvm/rvm/archive/1.29.4.tar.gz
+    tar -zxvf 1.29.4.tar.gz
+    cd /usr/local/src/rvm-1.29.4
+    ./install
 
     3. 加载环境变量
 
