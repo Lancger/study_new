@@ -292,18 +292,78 @@
 
 ### 检查集群状态
 
-    /opt/redis-4.0.1/src/redis-trib.rb check 192.168.252.101:7000
+    /opt/redis-4.0.1/src/redis-trib.rb check 192.168.56.11:7000
+    
+    >>> Performing Cluster Check (using node 192.168.56.11:7000)
+    M: 63f18edff5fe171aeaa174d2db0db1ef3712418d 192.168.56.11:7000
+       slots:0-4095 (4096 slots) master
+       2 additional replica(s)
+    S: 8b927473033827128faa20984c7d6ea98bfe1b0b 192.168.56.12:7001
+       slots: (0 slots) slave
+       replicates 63f18edff5fe171aeaa174d2db0db1ef3712418d
+    S: e3d5d25a05df142e2d2779420e5c6af6101ac942 192.168.56.11:7002
+       slots: (0 slots) slave
+       replicates 830a4fed40f2db862949b7d8751d60f67b0dfcfc
+    S: d3bd52ec971b9f4831a990a07fe72e1c62e6e1aa 192.168.56.13:7001
+       slots: (0 slots) slave
+       replicates d5c62b4a22d9e332706a11da41ca24674e229f24
+    M: 3e4169f8efbef7f934546201642f8f3ff3004952 192.168.56.11:7001
+       slots:12288-16383 (4096 slots) master
+       1 additional replica(s)
+    M: 830a4fed40f2db862949b7d8751d60f67b0dfcfc 192.168.56.13:7000
+       slots:8192-12287 (4096 slots) master
+       1 additional replica(s)
+    S: 2025636d2acd2e35525c14a5407b6e1487406718 192.168.56.12:7002
+       slots: (0 slots) slave
+       replicates 3e4169f8efbef7f934546201642f8f3ff3004952
+    M: d5c62b4a22d9e332706a11da41ca24674e229f24 192.168.56.12:7000
+       slots:4096-8191 (4096 slots) master
+       1 additional replica(s)
+    S: f75f71b130dd6233adff9a5633259306688a6e0e 192.168.56.13:7002
+       slots: (0 slots) slave
+       replicates 63f18edff5fe171aeaa174d2db0db1ef3712418d
+    [OK] All nodes agree about slots configuration.
+    >>> Check for open slots...
+    >>> Check slots coverage...
+    [OK] All 16384 slots covered.
 
 ### 列出集群节点
 
     列出集群当前已知的所有节点（node），以及这些节点的相关信息
     
-    $ /opt/redis-4.0.1/src/redis-cli -h 192.168.252.101 -c -p 7000
-
-    192.168.252.101:7000> cluster nodes
+    [root@linux-node1 ~]# /opt/redis-4.0.1/src/redis-cli -h 192.168.56.11 -c -p 7000
+    
+    192.168.56.11:7000> cluster nodes
+    
+    8b927473033827128faa20984c7d6ea98bfe1b0b 192.168.56.12:7001@17001 slave 63f18edff5fe171aeaa174d2db0db1ef3712418d 0 1539916347091 5 connected
+    e3d5d25a05df142e2d2779420e5c6af6101ac942 192.168.56.11:7002@17002 slave 830a4fed40f2db862949b7d8751d60f67b0dfcfc 0 1539916347091 7 connected
+    d3bd52ec971b9f4831a990a07fe72e1c62e6e1aa 192.168.56.13:7001@17001 slave d5c62b4a22d9e332706a11da41ca24674e229f24 0 1539916345031 8 connected
+    3e4169f8efbef7f934546201642f8f3ff3004952 192.168.56.11:7001@17001 master - 0 1539916346074 2 connected 12288-16383
+    830a4fed40f2db862949b7d8751d60f67b0dfcfc 192.168.56.13:7000@17000 master - 0 1539916346000 7 connected 8192-12287
+    2025636d2acd2e35525c14a5407b6e1487406718 192.168.56.12:7002@17002 slave 3e4169f8efbef7f934546201642f8f3ff3004952 0 1539916346073 6 connected
+    d5c62b4a22d9e332706a11da41ca24674e229f24 192.168.56.12:7000@17000 master - 0 1539916347092 4 connected 4096-8191
+    f75f71b130dd6233adff9a5633259306688a6e0e 192.168.56.13:7002@17002 slave 63f18edff5fe171aeaa174d2db0db1ef3712418d 0 1539916346000 9 connected
+    63f18edff5fe171aeaa174d2db0db1ef3712418d 192.168.56.11:7000@17000 myself,master - 0 1539916345000 1 connected 0-4095
+    192.168.56.11:7000>
 
 ### 打印集群信息
 
-    192.168.252.101:7000> cluster info
-
+    192.168.56.11:7000> cluster info
+    cluster_state:ok
+    cluster_slots_assigned:16384
+    cluster_slots_ok:16384
+    cluster_slots_pfail:0
+    cluster_slots_fail:0
+    cluster_known_nodes:9
+    cluster_size:4
+    cluster_current_epoch:9
+    cluster_my_epoch:1
+    cluster_stats_messages_ping_sent:940
+    cluster_stats_messages_pong_sent:946
+    cluster_stats_messages_sent:1886
+    cluster_stats_messages_ping_received:938
+    cluster_stats_messages_pong_received:940
+    cluster_stats_messages_meet_received:8
+    cluster_stats_messages_received:1886
+    
 ## 集群命令
