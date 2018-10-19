@@ -269,10 +269,13 @@
     参数 -C 可连接到集群，因为 redis.conf 将 bind 改为了ip地址，所以 -h 参数不可以省略，-p 参数为端口号
 
     #1、我们在192.168.56.11机器redis 7000 的节点set 一个key
+    
     [root@linux-node1 ~]# /opt/redis-4.0.1/src/redis-cli -h 192.168.56.11 -c -p 7000
+    
     192.168.56.11:7000> set name www.ymq.io
     -> Redirected to slot [5798] located at 192.168.56.12:7000
     OK
+    
     192.168.56.12:7000> get name
     "www.ymq.io"
     192.168.56.12:7000>
@@ -280,7 +283,9 @@
     发现redis set name 之后重定向到192.168.56.12机器 redis 7000 这个节点
     
     #2、我们在192.168.56.13机器redis 7000 的节点get一个key  
+    
     [root@linux-node3 ~]# /opt/redis-4.0.1/src/redis-cli -h 192.168.56.13 -c -p 7000
+    
     192.168.56.13:7000> get name
     -> Redirected to slot [5798] located at 192.168.56.12:7000
     "www.ymq.io"
