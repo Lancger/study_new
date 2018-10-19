@@ -175,9 +175,79 @@
     
     /opt/redis-4.0.1/src/redis-trib.rb create --replicas 1 192.168.56.11:7000 192.168.56.11:7001 192.168.56.11:7002 192.168.56.12:7000 192.168.56.12:7001 192.168.56.12:7002 192.168.56.13:7000 192.168.56.13:7001 192.168.56.13:7002
     
-    出现以下内容
+    #出现以下内容
     
-    输入 yes
+    >>> Creating cluster
+    >>> Performing hash slots allocation on 9 nodes...
+    Using 4 masters:
+    192.168.56.11:7000
+    192.168.56.12:7000
+    192.168.56.13:7000
+    192.168.56.11:7001
+    Adding replica 192.168.56.12:7001 to 192.168.56.11:7000
+    Adding replica 192.168.56.13:7001 to 192.168.56.12:7000
+    Adding replica 192.168.56.11:7002 to 192.168.56.13:7000
+    Adding replica 192.168.56.12:7002 to 192.168.56.11:7001
+    Adding replica 192.168.56.13:7002 to 192.168.56.11:7000
+    M: 63f18edff5fe171aeaa174d2db0db1ef3712418d 192.168.56.11:7000
+       slots:0-4095 (4096 slots) master
+    M: 3e4169f8efbef7f934546201642f8f3ff3004952 192.168.56.11:7001
+       slots:12288-16383 (4096 slots) master
+    S: e3d5d25a05df142e2d2779420e5c6af6101ac942 192.168.56.11:7002
+       replicates 830a4fed40f2db862949b7d8751d60f67b0dfcfc
+    M: d5c62b4a22d9e332706a11da41ca24674e229f24 192.168.56.12:7000
+       slots:4096-8191 (4096 slots) master
+    S: 8b927473033827128faa20984c7d6ea98bfe1b0b 192.168.56.12:7001
+       replicates 63f18edff5fe171aeaa174d2db0db1ef3712418d
+    S: 2025636d2acd2e35525c14a5407b6e1487406718 192.168.56.12:7002
+       replicates 3e4169f8efbef7f934546201642f8f3ff3004952
+    M: 830a4fed40f2db862949b7d8751d60f67b0dfcfc 192.168.56.13:7000
+       slots:8192-12287 (4096 slots) master
+    S: d3bd52ec971b9f4831a990a07fe72e1c62e6e1aa 192.168.56.13:7001
+       replicates d5c62b4a22d9e332706a11da41ca24674e229f24
+    S: f75f71b130dd6233adff9a5633259306688a6e0e 192.168.56.13:7002
+       replicates 63f18edff5fe171aeaa174d2db0db1ef3712418d
+    Can I set the above configuration? (type 'yes' to accept): yes
+    
+    #输入 yes
+
+    >>> Nodes configuration updated
+    >>> Assign a different config epoch to each node
+    >>> Sending CLUSTER MEET messages to join the cluster
+    Waiting for the cluster to join..........
+    >>> Performing Cluster Check (using node 192.168.56.11:7000)
+    M: 63f18edff5fe171aeaa174d2db0db1ef3712418d 192.168.56.11:7000
+       slots:0-4095 (4096 slots) master
+       2 additional replica(s)
+    S: 8b927473033827128faa20984c7d6ea98bfe1b0b 192.168.56.12:7001
+       slots: (0 slots) slave
+       replicates 63f18edff5fe171aeaa174d2db0db1ef3712418d
+    S: e3d5d25a05df142e2d2779420e5c6af6101ac942 192.168.56.11:7002
+       slots: (0 slots) slave
+       replicates 830a4fed40f2db862949b7d8751d60f67b0dfcfc
+    S: d3bd52ec971b9f4831a990a07fe72e1c62e6e1aa 192.168.56.13:7001
+       slots: (0 slots) slave
+       replicates d5c62b4a22d9e332706a11da41ca24674e229f24
+    M: 3e4169f8efbef7f934546201642f8f3ff3004952 192.168.56.11:7001
+       slots:12288-16383 (4096 slots) master
+       1 additional replica(s)
+    M: 830a4fed40f2db862949b7d8751d60f67b0dfcfc 192.168.56.13:7000
+       slots:8192-12287 (4096 slots) master
+       1 additional replica(s)
+    S: 2025636d2acd2e35525c14a5407b6e1487406718 192.168.56.12:7002
+       slots: (0 slots) slave
+       replicates 3e4169f8efbef7f934546201642f8f3ff3004952
+    M: d5c62b4a22d9e332706a11da41ca24674e229f24 192.168.56.12:7000
+       slots:4096-8191 (4096 slots) master
+       1 additional replica(s)
+    S: f75f71b130dd6233adff9a5633259306688a6e0e 192.168.56.13:7002
+       slots: (0 slots) slave
+       replicates 63f18edff5fe171aeaa174d2db0db1ef3712418d
+    [OK] All nodes agree about slots configuration.
+    >>> Check for open slots...
+    >>> Check slots coverage...
+    [OK] All 16384 slots covered.
+      
     
 ## 九、关闭集群
 
