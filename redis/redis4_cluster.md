@@ -117,7 +117,7 @@
     
     #redis requires Ruby version >= 2.2.2的报错，查了资料发现是Centos默认支持ruby到2.0.0，可gem 安装redis需要最低是2.2.2
 
-    解决办法是 先安装rvm，再把ruby版本提升至2.3.3
+    解决办法是 先安装rvm，再把ruby版本提升至2.4.1
 
     1.安装curl
 
@@ -144,11 +144,11 @@
 
     5. 安装一个ruby版本
 
-    rvm install 2.3.3
+    rvm install 2.4.1
 
     6. 使用一个ruby版本
 
-    rvm use 2.3.3
+    rvm use 2.4.1
 
     7. 设置默认版本
 
