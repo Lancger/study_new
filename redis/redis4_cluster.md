@@ -406,3 +406,6 @@
     cluster getkeysinslot <slot> <count> ：返回 count 个 slot 槽中的键 。
     
 
+参考文档：
+
+https://www.centos.bz/2017/08/centos7-3-install-redis-4-0-1-cluster/
