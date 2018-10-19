@@ -17,6 +17,12 @@
     #2、升级所有的包，防止出现版本过久不兼容问题
     yum -y update
     
+    #centos7系统
+    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
+
+    #centos6系统
+    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS6-Base-163.repo
+    
     #3、关闭防火墙 节点之前需要开放指定端口，为了方便，生产不要禁用
     #centos 6.x
     service iptables stop
