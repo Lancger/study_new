@@ -32,3 +32,34 @@ tar xvf inception.tar -C /usr/local/
 
 nohup /usr/local/inception/bin/Inception --defaults-file=/usr/local/inception/bin/inc.cnf &
 ```
+
+
+```
+
+
+https://oapi.dingtalk.com/robot/send?access_token=b13e1867001b57dcb96fd813417ecd43d72d3ac8b0a0bf33986b87d625917af2
+
+
+mysql -uroot -h192.168.56.138 -P6669
+
+mysql> inception get variables;
+
+
+INSERT INTO Persons(PersonID,LastName,City) VALUES (2,'jack','shenzhen');
+
+
+
+INSERT INTO Persons(PersonID,LastName,City) VALUES (88,'test','shenzhen');
+
+delete from Persons where PersonID = '2';
+
+
+delete from persons where PersonID='2';
+
+delete from mysql.user where Host="192.168.56.%";
+
+GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.138" IDENTIFIED BY "123456";
+
+
+docker run -d -e HOST=192.168.56.138 -e MYSQL_ADDR=192.168.56.10 -e MYSQL_USER=root -e MYSQL_PASSWORD=123456 -p8080:80 -p8000:8000 registry.cn-hangzhou.aliyuncs.com/cookie/yearning:v1.3.3
+```
