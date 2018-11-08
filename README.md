@@ -99,15 +99,14 @@ ExecStart=/usr/bin/dockerd $OPTIONS
     WantedBy=multi-user.target
     EOF
 
-## 3.2、重新加载docker的配置文件
-    systemctl daemon-reload
-
-## 3.3、配置镜像加速器
+## 3.2、配置镜像加速器
     cat > /etc/sysconfig/docker << EOF
     OPTIONS='--selinux-enabled --registry-mirror=https://i37dz0y4.mirror.aliyuncs.com'
     EOF
 
-
+## 3.3、重新加载docker的配置文件
+    systemctl daemon-reload
+    
 ## 4.通过测试镜像运行一个容器来验证Docker是否安装正确
 ```bash
 docker run hello-world
