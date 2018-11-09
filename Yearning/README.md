@@ -35,9 +35,37 @@ nohup /usr/local/inception/bin/Inception --defaults-file=/usr/local/inception/bi
 
 
 ```
+#让mySQl的自增id从1开始的方法
+book 为表名，truncate table book;
 
 
-https://oapi.dingtalk.com/robot/send?access_token=b13e1867001b57dcb96fd813417ecd43d72d3ac8b0a0bf33986b87d625917af2
+#建库
+mysql> create database aud2;
+
+#建表
+create table book(id int(8) not null primary key auto_increment,
+                  name varchar(45),
+                  price float)engine=INNODB auto_increment=1;
+
+#插入数据
+INSERT INTO book(id, name, price) VALUES (1,'good',12);
+
+#不带id也可以
+INSERT INTO book(id, name, price) VALUES ('jump',15);
+
+
+#查看数据
+mysql> select * from book;
++----+------+-------+
+| id | name | price |
++----+------+-------+
+|  1 | good |    12 |
+|  2 | jump |    15 |
++----+------+-------+
+
+
+#删除数据
+DELETE FROM book WHERE id = 1;
 
 
 mysql -uroot -h192.168.56.138 -P6669
@@ -45,18 +73,8 @@ mysql -uroot -h192.168.56.138 -P6669
 mysql> inception get variables;
 
 
-INSERT INTO Persons(PersonID,LastName,City) VALUES (2,'jack','shenzhen');
+nohup /usr/local/inception/bin/Inception --defaults-file=/usr/local/inception/bin/inc.cnf &
 
-
-
-INSERT INTO Persons(PersonID,LastName,City) VALUES (88,'test','shenzhen');
-
-delete from Persons where PersonID = '2';
-
-
-delete from persons where PersonID='2';
-
-delete from mysql.user where Host="192.168.56.%";
 
 GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.138" IDENTIFIED BY "123456";
 
