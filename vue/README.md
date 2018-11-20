@@ -1,4 +1,4 @@
-## 一、安装
+## 一、安装 vue
     
     # 查看版本
     npm -v
@@ -13,7 +13,7 @@
     # 最新稳定版
     npm install vue
 
-## 二、命令行工具
+## 二、命令行工具 vue-cli
 
     # 全局安装 vue-cli
     cnpm install --global vue-cli
