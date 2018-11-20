@@ -10,6 +10,7 @@
     # 升级或安装 cnpm
     npm install cnpm -g
     
+    # 最新稳定版
     npm install vue
 
 ## 二、命令行工具
