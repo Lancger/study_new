@@ -34,8 +34,17 @@ docker inspect ID
 
     登陆后请通过设置页面设置inception及其他配置信息
 
+# 二、安装percona toolkit工具（pt-online-schema-change 在线执行DDL操作,不会阻塞读写操作）
 
-# 二、inception
+```
+    安装percona toolkit
+
+    # wget https://www.percona.com/redir/downloads/percona-release/redhat/percona-release-0.1-3.noarch.rpm
+    # rpm -Uvh percona-release-0.1-3.noarch.rpm
+    # yum install percona-toolkit
+```
+
+# 三、inception
 
 因为db和nginx+python放在2个容器里面，用127.0.0.1是访问不道到（nginx+python的容器没有mysql），所以inception放在数据库所在服务器
 ```bash
