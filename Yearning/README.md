@@ -57,6 +57,8 @@ nohup /usr/local/inception/bin/Inception --defaults-file=/usr/local/inception/bi
 #让mySQl的自增id从1开始的方法
 book 为表名，truncate table book;
 
+#删库
+mysql> drop database aud2;
 
 #建库
 mysql> create database aud2;
