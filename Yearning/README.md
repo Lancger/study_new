@@ -99,11 +99,16 @@ docker run -d -e HOST=192.168.56.138 -e MYSQL_ADDR=192.168.56.10 -e MYSQL_USER=r
 解决办法一：
 
 TZ: Asia/Shanghai
-      
+
+my.cnf配置添加如下配置
+log_timestamps = SYSTEM
 解决办法二：
 
 - /etc/localtime:/etc/localtime:ro
 - /etc/timezone:/etc/timezone:ro
+
+my.cnf配置添加如下配置
+log_timestamps = SYSTEM
 
 最终完整例子：
 version: '2'
