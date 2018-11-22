@@ -21,6 +21,9 @@ docker exec -it [容器ID]  /bin/bash   建议使用
 
 # 删除所有容器 
 docker rm -f `docker ps -a -q` 
+
+# 查看容器信息
+docker inspect ID
 ```
 
     请注意本地不要占用8080和8000端口 如需要更改端口可再docker-compose.yml文件中更改，3306和8000端口不可更改！docker-compose并不能确定容器的依赖关系，所以如果执行后无法登陆，请使用docker-compose restart yearning重启容器
