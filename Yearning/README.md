@@ -37,11 +37,11 @@ docker inspect ID
 # 二、安装percona toolkit工具（pt-online-schema-change 在线执行DDL操作,不会阻塞读写操作）
 
 ```
-    安装percona toolkit
+安装percona toolkit
 
-    # wget https://www.percona.com/redir/downloads/percona-release/redhat/percona-release-0.1-3.noarch.rpm
-    # rpm -Uvh percona-release-0.1-3.noarch.rpm
-    # yum install percona-toolkit
+# wget https://www.percona.com/redir/downloads/percona-release/redhat/percona-release-0.1-3.noarch.rpm
+# rpm -Uvh percona-release-0.1-3.noarch.rpm
+# yum install percona-toolkit
 ```
 
 # 三、inception
