@@ -64,11 +64,11 @@ mysql> drop database aud2;
 mysql> create database aud2;
 
 #建表
-create table book(id int(8) not null primary key auto_increment,
+create table aud2.book(id int(8) not null primary key auto_increment,
                   name varchar(45),
                   price float)engine=INNODB auto_increment=1;
                   
-create table book(id int(8) not null primary key auto_increment,
+create table aud2.book(id int(8) not null primary key auto_increment,
                   name varchar(45))engine=INNODB auto_increment=1;              
 
 #插入数据
