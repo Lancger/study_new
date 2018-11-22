@@ -97,6 +97,7 @@ my.cnf配置添加如下配置
 log_timestamps = SYSTEM
 
 最终完整例子：
+[root@localhost yearning-docker-compose]# cat docker-compose.yml
 version: '2'
 
 services:
