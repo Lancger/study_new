@@ -1,30 +1,34 @@
- 开源地址      https://github.com/mysql-inception/inception
+开源地址      https://github.com/mysql-inception/inception
 文档地址      http://mysql-inception.github.io/inception-document/
+
+
 Inception安装
+
 下载解压
 
-]$wget https://github.com/mysql-inception/inception.git
+wget https://github.com/mysql-inception/inception.git
 
-]$pwd
+pwd
 
-/inception
+inception
 
-]$unzip inception-master.zip
+unzip inception-master.zip
+
 安装Inception
 
-]$ cd /inception/inception-master/
+cd /inception/inception-master/
 
 #执行如下命令，可以看到安装帮助
 
-]$ sh inception_build.sh
+sh inception_build.sh
 
 Usage: inception_build.sh builddir [platform(linux:Xcode)]
 
 EXAPMLE: inception_build.sh debug [Xcode]
 
-#安装到./yk目录
+#安装到/data目录
 
-]$ sh inception_build.sh yk
+sh inception_build.sh /data
 
 #说明：
 
@@ -35,11 +39,12 @@ EXAPMLE: inception_build.sh debug [Xcode]
 3.每次如果出错之后，需要把编译目录删除掉，重新执行，不然会执行出错。
 
 4.编译过程没有err那说明安装成功了
+
 配置Inception
 
 #与MySQL类型，可以指定一个cnf配置文件
 
-]$ vim /etc/inc.cnf
+vim /etc/inc.cnf
 
 [inception]
 
@@ -58,20 +63,21 @@ character-set-server=utf8
 。。。。。。。
 
 #此处只是简单的配置为了启动Inception服务，更多的配置选项请参考文档
+
 启动Inception
 
-]$ cd /inception/inception-master/yk/mysql/bin
+cd /inception/inception-master/yk/mysql/bin
 
-]$ nohup /Inception --defaults-file=/etc/inc.cnf &
+nohup /Inception --defaults-file=/etc/inc.cnf &
 
-]$ netstat -antpl|grep 6669
+netstat -antpl|grep 6669
 
 tcp        0      0 0.0.0.0:6669       0.0.0.0:*          LISTEN      4598/Inception   
 
 至此，可以看到inception的6669端口已经运行
 连接Inception
 
-]$ mysql -h127.0.0.1 -P6669
+mysql -h127.0.0.1 -P6669
 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 
@@ -117,7 +123,7 @@ CREATE TABLE yujx(id int);
 inception_magic_commit;
 下面是一段执行上面语句的Python程序的例子：
 
-]$ cat inc-mysql.py
+cat inc-mysql.py
 
 #!/usr/bin/env python
 
@@ -164,10 +170,13 @@ try:
 except MySQLdb.Error,e:
 
              print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+
+
 当创建表语句为
 CREATE TABLE yujx(id int)
 
-]$ python inc-mysql.py
+
+python inc-mysql.py
 
 ['ID', 'stage', 'errlevel', 'stagestatus', 'errormessage', 'SQL', 'Affected_rows', 'sequence', 'backup_dbname', 'execute_time', 'sqlsha1']
 
@@ -206,10 +215,11 @@ Set Default value for column 'id' in table 'yujx'
 
 Set a primary key for table 'yujx'. | CREATE TABLE yujx(id int) engine=innodb | 0 | '0_0_1' | 127_0_0_1_3306_test | 0 |
 
+
 以此类推，直到如下完整的创建语句时，终于成功
 CREATE TABLE yujx(id int comment 'test' primary key) engine=innodb DEFAULT CHARSET=utf8mb4 comment '测试'
 
-]$ python inc-mysql.py
+python inc-mysql.py
 
 ['ID', 'stage', 'errlevel', 'stagestatus', 'errormessage', 'SQL', 'Affected_rows', 'sequence', 'backup_dbname', 'execute_time', 'sqlsha1']
 
@@ -220,7 +230,7 @@ CREATE TABLE yujx(id int comment 'test' primary key) engine=innodb DEFAULT CHARS
 如上，是默认的inception审核规则，用户可以根据自己的实际情况来自定义某些规则
 Inception操作LOG
 
-]$ tail -f /inception/inception-master/yk/mysql/bin/inception.log     
+tail -f /inception/inception-master/yk/mysql/bin/inception.log     
 
                    24 Query     /*--user=yujx;--password=yujx;--host=127.0.0.1;--execute=1;--port=3306;*/    inception_magic_start;    use test;    CREATE TABLE yujx(id int) engine=innodb;    inception_magic_commit
 
@@ -288,7 +298,7 @@ mysql> grant all on *.* to 'backup'@'%' identified by 'backup';
 mysql> flush privileges;
 指定备份服务器信息
 
-]$ grep remote /etc/inc.cnf
+grep remote /etc/inc.cnf
 
 inception_remote_system_password=backup
 
@@ -335,7 +345,7 @@ mysql> show variables like 'binlog_format';
 1 row in set (0.00 sec)
 调用inception操作目标库
 
-]$ python inc-mysql.py
+python inc-mysql.py
 
 ['ID', 'stage', 'errlevel', 'stagestatus', 'errormessage', 'SQL', 'Affected_rows', 'sequence', 'backup_dbname', 'execute_time', 'sqlsha1']
 
@@ -404,6 +414,7 @@ inception set session inception_osc_recursion_method=none;
 inception set session inception_osc_alter_foreign_keys_method=0;
 
 inception set session inception_osc_min_table_size=1; #设置表大小超过此参数的值时，inception调用osc工具alter表
+
 执行inception调用pt-osc
 
 ]$ python inc-mysql-osc.py
@@ -703,7 +714,7 @@ l   字符集修改检查是不是属于设置参数的值（支持字符集可�
 附：执行的三个脚本
 创建表
 
-]$ cat inc-mysql.py    
+cat inc-mysql.py    
 
 #!/usr/bin/env python
 
@@ -750,9 +761,10 @@ try:
 except MySQLdb.Error,e:
 
              print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+
 Insert表
 
-]$ cat inc-mysql-insert.py
+cat inc-mysql-insert.py
 
 #!/usr/bin/env python
 
@@ -799,9 +811,10 @@ try:
 except MySQLdb.Error,e:
 
              print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+
 OSC表
 
-]$ cat inc-mysql-osc.py
+cat inc-mysql-osc.py
 
 #!/usr/bin/env python
 
@@ -856,3 +869,8 @@ try:
 except MySQLdb.Error,e:
 
              print "Mysql Error %d: %s" % (e.args[0], e.args[1]) 
+             
+             
+ 参考文档：
+ 
+ http://blog.itpub.net/27000195/viewspace-2120332/    Inception相关功能学习 
