@@ -67,6 +67,9 @@ mysql> create database aud2;
 create table book(id int(8) not null primary key auto_increment,
                   name varchar(45),
                   price float)engine=INNODB auto_increment=1;
+                  
+create table book(id int(8) not null primary key auto_increment,
+                  name varchar(45))engine=INNODB auto_increment=1;              
 
 #插入数据
 INSERT INTO book(id, name, price) VALUES (1,'good',12);
