@@ -93,12 +93,11 @@ Warning: Using a password on the command line interface can be insecure.
 +----------+
 | count(1) |
 +----------+
-|  1000000 |
+|  100000 |
 +----------+
 
 #删除数据
 DELETE FROM book WHERE id = 1;
-
 
 mysql -uroot -h192.168.56.138 -P6669
 
