@@ -133,7 +133,35 @@ services:
 
 ```
 
+# 四、inc.cnf配置文件
+```
+[root@localhost yearning-docker-compose]# cat /usr/local/inception/bin/inc.cnf
+[inception]
+general_log=1
+general_log_file=inception.log
+port=6669
 
+socket=/tmp/inc.socket
+character-set-client-handshake=0
+character-set-server=utf8
+inception_support_charset=utf8mb4
+inception_enable_nullable=1
+inception_check_primary_key=1
+inception_check_column_comment=1
+inception_check_table_comment=1
+inception_enable_blob_type=1
+inception_check_column_default_value=1
+inception_support_charset=utf8
+inception_osc_on=on
+inception_check_column_default_value=OFF
+inception_check_column_comment=OFF
+inception_check_table_comment=OFF
+inception_enable_identifer_keyword=ON
+inception_remote_backup_host = 192.168.56.138
+inception_remote_backup_port = 3306
+inception_remote_system_user = root
+inception_remote_system_password = 123456
+```
 参考文档：
 
 http://blog.itpub.net/27000195/viewspace-2120332/     Inception相关功能学习 
