@@ -51,10 +51,6 @@ yum install percona-toolkit
 tar xvf inception.tar -C /usr/local/
 
 nohup /usr/local/inception/bin/Inception --defaults-file=/usr/local/inception/bin/inc.cnf &
-```
-
-```
-
 
 mysql -uroot -h192.168.56.138 -P6669
 
