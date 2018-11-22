@@ -33,6 +33,21 @@ docker inspect ID
     默认用户admin 密码: Yearning_admin
 
     登陆后请通过设置页面设置inception及其他配置信息
+    
+    
+    注意事项：
+    1、inception 需要设置密码，不然会报错 Global environment 
+    2、如果使用的容器mysql，需要登录到容器mysql赋权限（可直接通过宿主机3306登录）
+    
+    #通过宿主机可以连接到容器的mysql（默认docker-compose.yml设置的未这个密码）
+
+    mysql -h192.168.56.138 -uroot -P3306 -pyearning
+    
+    GRANT ALL PRIVILEGES ON *.* TO root@"%" IDENTIFIED BY “123456”;
+
+    mysql> show grants for root@"%";
+    mysql> flush privileges;
+     
 
 # 二、安装percona toolkit工具（pt-online-schema-change 在线执行DDL操作,不会阻塞读写操作）
 
