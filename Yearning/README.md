@@ -162,6 +162,37 @@ inception_remote_backup_port = 3306
 inception_remote_system_user = root
 inception_remote_system_password = 123456
 ```
+
+# 六、Inception OSC功能
+
+```
+#配置PT-osc的路径
+
+# which pt-online-schema-change
+/usr/bin/pt-online-schema-change
+
+# grep bin_dir /etc/inc.cnf   
+inception_osc_bin_dir=/usr/bin/pt-online-schema-change
+
+#设置osc相关选项
+# grep osc inc-mysql-osc.py
+inception set session inception_osc_recursion_method=none;
+inception set session inception_osc_alter_foreign_keys_method=0;
+inception set session inception_osc_min_table_size=1;     #设置表大小超过此参数的值时，inception调用osc工具alter表
+
+
+#查看osc的进度
+
+#查看osc列表
+mysql> inception get osc processlist;
+
+#由上面的processlist可以看到正在执行的osc任务对应的SQLSHA1值，然后使用下方命令可以查看指定的一条osc任务进度
+
+mysql> inception get osc_percent '*8388D07BAD14866D80DD45CD1521F4F0D17C20CE';
+
+
+```
+
 参考文档：
 
 http://blog.itpub.net/27000195/viewspace-2120332/     Inception相关功能学习 
