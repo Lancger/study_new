@@ -44,7 +44,6 @@ tar xvf inception.tar -C /usr/local/
 nohup /usr/local/inception/bin/Inception --defaults-file=/usr/local/inception/bin/inc.cnf &
 ```
 
-
 ```
 #让mySQl的自增id从1开始的方法
 book 为表名，truncate table book;
@@ -102,6 +101,7 @@ TZ: Asia/Shanghai
 
 my.cnf配置添加如下配置
 log_timestamps = SYSTEM
+
 解决办法二：
 
 - /etc/localtime:/etc/localtime:ro
