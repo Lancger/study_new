@@ -184,12 +184,13 @@ inception set session inception_osc_min_table_size=1;     #设置表大小超过
 #查看osc的进度
 
 #查看osc列表
+mysql -h127.0.0.1 -P6669
+
 mysql> inception get osc processlist;
 
 #由上面的processlist可以看到正在执行的osc任务对应的SQLSHA1值，然后使用下方命令可以查看指定的一条osc任务进度
 
 mysql> inception get osc_percent '*8388D07BAD14866D80DD45CD1521F4F0D17C20CE';
-
 
 ```
 
