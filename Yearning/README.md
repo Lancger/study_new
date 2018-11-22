@@ -92,3 +92,51 @@ GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.138" IDENTIFIED BY "123456";
 
 docker run -d -e HOST=192.168.56.138 -e MYSQL_ADDR=192.168.56.10 -e MYSQL_USER=root -e MYSQL_PASSWORD=123456 -p8080:80 -p8000:8000 registry.cn-hangzhou.aliyuncs.com/cookie/yearning:v1.3.3
 ```
+
+# 三、mysql容器时区问题
+
+```
+解决办法一：
+
+TZ: Asia/Shanghai
+      
+解决办法二：
+
+- /etc/localtime:/etc/localtime:ro
+- /etc/timezone:/etc/timezone:ro
+
+最终完整例子：
+version: '2'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./docker/etc/mysql/:/etc/mysql/conf.d/
+      - ./db_data/:/var/lib/mysql/
+      - ./init-sql/:/docker-entrypoint-initdb.d/
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: Yearning
+      MYSQL_USER: yearning
+      MYSQL_PASSWORD: yearning
+  yearning:
+    image: registry.cn-hangzhou.aliyuncs.com/cookie/yearning:v1.3.4
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+      - "8000:8000"
+    environment:
+      HOST: localhost
+      MYSQL_PASSWORD: 123456
+      MYSQL_USER: root
+      MYSQL_ADDR: db
+
+```
