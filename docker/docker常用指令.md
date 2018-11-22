@@ -111,6 +111,10 @@ docker restart Name/ID
 docker attach ID
 ```
 
+六、查看容器
+
+    docker inspect ID
+    
 参考文档: 
 http://www.jb51.net/article/104679.htm
 
