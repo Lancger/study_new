@@ -87,6 +87,14 @@ mysql> select * from book;
 |  2 | jump |    15 |
 +----+------+-------+
 
+##查询数据总数
+root># mysql -uroot -p123456 -e 'select count(1) from aud2.book;'
+Warning: Using a password on the command line interface can be insecure.
++----------+
+| count(1) |
++----------+
+|  1000000 |
++----------+
 
 #删除数据
 DELETE FROM book WHERE id = 1;
