@@ -26,6 +26,23 @@ docker rm -f `docker ps -a -q`
 
 # 查看容器信息
 docker inspect ID
+
+####################
+# 使用外部mysql
+1. 新建Yearning库，设置字符集为UTF-8，然后在Yearning库中导入sql文件
+
+cd /opt/Yearning/install/yearning-docker-compose/init-sql
+
+create database Yearning default character set utf8mb4 collate utf8mb4_unicode_ci;
+
+mysql -uroot -p123456 Yearning < install.sql
+
+mysql -uroot -p123456
+
+GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.138" IDENTIFIED BY "123456";
+
+docker run -d -e HOST=192.168.56.138 -e MYSQL_ADDR=192.168.56.10 -e MYSQL_USER=root -e MYSQL_PASSWORD=123456 -p8080:80 -p8000:8000 registry.cn-hangzhou.aliyuncs.com/cookie/yearning:v1.3.4
+    
 ```
 
     请注意本地不要占用8080和8000端口 如需要更改端口可再docker-compose.yml文件中更改，3306和8000端口不可更改！docker-compose并不能确定容器的依赖关系，所以如果执行后无法登陆，请使用docker-compose restart yearning重启容器
@@ -77,11 +94,7 @@ mysql> inception get variables;
     mysql> flush privileges;
     
     
-    1. 新建Yearning库，设置字符集为UTF-8，然后在Yearning库中导入sql文件(Yearning/install/yearning-docker-compose/init-sql)
-    
-    GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.138" IDENTIFIED BY "123456";
 
-    docker run -d -e HOST=192.168.56.138 -e MYSQL_ADDR=192.168.56.10 -e MYSQL_USER=root -e MYSQL_PASSWORD=123456 -p8080:80 -p8000:8000 registry.cn-hangzhou.aliyuncs.com/cookie/yearning:v1.3.4
     
     
      
