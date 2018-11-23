@@ -14,6 +14,8 @@ cd /opt/Yearning/install/yearning-docker-compose
 
 docker-compose up -d
 
+docker-compose restart
+
 #要删除全部image的话
 docker rmi $(docker images -q)
 
