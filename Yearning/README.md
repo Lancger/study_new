@@ -27,17 +27,17 @@ docker rm -f `docker ps -a -q`
 # 查看容器信息
 docker inspect ID
 
-####################
+########################################################################################################################
 # 使用外部mysql
 1. 新建Yearning库，设置字符集为UTF-8，然后在Yearning库中导入sql文件
 
 cd /opt/Yearning/install/yearning-docker-compose/init-sql
 
+mysql -uroot -p123456
+
 create database Yearning default character set utf8mb4 collate utf8mb4_unicode_ci;
 
 mysql -uroot -p123456 Yearning < install.sql
-
-mysql -uroot -p123456
 
 GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.138" IDENTIFIED BY "123456";
 
