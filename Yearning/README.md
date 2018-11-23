@@ -37,7 +37,8 @@ docker inspect ID
     登陆后请通过设置页面设置inception及其他配置信息
     
     
-    注意事项：
+# 二、注意事项：
+
     1、inception 需要设置密码，不然会报错 Global environment 
     2、如果使用的容器mysql，需要登录到容器mysql赋权限（可直接通过宿主机3306登录）
     
@@ -51,7 +52,7 @@ docker inspect ID
     mysql> flush privileges;
      
 
-# 二、安装percona toolkit工具（pt-online-schema-change 在线执行DDL操作,不会阻塞读写操作）
+# 三、安装percona toolkit工具（pt-online-schema-change 在线执行DDL操作,不会阻塞读写操作）
 
 ```
 #安装percona toolkit
@@ -61,7 +62,7 @@ rpm -Uvh percona-release-0.1-3.noarch.rpm
 yum install percona-toolkit
 ```
 
-# 三、inception
+# 四、inception
 
 因为db和nginx+python放在2个容器里面，用127.0.0.1是访问不道到（nginx+python的容器没有mysql），所以inception放在数据库所在服务器
 ```bash
@@ -80,7 +81,7 @@ GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.138" IDENTIFIED BY "123456";
 docker run -d -e HOST=192.168.56.138 -e MYSQL_ADDR=192.168.56.10 -e MYSQL_USER=root -e MYSQL_PASSWORD=123456 -p8080:80 -p8000:8000 registry.cn-hangzhou.aliyuncs.com/cookie/yearning:v1.3.3
 ```
 
-# 四、mysql容器时区问题
+# 五、mysql容器时区问题
 
 ```
 解决办法一：
@@ -135,7 +136,7 @@ services:
 
 ```
 
-# 五、inc.cnf配置文件
+# 六、inc.cnf配置文件
 ```
 [root@localhost yearning-docker-compose]# cat /usr/local/inception/bin/inc.cnf
 [inception]
@@ -165,7 +166,7 @@ inception_remote_system_user = root
 inception_remote_system_password = 123456
 ```
 
-# 六、Inception OSC功能
+# 七、Inception OSC功能
 
 ```
 #配置PT-osc的路径
