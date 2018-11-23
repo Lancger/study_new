@@ -50,6 +50,11 @@ docker inspect ID
 
     mysql> show grants for root@"%";
     mysql> flush privileges;
+    
+    
+    GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.138" IDENTIFIED BY "123456";
+
+    docker run -d -e HOST=192.168.56.138 -e MYSQL_ADDR=192.168.56.10 -e MYSQL_USER=root -e MYSQL_PASSWORD=123456 -p8080:80 -p8000:8000 registry.cn-hangzhou.aliyuncs.com/cookie/yearning:v1.3.4
      
 
 # 三、安装percona toolkit工具（pt-online-schema-change 在线执行DDL操作,不会阻塞读写操作）
@@ -70,15 +75,12 @@ tar xvf inception.tar -C /usr/local/
 
 nohup /usr/local/inception/bin/Inception --defaults-file=/usr/local/inception/bin/inc.cnf &
 
-mysql -uroot -h192.168.56.138 -P6669
+mysql -uroot -h127.0.0.1 -P6669
 
 mysql> inception get variables;
 
-nohup /usr/local/inception/bin/Inception --defaults-file=/usr/local/inception/bin/inc.cnf &
 
-GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.138" IDENTIFIED BY "123456";
 
-docker run -d -e HOST=192.168.56.138 -e MYSQL_ADDR=192.168.56.10 -e MYSQL_USER=root -e MYSQL_PASSWORD=123456 -p8080:80 -p8000:8000 registry.cn-hangzhou.aliyuncs.com/cookie/yearning:v1.3.3
 ```
 
 # 五、mysql容器时区问题
