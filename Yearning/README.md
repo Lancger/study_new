@@ -59,7 +59,7 @@ docker inspect ID
 
 wget https://www.percona.com/redir/downloads/percona-release/redhat/percona-release-0.1-3.noarch.rpm
 rpm -Uvh percona-release-0.1-3.noarch.rpm
-yum install percona-toolkit
+yum install -y percona-toolkit
 ```
 
 # 四、inception
