@@ -77,9 +77,13 @@ mysql> inception get variables;
     mysql> flush privileges;
     
     
+    1. 新建Yearning库，设置字符集为UTF-8，然后在Yearning库中导入sql文件(Yearning/install/yearning-docker-compose/init-sql)
+    
     GRANT ALL PRIVILEGES ON *.* TO root@"192.168.56.138" IDENTIFIED BY "123456";
 
     docker run -d -e HOST=192.168.56.138 -e MYSQL_ADDR=192.168.56.10 -e MYSQL_USER=root -e MYSQL_PASSWORD=123456 -p8080:80 -p8000:8000 registry.cn-hangzhou.aliyuncs.com/cookie/yearning:v1.3.4
+    
+    
      
 
 # 五、mysql容器时区问题
