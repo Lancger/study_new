@@ -19,7 +19,7 @@ docker-compose restart
 #要删除全部image的话
 docker rmi $(docker images -q)
 
-docker exec -it [容器ID]  /bin/bash   建议使用
+docker exec -it [容器ID]  /bin/bash   //建议使用
 
 # 删除所有容器 
 docker rm -f `docker ps -a -q` 
