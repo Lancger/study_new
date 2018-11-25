@@ -32,6 +32,7 @@ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 
 #要删除全部image的话
 docker rmi $(docker images -q)
+docker rmi -f $(docker images -q)
 ```
 
 三、运行容器
