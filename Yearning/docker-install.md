@@ -8,6 +8,9 @@ docker run -it -d --name=yearning centos /bin/bash
 
 docker run -d --name=yearning -v /data/Yearning/:/mnt/Yearning -p 8000:8000 -p 2222:22 yearning:base
 
+#进入容器
+docker exec -it yearning /bin/bash
+
 #想要删除untagged images，也就是那些id为<None>的image的话可以用
 docker rmi $(docker images | grep none | awk '{print $3}' | sort -r)
 docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
