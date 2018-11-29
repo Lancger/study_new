@@ -1,5 +1,13 @@
 # 一、Docker常用操作
 ```
+#下载镜像
+docker pull centos
+
+#创建名为test的centos容器
+docker run -it -d --name=test centos /bin/bash
+
+docker run -d --name=yearning -v /data/Yearning/:/mnt/Yearning -p 8000:8000 -p 2222:22 yearning:base
+
 #想要删除untagged images，也就是那些id为<None>的image的话可以用
 docker rmi $(docker images | grep none | awk '{print $3}' | sort -r)
 docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
@@ -8,11 +16,11 @@ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 docker rmi $(docker images -q)
 docker rmi -f $(docker images -q)
 
+#构建容器镜像
 docker build -t yearning:base .
 
+#删除容器
 docker rm -f `docker ps -a -q`
-
-docker run -d --name=yearning -v /data/Yearning/:/mnt/Yearning -p 8000:8000 -p 2222:22 yearning:base
 ```
 
 # 二、镜像构建
