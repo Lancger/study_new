@@ -1,7 +1,9 @@
 ```
 docker build -t yearning:base .
 
+docker rm -f `docker ps -a -q`
 
+docker run -d --name=yearning -v /data/Yearning/:/mnt/Yearning -p 8000:8000 -p 2222:22 yearning:base
 ```
 
 ```
