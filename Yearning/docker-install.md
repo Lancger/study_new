@@ -29,6 +29,7 @@ docker rm -f `docker ps -a -q`
 # 二、镜像构建
 
 ```
+#服务启动脚本
 start_yearning.sh
 
 /usr/sbin/nginx
@@ -40,12 +41,13 @@ sed -i "s/password =.*/password=$MYSQL_PASSWORD/" deploy.conf
 gunicorn settingConf.wsgi:application -b 0.0.0.0:8000 -w 2
 
 
-
+#本地镜像
 FROM yearning_local
 MAINTAINER cookieYe 2018-9-17
 EXPOSE 8000
 EXPOSE 80
 ENTRYPOINT start_yearning.sh
+
 ```
 
 # 三、
