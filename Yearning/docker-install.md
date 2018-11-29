@@ -14,8 +14,13 @@ FROM centos:latest
 ADD Yearning /mnt/Yearning/
 
 #RUN pip install -r /mnt/OpsManage/requirements.txt && cd /mnt/OpsManage/  && python manage.py makemigrations OpsManage && python manage.py makemigrations wiki && python manage.py makemigrations orders && python manage.py makemigrations filemanage && python manage.py migrate && python manage.py loaddata superuser.json
-
 #CMD  bash /mnt/OpsManage/start.sh
+RUN yum -y install openssh-server
+
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+
+RUN /bin/echo 'root:123456'|chpasswd
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
