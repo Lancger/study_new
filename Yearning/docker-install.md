@@ -1,4 +1,12 @@
 ```
+#想要删除untagged images，也就是那些id为<None>的image的话可以用
+docker rmi $(docker images | grep none | awk '{print $3}' | sort -r)
+docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+
+#要删除全部image的话
+docker rmi $(docker images -q)
+docker rmi -f $(docker images -q)
+
 docker build -t yearning:base .
 
 docker rm -f `docker ps -a -q`
