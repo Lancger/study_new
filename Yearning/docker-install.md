@@ -4,7 +4,7 @@
 docker pull centos
 
 #创建名为test的centos容器
-docker run -it -d --name=test centos /bin/bash
+docker run -it -d --name=yearning centos /bin/bash
 
 docker run -d --name=yearning -v /data/Yearning/:/mnt/Yearning -p 8000:8000 -p 2222:22 yearning:base
 
