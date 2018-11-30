@@ -50,27 +50,57 @@ ENTRYPOINT start_yearning.sh
 
 ```
 
-# 三、
+# 三、Dockerfile编写
 ```
-FROM centos:latest
+FROM docker.io/centos
+#FROM centos:latest
 
-RUN yum install -y wget git zlib zlib-devel readline-devel sqlite-devel bzip2-devel openssl-devel gdbm-devel libdbi-devel ncurses-libs kernel-devel libxslt-devel libffi-devel python-devel mysql-devel zlib-devel sshpass libtool make
+#yearning
+RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel \
+    && yum -y install epel-release \
+    
+    #python3.6.6
+    && cd /usr/local/src \
+    && wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz \
+    && tar -xzf Python-3.6.6.tgz \
+    && cd Python-3.6.6 \
+    && ./configure --prefix=/usr/local/python3.6 --enable-shared \
+    && virtualenv venv4archer --python=python3.4 \
+    && make && make install \
+    && ln -s /usr/local/python3.6/bin/python3.6 /usr/bin/python3 \
+    && ln -s /usr/local/python3.6/bin/pip3 /usr/bin/pip3 \
+    && ln -s /usr/local/python3.6/bin/pyvenv /usr/bin/pyvenv \
+    && pip3 install --upgrade pip \
+    && cp /usr/local/python3.6/lib/libpython3.6m.so.1.0 /usr/local/lib \
+    && cd /usr/local/lib \
+    && ln -s libpython3.6m.so.1.0 libpython3.6m.so \
+    && echo '/usr/local/lib' >> /etc/ld.so.conf \
+    && /sbin/ldconfig \
 
-RUN cd /usr/local/src && wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py && python get-pip.py && pip install -U pip
+    #下载源码
+    && cd /opt \
+    && git clone https://github.com/cookieY/Yearning.git \
+    && pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/ \
 
-ADD Yearning /mnt/Yearning/
+    #安装nginx
+    && yum -y install nginx \
+    && ADD yearning.conf /etc/nginx/conf.d/ \
 
-RUN pip install -r /mnt/Yearning/requirements.txt && cd /mnt/Yearning/  && python manage.py makemigrations OpsManage && python manage.py makemigrations wiki && python manage.py makemigrations orders && python manage.py makemigrations filemanage && python manage.py migrate && python manage.py loaddata superuser.json
-#CMD  bash /mnt/OpsManage/start.sh
+    #增加启动脚本
+    && ADD start_yearning.sh /opt/Yearning \
+    
+    #拷贝一份deploy.conf
+    && cp /opt/Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf \
 
-RUN yum -y install openssh-server
 
-RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
-RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+ENV LANG en_US.UTF-8
+ENV LC_ALL zh_CN.utf8 
 
-RUN /bin/echo 'root:123456'|chpasswd
+#port
+EXPOSE 80
+EXPOSE 8000
 
-EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+#start service
+ENTRYPOINT bash /opt/Yearning/start_yearning.sh && bash
 ```
 
