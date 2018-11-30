@@ -1,3 +1,4 @@
+# 一、编写python3的Dockerfile
 ```
 FROM docker.io/centos
 # FROM centos:latest
@@ -25,4 +26,9 @@ RUN yum install -y wget \
     # pip升级
     && pip3 install --upgrade pip \
 CMD ["python3"]
+```
+
+# 二、构建镜像
+```
+
 ```
