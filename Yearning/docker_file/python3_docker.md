@@ -1,8 +1,7 @@
 ```
 FROM docker.io/centos
 # FROM centos:latest
-# yearning
-WORKDIR /opt/
+# base
 RUN yum install -y wget \
     # 变更163yum源
     && wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo \
@@ -25,28 +24,5 @@ RUN yum install -y wget \
     && /sbin/ldconfig \
     # pip升级
     && pip3 install --upgrade pip \
-    # 下载源码
-    # cd opt \
-    # && git clone https://github.com/cookieY/Yearning.git \
-    # 安装nginx
-    && yum -y install nginx
-# 拷贝编译好的前端文件
-ADD dist/* /var/lib/nginx/html/
-# 拷贝一份deploy.conf
-ADD Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf
-# 安装项目所需的requirements.txt
-ADD Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt
-# 安装requirements.txt
-RUN pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/
-# 增加yearning的nginx配置文件
-ADD yearning.conf /etc/nginx/conf.d/
-# 增加启动脚本
-ADD start_yearning.sh /opt/Yearning
-# 挂载逻辑卷
-VOLUME /opt/Yearning/ /opt/Yearning/
-# port
-EXPOSE 80
-EXPOSE 8000
-# start service
-ENTRYPOINT bash /opt/Yearning/start_yearning.sh && bash
+CMD ["python3"]
 ```
