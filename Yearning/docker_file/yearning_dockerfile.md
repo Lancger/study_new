@@ -23,3 +23,8 @@ EXPOSE 8000
 # start service
 ENTRYPOINT bash /opt/Yearning/start_yearning.sh && bash
 ```
+
+# 二、构建镜像
+```
+docker build -t yearning:base -f Dockerfile_yearning .
+```
