@@ -54,18 +54,15 @@ ENTRYPOINT start_yearning.sh
 ```
 FROM docker.io/centos
 #FROM centos:latest
-
 #yearning
 RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel \
     && yum -y install epel-release \
-    
     #python3.6.6
     && cd /usr/local/src \
     && wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz \
     && tar -xzf Python-3.6.6.tgz \
     && cd Python-3.6.6 \
     && ./configure --prefix=/usr/local/python3.6 --enable-shared \
-    && virtualenv venv4archer --python=python3.4 \
     && make && make install \
     && ln -s /usr/local/python3.6/bin/python3.6 /usr/bin/python3 \
     && ln -s /usr/local/python3.6/bin/pip3 /usr/bin/pip3 \
@@ -76,30 +73,23 @@ RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel open
     && ln -s libpython3.6m.so.1.0 libpython3.6m.so \
     && echo '/usr/local/lib' >> /etc/ld.so.conf \
     && /sbin/ldconfig \
-
     #下载源码
     && cd /opt \
     && git clone https://github.com/cookieY/Yearning.git \
     && pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/ \
-
     #安装nginx
     && yum -y install nginx \
     && ADD yearning.conf /etc/nginx/conf.d/ \
-
     #增加启动脚本
     && ADD start_yearning.sh /opt/Yearning \
-    
     #拷贝一份deploy.conf
     && cp /opt/Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf \
-
-
+#ENV
 ENV LANG en_US.UTF-8
-ENV LC_ALL zh_CN.utf8 
-
+ENV LC_ALL zh_CN.utf8
 #port
 EXPOSE 80
 EXPOSE 8000
-
 #start service
 ENTRYPOINT bash /opt/Yearning/start_yearning.sh && bash
 ```
