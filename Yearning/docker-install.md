@@ -76,26 +76,25 @@ RUN yum install -y wget \
     && ln -s libpython3.6m.so.1.0 libpython3.6m.so \
     && echo '/usr/local/lib' >> /etc/ld.so.conf \
     && /sbin/ldconfig \
+    # pip升级
+    && pip3 install --upgrade pip \
     # 下载源码
     # cd opt \
     # && git clone https://github.com/cookieY/Yearning.git \
-    # 拷贝一份deploy.conf
-    && cp Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf \
-    # 安装项目所需的requirements.txt
-    && cp Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt \
-    && pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/ \
-    # 拷贝编译好的前端文件
-    && cp -rp dist/* /var/lib/nginx/html/ \
-    && pip3 install --upgrade pip \
     # 安装nginx
     && yum -y install nginx
+# 拷贝编译好的前端文件    
+ADD dist/* /var/lib/nginx/html/
+# 拷贝一份deploy.conf
+ADD Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf
+# 安装项目所需的requirements.txt
+ADD Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt
+# 安装requirements.txt
+RUN pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/
 # 增加yearning的nginx配置文件
 ADD yearning.conf /etc/nginx/conf.d/
 # 增加启动脚本
 ADD start_yearning.sh /opt/Yearning
-# ENV
-ENV LANG en_US.UTF-8
-ENV LC_ALL zh_CN.utf8
 # port
 EXPOSE 80
 EXPOSE 8000
