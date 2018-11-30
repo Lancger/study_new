@@ -56,7 +56,10 @@ FROM docker.io/centos
 # FROM centos:latest
 # yearning
 WORKDIR /opt/
-RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel \
+RUN yum install -y wget \
+    # 变更163yum源
+    && wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo \
+    && yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel \
     && yum -y install epel-release \
     # python3.6.6
     && cd /usr/local/src \
