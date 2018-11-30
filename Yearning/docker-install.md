@@ -53,11 +53,11 @@ ENTRYPOINT start_yearning.sh
 # 三、Dockerfile编写
 ```
 FROM docker.io/centos
-#FROM centos:latest
-#yearning
+# FROM centos:latest
+# yearning
 RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel \
     && yum -y install epel-release \
-    #python3.6.6
+    # python3.6.6
     && cd /usr/local/src \
     && wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz \
     && tar -xzf Python-3.6.6.tgz \
@@ -72,29 +72,30 @@ RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel open
     && ln -s libpython3.6m.so.1.0 libpython3.6m.so \
     && echo '/usr/local/lib' >> /etc/ld.so.conf \
     && /sbin/ldconfig \
-    #下载源码
+    # 下载源码
     # cd opt \
     # && git clone https://github.com/cookieY/Yearning.git \
-    #拷贝一份deploy.conf
+    # 拷贝一份deploy.conf
     && cp /opt/Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf \
-    #拷贝编译好的前端文件
+    # 安装项目所需的requirements.txt
+    && cp /opt/Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt \
+    && pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/ \
+    # 拷贝编译好的前端文件
     && cp -rp /opt/dist/* /var/lib/nginx/html/ \
     && pip3 install --upgrade pip \
-    #安装nginx
+    # 安装nginx
     && yum -y install nginx
-ADD /opt/Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt
-RUN pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/
-#增加yearning的nginx配置文件
+# 增加yearning的nginx配置文件
 ADD yearning.conf /etc/nginx/conf.d/
-#增加启动脚本
+# 增加启动脚本
 ADD start_yearning.sh /opt/Yearning
-#ENV
+# ENV
 ENV LANG en_US.UTF-8
 ENV LC_ALL zh_CN.utf8
-#port
+# port
 EXPOSE 80
 EXPOSE 8000
-#start service
+# start service
 ENTRYPOINT bash /opt/Yearning/start_yearning.sh && bash
 ```
 
