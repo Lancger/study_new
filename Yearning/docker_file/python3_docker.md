@@ -37,3 +37,6 @@ docker build -t python3:base .
 docker build -t python3:base -f Dockerfile_base .
 docker run -it -d --name=python3 -v /opt/Yearning/:/opt/Yearning/ python3:base /bin/bash
 ```
+# 三、上传镜像到阿里云
+```
+```
