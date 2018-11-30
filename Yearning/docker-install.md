@@ -55,6 +55,7 @@ ENTRYPOINT start_yearning.sh
 FROM docker.io/centos
 # FROM centos:latest
 # yearning
+WORKDIR /opt/
 RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel \
     && yum -y install epel-release \
     # python3.6.6
@@ -76,12 +77,12 @@ RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel open
     # cd opt \
     # && git clone https://github.com/cookieY/Yearning.git \
     # 拷贝一份deploy.conf
-    && cp /opt/Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf \
+    && cp Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf \
     # 安装项目所需的requirements.txt
-    && cp /opt/Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt \
+    && cp Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt \
     && pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/ \
     # 拷贝编译好的前端文件
-    && cp -rp /opt/dist/* /var/lib/nginx/html/ \
+    && cp -rp dist/* /var/lib/nginx/html/ \
     && pip3 install --upgrade pip \
     # 安装nginx
     && yum -y install nginx
