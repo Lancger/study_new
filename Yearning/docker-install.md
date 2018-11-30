@@ -107,5 +107,5 @@ ENTRYPOINT bash /opt/Yearning/start_yearning.sh && bash
 docker build -t yearning:base .
 
 
-docker run -it -d --name=yearning3 -v /opt/Yearning/:/opt/Yearning/ yearning:basessh3 /bin/bash
+docker run -it -d --name=yearning3 -v /opt/Yearning/:/opt/Yearning/ yearning:bash /bin/bash
 ```
