@@ -40,11 +40,11 @@ docker run -it -d --name=python3 -v /opt/Yearning/:/opt/Yearning/ python3:base /
 # 三、上传镜像到阿里云
 ```
 #复制镜像ID并设置tag (或者tag repository:tag)
-docker tag python3:base registry.cn-hangzhou.aliyuncs.com/python3_base:v1.0.0
+docker tag python3:base registry.cn-hangzhou.aliyuncs.com/lancger_ops/python3_base:v1.0.0
 
 #上传镜像到阿里云镜像仓库
-docker push registry.cn-hangzhou.aliyuncs.com/python3_base:v1.0.0
+docker push registry.cn-hangzhou.aliyuncs.com/lancger_ops/python3_base:v1.0.0
 
 #使用阿里云镜像
-docker run -itd -v /opt/Yearning/:/opt/Yearning/ registry.cn-hangzhou.aliyuncs.com/python3_base:v1.0.0
+docker run -itd -v /opt/Yearning/:/opt/Yearning/ registry.cn-hangzhou.aliyuncs.com/lancger_ops/python3_base:v1.0.0
 ```
