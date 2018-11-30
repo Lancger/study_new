@@ -104,3 +104,7 @@ EXPOSE 8000
 ENTRYPOINT bash /opt/Yearning/start_yearning.sh && bash
 ```
 
+## 四、镜像构建
+```
+docker build -t yearning:base .
+```
