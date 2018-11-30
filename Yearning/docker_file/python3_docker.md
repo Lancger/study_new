@@ -33,5 +33,7 @@ CMD ["python3"]
 
 # 二、构建镜像
 ```
+docker build -t yearning:base .
 
+docker run -it -d --name=yearning3 -v /opt/Yearning/:/opt/Yearning/ yearning:bash /bin/bash
 ```
