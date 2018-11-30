@@ -1,8 +1,11 @@
 # 一、编写python3的Dockerfile
 ```
+# Base image
 FROM docker.io/centos
 # FROM centos:latest
-# base
+# MAINTAINER
+MAINTAINER 1151980610@qq.com
+# running required command
 RUN yum install -y wget \
     # 变更163yum源
     && wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo \
