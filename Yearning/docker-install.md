@@ -95,6 +95,8 @@ RUN pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.e
 ADD yearning.conf /etc/nginx/conf.d/
 # 增加启动脚本
 ADD start_yearning.sh /opt/Yearning
+# 挂载逻辑卷
+VOLUME /opt/Yearning/ /opt/Yearning/
 # port
 EXPOSE 80
 EXPOSE 8000
