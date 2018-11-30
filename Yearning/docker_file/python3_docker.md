@@ -34,6 +34,6 @@ CMD ["python3"]
 # 二、构建镜像
 ```
 docker build -t python3:base .
-
+docker build -t python3:base -f Dockerfile_base .
 docker run -it -d --name=python3 -v /opt/Yearning/:/opt/Yearning/ yearning:bash /bin/bash
 ```
