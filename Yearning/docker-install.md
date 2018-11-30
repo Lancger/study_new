@@ -67,7 +67,6 @@ RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel open
     && ln -s /usr/local/python3.6/bin/python3.6 /usr/bin/python3 \
     && ln -s /usr/local/python3.6/bin/pip3 /usr/bin/pip3 \
     && ln -s /usr/local/python3.6/bin/pyvenv /usr/bin/pyvenv \
-    && pip3 install --upgrade pip \
     && cp /usr/local/python3.6/lib/libpython3.6m.so.1.0 /usr/local/lib \
     && cd /usr/local/lib \
     && ln -s libpython3.6m.so.1.0 libpython3.6m.so \
@@ -75,18 +74,20 @@ RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel open
     && /sbin/ldconfig \
     #下载源码
     && cd /opt \
-    && git clone https://github.com/cookieY/Yearning.git \
+    # && git clone https://github.com/cookieY/Yearning.git \
+    && ADD /opt/Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt
+    && pip3 install --upgrade pip \
     && pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/ \
     #安装nginx
     && yum -y install nginx \
     && ADD yearning.conf /etc/nginx/conf.d/ \
     #增加启动脚本
-    && ADD start_yearning.sh /opt/Yearning \
+    && ADD start_yearning.sh /opt/Yearning \   
     #拷贝一份deploy.conf
     && cp /opt/Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf \
 #ENV
 ENV LANG en_US.UTF-8
-ENV LC_ALL zh_CN.utf8
+ENV LC_ALL zh_CN.utf8 
 #port
 EXPOSE 80
 EXPOSE 8000
