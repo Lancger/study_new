@@ -75,7 +75,7 @@ RUN yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel open
     #下载源码
     && cd /opt \
     # && git clone https://github.com/cookieY/Yearning.git \
-    && ADD /opt/Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt
+    && ADD /opt/Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt \
     && pip3 install --upgrade pip \
     && pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/ \
     #安装nginx
