@@ -1,7 +1,7 @@
 # 一、编写nginx的Dockerfile
 ```
 # Base image
-FROM docker.io/centos
+FROM registry.cn-hangzhou.aliyuncs.com/lancger_ops/python3_base:v1.0.0
 # FROM centos:latest
 # MAINTAINER
 MAINTAINER 1151980610@qq.com
