@@ -9,15 +9,14 @@ MAINTAINER 1151980610@qq.com
 RUN yum install -y nginx
 EXPOSE 80
 WORKDIR /
-RUN /usr/sbin/nginx
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT [ "/usr/sbin/nginx", "-g", "daemon off;" ]
 ```
 
 # 二、构建镜像
 ```
-docker build -t python3:base .
-docker build -t python3:base -f Dockerfile_base .
-docker run -it -d --name=python3 -v /opt/Yearning/:/opt/Yearning/ python3:base /bin/bash
+docker build -t nginx:base .
+docker build -t nginx:base -f Dockerfile_base .
+docker run -it -d --name=nginx -v /opt/Yearning/:/opt/Yearning/ python3:base /bin/bash
 ```
 # 三、上传镜像到阿里云
 ```
