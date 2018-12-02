@@ -1,4 +1,4 @@
-# 一、编写python3的Dockerfile
+# 一、编写nginx的Dockerfile
 ```
 # Base image
 FROM docker.io/centos
