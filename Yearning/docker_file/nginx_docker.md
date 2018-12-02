@@ -15,8 +15,8 @@ ENTRYPOINT [ "/usr/sbin/nginx", "-g", "daemon off;" ]
 # 二、构建镜像
 ```
 docker build -t nginx:base .
-docker build -t nginx:base -f Dockerfile_base .
-docker run -it -d --name=nginx -v /opt/Yearning/:/opt/Yearning/ python3:base /bin/bash
+docker build -t nginx:base -f Dockerfile_nginx .
+docker run -it -d --name=nginx -v /opt/Yearning/:/opt/Yearning/ nginx:base /bin/bash
 ```
 # 三、上传镜像到阿里云
 ```
