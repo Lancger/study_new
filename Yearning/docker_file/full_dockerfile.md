@@ -126,4 +126,5 @@ docker push registry.cn-hangzhou.aliyuncs.com/lancger_ops/yearning_base:v1.0.0
 
 #使用阿里云镜像
 docker run -itd registry.cn-hangzhou.aliyuncs.com/lancger_ops/yearning_base:v1.0.0
+
 ```
