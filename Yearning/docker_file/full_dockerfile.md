@@ -109,8 +109,6 @@ ENTRYPOINT bash /opt/start_yearning.sh && bash
 docker build -t yearning:base .
 
 docker build -t yearning:base -f Dockerfile .
-
-docker run -it -d --name=yearning3 -v /opt/Yearning/:/opt/Yearning/ yearning:bash /bin/bash
 ```
 
 ## 五、上传镜像到阿里云
