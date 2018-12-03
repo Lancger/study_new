@@ -112,3 +112,18 @@ docker build -t yearning:base -f Dockerfile .
 
 docker run -it -d --name=yearning3 -v /opt/Yearning/:/opt/Yearning/ yearning:bash /bin/bash
 ```
+
+## 五、上传镜像到阿里云
+```
+#登陆命令
+docker login --username=243533819@qq.com registry.cn-hangzhou.aliyuncs.com
+
+#复制镜像ID并设置tag (或者tag repository:tag)
+docker tag yearning:base registry.cn-hangzhou.aliyuncs.com/lancger_ops/yearning_base:v1.0.0
+
+#上传镜像到阿里云镜像仓库
+docker push registry.cn-hangzhou.aliyuncs.com/lancger_ops/yearning_base:v1.0.0
+
+#使用阿里云镜像
+docker run -itd registry.cn-hangzhou.aliyuncs.com/lancger_ops/yearning_base:v1.0.0
+```
