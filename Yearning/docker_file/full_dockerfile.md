@@ -79,29 +79,27 @@ RUN yum install -y wget \
     # pip升级
     && pip3 install --upgrade pip \
     # 下载源码
-    # cd opt \
-    # && git clone https://github.com/cookieY/Yearning.git \
+    cd opt \
+    && git clone https://github.com/cookieY/Yearning.git \
     # 安装nginx
     && yum -y install nginx
 # 拷贝编译好的前端文件    
-ADD dist/* /var/lib/nginx/html/
+ADD dist/* /usr/share/nginx/html/
 # 拷贝一份deploy.conf
-ADD Yearning/src/deploy.conf.template /mnt/src/deploy.conf
-# 安装项目所需的requirements.txt
-ADD Yearning/src/requirements.txt /mnt/src/requirements.txt
-# 安装requirements.txt
-RUN pip3 install -r /mnt/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/
+ADD Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf
+# 安装依赖
+RUN pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/
 # 增加yearning的nginx配置文件
 ADD yearning.conf /etc/nginx/conf.d/
 # 增加启动脚本
-ADD start_yearning.sh /mnt/src/
+ADD start_yearning.sh /opt/
 # 挂载逻辑卷
 # VOLUME /opt/Yearning/ /opt/Yearning/
 # port
 EXPOSE 80
 EXPOSE 8000
 # start service
-ENTRYPOINT bash /mnt/src/start_yearning.sh && bash
+ENTRYPOINT bash /opt/start_yearning.sh && bash
 ```
 
 ## 四、镜像构建
