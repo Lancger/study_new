@@ -108,6 +108,8 @@ ENTRYPOINT bash /opt/start_yearning.sh && bash
 ```
 docker build -t yearning:base .
 
+docker build -t yearning:local -f Dockerfile .
+
 docker build -t yearning:base -f Dockerfile .
 ```
 
