@@ -33,12 +33,12 @@ docker rm -f `docker ps -a -q`
 start_yearning.sh
 
 /usr/sbin/nginx
-cd /mnt/src
+cd /opt/Yearning/src
 sed -i "s/ipaddress =.*/ipaddress=$HOST/" deploy.conf
 sed -i "s/address =.*/address=$MYSQL_ADDR/" deploy.conf
 sed -i "s/username =.*/username=$MYSQL_USER/" deploy.conf
 sed -i "s/password =.*/password=$MYSQL_PASSWORD/" deploy.conf
-gunicorn settingConf.wsgi:application -b 0.0.0.0:8000 -w 2
+/usr/local/python3.6/bin/gunicorn settingConf.wsgi:application -b 0.0.0.0:8000 -w 2
 
 
 #本地镜像
@@ -55,11 +55,13 @@ ENTRYPOINT start_yearning.sh
 FROM docker.io/centos
 # FROM centos:latest
 # yearning
-WORKDIR /opt/
+# WORKDIR /opt/
 RUN yum install -y wget \
     # 变更163yum源
     && wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo \
-    && yum install -y wget readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel \
+    && yum clean all \
+    && yum makecache \
+    && yum install -y wget git readline readline-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel sqlite-devel python-devel \
     && yum -y install epel-release \
     # python3.6.6
     && cd /usr/local/src \
@@ -79,35 +81,50 @@ RUN yum install -y wget \
     # pip升级
     && pip3 install --upgrade pip \
     # 下载源码
-    # cd opt \
-    # && git clone https://github.com/cookieY/Yearning.git \
+    && cd /opt \
+    && git clone https://github.com/cookieY/Yearning.git \
     # 安装nginx
     && yum -y install nginx
-# 拷贝编译好的前端文件    
-ADD dist/* /var/lib/nginx/html/
+# 拷贝编译好的前端文件
+ADD dist/ /var/lib/nginx/
+# 增加yearning的nginx配置文件
+ADD nginx.conf /etc/nginx/nginx.conf
 # 拷贝一份deploy.conf
 ADD Yearning/src/deploy.conf.template /opt/Yearning/src/deploy.conf
-# 安装项目所需的requirements.txt
-ADD Yearning/src/requirements.txt /opt/Yearning/src/requirements.txt
-# 安装requirements.txt
+# 安装依赖
 RUN pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple/
-# 增加yearning的nginx配置文件
-ADD yearning.conf /etc/nginx/conf.d/
 # 增加启动脚本
-ADD start_yearning.sh /opt/Yearning
+ADD start_yearning.sh /opt/
 # 挂载逻辑卷
-VOLUME /opt/Yearning/ /opt/Yearning/
+#VOLUME /opt/Yearning/ /tmp/
 # port
 EXPOSE 80
 EXPOSE 8000
 # start service
-ENTRYPOINT bash /opt/Yearning/start_yearning.sh && bash
+ENTRYPOINT bash /opt/start_yearning.sh && bash
 ```
 
 ## 四、镜像构建
 ```
 docker build -t yearning:base .
 
+docker build -t yearning:local -f Dockerfile .
 
-docker run -it -d --name=yearning3 -v /opt/Yearning/:/opt/Yearning/ yearning:bash /bin/bash
+docker build -t yearning:base -f Dockerfile .
+```
+
+## 五、上传镜像到阿里云
+```
+#登陆命令
+docker login --username=243533819@qq.com registry.cn-hangzhou.aliyuncs.com
+
+#复制镜像ID并设置tag (或者tag repository:tag)
+docker tag yearning:base registry.cn-hangzhou.aliyuncs.com/lancger_ops/yearning_base:v1.0.0
+
+#上传镜像到阿里云镜像仓库
+docker push registry.cn-hangzhou.aliyuncs.com/lancger_ops/yearning_base:v1.0.0
+
+#使用阿里云镜像
+docker run -itd registry.cn-hangzhou.aliyuncs.com/lancger_ops/yearning_base:v1.0.0
+
 ```
