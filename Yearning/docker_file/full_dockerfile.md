@@ -86,7 +86,7 @@ RUN yum install -y wget \
     # 安装nginx
     && yum -y install nginx
 # 拷贝编译好的前端文件
-ADD dist/* /usr/share/nginx/html/
+ADD dist/ /var/lib/nginx/
 # 增加yearning的nginx配置文件
 ADD nginx.conf /etc/nginx/nginx.conf
 # 拷贝一份deploy.conf
