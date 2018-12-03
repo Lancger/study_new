@@ -33,12 +33,12 @@ docker rm -f `docker ps -a -q`
 start_yearning.sh
 
 /usr/sbin/nginx
-cd /mnt/src
+cd /opt/Yearning/src
 sed -i "s/ipaddress =.*/ipaddress=$HOST/" deploy.conf
 sed -i "s/address =.*/address=$MYSQL_ADDR/" deploy.conf
 sed -i "s/username =.*/username=$MYSQL_USER/" deploy.conf
 sed -i "s/password =.*/password=$MYSQL_PASSWORD/" deploy.conf
-gunicorn settingConf.wsgi:application -b 0.0.0.0:8000 -w 2
+/usr/local/python3.6/bin/gunicorn settingConf.wsgi:application -b 0.0.0.0:8000 -w 2
 
 
 #本地镜像
