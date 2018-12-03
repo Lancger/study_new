@@ -85,7 +85,7 @@ RUN yum install -y wget \
     && git clone https://github.com/cookieY/Yearning.git \
     # 安装nginx
     && yum -y install nginx
-# 拷贝编译好的前端文件    
+# 拷贝编译好的前端文件
 ADD dist/* /usr/share/nginx/html/
 # 增加yearning的nginx配置文件
 ADD nginx.conf /etc/nginx/nginx.conf
@@ -96,7 +96,7 @@ RUN pip3 install -r /opt/Yearning/src/requirements.txt -i https://mirrors.ustc.e
 # 增加启动脚本
 ADD start_yearning.sh /opt/
 # 挂载逻辑卷
-# VOLUME /opt/Yearning/ /opt/Yearning/
+#VOLUME /opt/Yearning/ /tmp/
 # port
 EXPOSE 80
 EXPOSE 8000
