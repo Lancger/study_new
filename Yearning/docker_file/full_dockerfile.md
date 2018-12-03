@@ -81,7 +81,7 @@ RUN yum install -y wget \
     # pip升级
     && pip3 install --upgrade pip \
     # 下载源码
-    && cd opt \
+    && cd /opt \
     && git clone https://github.com/cookieY/Yearning.git \
     # 安装nginx
     && yum -y install nginx
