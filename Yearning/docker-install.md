@@ -128,3 +128,8 @@ docker push registry.cn-hangzhou.aliyuncs.com/lancger_ops/yearning_base:v1.0.0
 docker run -itd registry.cn-hangzhou.aliyuncs.com/lancger_ops/yearning_base:v1.0.0
 
 ```
+
+## 六、拷贝文件
+```
+docker cp  /root/dist/ d80ad2be390d:/var/lib/nginx/
+```
