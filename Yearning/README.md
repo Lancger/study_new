@@ -109,7 +109,7 @@ TZ: Asia/Shanghai
 my.cnf配置添加如下配置
 log_timestamps = SYSTEM
 
-解决办法二：
+解决办法二：(这个方法会报错)
 
 - /etc/localtime:/etc/localtime:ro
 - /etc/timezone:/etc/timezone:ro
@@ -128,8 +128,8 @@ services:
       - ./docker/etc/mysql/:/etc/mysql/conf.d/
       - ./db_data/:/var/lib/mysql/
       - ./init-sql/:/docker-entrypoint-initdb.d/
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
+      #- /etc/localtime:/etc/localtime:ro
+      #- /etc/timezone:/etc/timezone:ro
     restart: always
     ports:
       - "3306:3306"
