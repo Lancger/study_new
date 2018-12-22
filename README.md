@@ -16,7 +16,7 @@ yum install -y docker-ce
 第三步：启动后台进程：
 ```
 #启动docker服务
-systemctl start docker
+systemctl restart docker
 
 #设置docker服务开启自启
 systemctl enable docker
