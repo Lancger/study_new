@@ -8,7 +8,7 @@ pip3 install --upgrade pip
 ## 这里使用虚拟环境(loonflow虚拟环境)
 cd /usr/local/
 python3 -m venv Workflow
-cd loonflow
+cd Workflow
 source /usr/local/Workflow/bin/activate
 
 #安装requirements依赖
