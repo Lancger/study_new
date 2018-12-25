@@ -79,3 +79,5 @@ django-admin startapp dashboard
 ```
 (Workflow) [root@localhost Workflow]# python manage.py runserver 192.168.56.138:8000
 ```
+
+# 六、访问项目
