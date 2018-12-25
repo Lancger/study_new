@@ -82,4 +82,4 @@ django-admin startapp dashboard
 
 # 六、访问项目
 
-  ![django创建项目01](https://github.com/Lancger/opslinux/blob/master/images/django-init.png)
+  ![django创建项目01](https://github.com/Lancger/study_new/blob/master/images/django-init.png)
