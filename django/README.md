@@ -11,6 +11,9 @@ python3 -m venv Workflow
 cd Workflow
 source /usr/local/Workflow/bin/activate
 
+#安装django
+pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/ django
+
 #安装requirements依赖
 cd /opt/Workflow
 pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/  -r requirements/dev.txt
@@ -70,4 +73,9 @@ django-admin startapp dashboard
     └── wsgi.py
 
 7 directories, 26 files
+```
+
+# 五、运行项目
+```
+
 ```
