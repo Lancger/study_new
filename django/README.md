@@ -77,6 +77,7 @@ django-admin startapp dashboard
 
 # 五、运行项目
 ```
+(Workflow) [root@localhost opt]# cd /opt/Workflow
 (Workflow) [root@localhost Workflow]# python manage.py runserver 192.168.56.138:8000
 ```
 
