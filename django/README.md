@@ -1,11 +1,28 @@
-# 一、创建一个工程
+# 一、激活虚拟环境
+```
+#升级pip
+wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py
+pip3 install --upgrade pip
+
+## 这里使用虚拟环境(loonflow虚拟环境)
+cd /usr/local/
+python3 -m venv Workflow
+cd loonflow
+source /usr/local/Workflow/bin/activate
+
+#安装requirements依赖
+cd /opt/Workflow
+pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/  -r requirements/dev.txt
+```
+# 二、创建一个工程
 ```
 cd /opt/
 
 django-admin.py startproject Workflow
 
 ```
-# 二、创建app
+# 三、创建app
 ```
 cd /opt/Workflow/
 
@@ -14,7 +31,7 @@ django-admin startapp content
 django-admin startapp dashboard
 ```
 
-# 三、目录结构
+# 四、目录结构
 ```
 (fms) [root@localhost Workflow]# tree  /opt/Workflow/
 /opt/Workflow/
