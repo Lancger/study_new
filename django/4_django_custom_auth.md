@@ -43,7 +43,7 @@ class UserProfile(AbstractUser):
     gender = models.CharField("性别",max_length=6, choices=GENDER_CHOICES, default="female")
     mobile = models.CharField("电话",max_length=11,null=True, blank=True,help_text='手机号')
     email = models.EmailField("邮箱",max_length=100, null=True, blank=True)
-    webchat = models.CharField("微信",max_length=11,null=True, blank=True,help_text='微信号')
+    webchat = models.CharField("微信",max_length=100,null=True, blank=True,help_text='微信号')
 
     class Meta:
         verbose_name = "用户信息"
