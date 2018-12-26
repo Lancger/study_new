@@ -70,3 +70,10 @@ class VerifyCode(models.Model):
     def __str__(self):
         return self.code
 ```
+
+# 三、初始化数据库
+```
+python manage.py makemigrations             --生成数据库同步脚本
+
+python manage.py migrate                    --同步数据库
+```
