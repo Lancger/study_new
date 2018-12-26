@@ -24,7 +24,12 @@ django-admin.py startproject workflow
 # 三、创建app
 ```
 cd /opt/workflow/
+#存放自己创建的apps
+mkdir -p /opt/workflow/apps
+#存放第三方的extra_apps
+mkdir -p /opt/workflow/extra_apps
 
+cd /opt/workflow/apps
 django-admin startapp accounts
 django-admin startapp content
 django-admin startapp dashboard
