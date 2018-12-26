@@ -88,5 +88,5 @@ pip3 freeze > requirements.txt
 
 #安装requirements依赖
 cd /opt/Workflow
-pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/  -r requirements/dev.txt
+pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/  -r requirements.txt
 ```
