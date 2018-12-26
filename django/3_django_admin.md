@@ -1,4 +1,4 @@
-###一、命令行工具###
+### 一、命令行工具
 
 django-admin.py是Django的一个用于管理任务的命令行工具，manage.py是对django-admin.py的简单包装，每个Django Project里面都会包含一个manage.py
 
@@ -12,7 +12,7 @@ subcommand是字命令； options是可选的
 ```
 
 
-###二、常用子命令###
+### 二、常用子命令
 ```
 1、新建一个django项目
 django-admin.py startproject project-name
@@ -72,7 +72,7 @@ python manage.py makemessages
 
 ```
 
-###三、manage.py特有的一些子命令
+### 三、manage.py特有的一些子命令
 ```
 1、创建超级管理员
 python manage.py createsuperuser
@@ -86,7 +86,7 @@ python manage.py clearsessions
 
 ```
 
-四、查看帮助
+### 四、查看帮助
 ```
 1、查看django-admin.py帮助文档
 root># django-admin.py help startproject
