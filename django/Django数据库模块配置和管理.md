@@ -22,6 +22,25 @@ DATABASES = {
 }
 ```
 
+# 二、模块选择
+
+1、使用pymysql
+```
+pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/ pymysql
+
+###在工程目录中的__init__.py中添加如下代码
+vim Workflow/settings.py
+
+import pymysql
+pymysql.install_as_MySQLdb()
+```
+
+2、使用mysqlclient
+```
+pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/ mysqlclient
+```
+
+
 
 详情参考：  https://my.oschina.net/u/3138954/blog/1476562
 
