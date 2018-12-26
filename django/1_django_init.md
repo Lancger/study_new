@@ -24,8 +24,10 @@ django-admin.py startproject workflow
 # 三、创建app
 ```
 cd /opt/workflow/
+
 #存放自己创建的apps
 mkdir -p /opt/workflow/apps
+
 #存放第三方的extra_apps
 mkdir -p /opt/workflow/extra_apps
 
@@ -37,49 +39,51 @@ django-admin startapp dashboard
 
 # 四、目录结构
 ```
-(fms) [root@localhost workflow]# tree  /opt/workflow/
+(workflow) [root@localhost workflow]# tree  /opt/workflow/
 /opt/workflow/
-├── accounts
-│   ├── admin.py
-│   ├── apps.py
-│   ├── __init__.py
-│   ├── migrations
-│   │   └── __init__.py
-│   ├── models.py
-│   ├── tests.py
-│   └── views.py
-├── content
-│   ├── admin.py
-│   ├── apps.py
-│   ├── __init__.py
-│   ├── migrations
-│   │   └── __init__.py
-│   ├── models.py
-│   ├── tests.py
-│   └── views.py
-├── dashboard
-│   ├── admin.py
-│   ├── apps.py
-│   ├── __init__.py
-│   ├── migrations
-│   │   └── __init__.py
-│   ├── models.py
-│   ├── tests.py
-│   └── views.py
+├── apps
+│   ├── accounts
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── content
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   └── dashboard
+│       ├── admin.py
+│       ├── apps.py
+│       ├── __init__.py
+│       ├── migrations
+│       │   └── __init__.py
+│       ├── models.py
+│       ├── tests.py
+│       └── views.py
+├── extra_apps
 ├── manage.py
-└── Workflow
+└── workflow
     ├── __init__.py
     ├── settings.py
     ├── urls.py
     └── wsgi.py
 
-7 directories, 26 files
+9 directories, 26 files
 ```
 
 # 五、运行项目
 ```
-(Workflow) [root@localhost opt]# cd /opt/Workflow
-(Workflow) [root@localhost Workflow]# python manage.py runserver 192.168.56.138:8000
+(workflow) [root@localhost opt]# cd /opt/workflow
+(workflow) [root@localhost workflow]# python manage.py runserver 192.168.56.138:8000
 ```
 
 # 六、访问项目
@@ -92,6 +96,6 @@ django-admin startapp dashboard
 pip3 freeze > requirements.txt
 
 #安装requirements依赖
-cd /opt/Workflow
+cd /opt/workflow
 pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/  -r requirements.txt
 ```
