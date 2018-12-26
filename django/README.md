@@ -13,10 +13,6 @@ source /usr/local/Workflow/bin/activate
 
 #安装django
 pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/ django
-
-#安装requirements依赖
-cd /opt/Workflow
-pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/  -r requirements/dev.txt
 ```
 # 二、创建一个工程
 ```
@@ -84,3 +80,13 @@ django-admin startapp dashboard
 # 六、访问项目
 
   ![django创建项目01](https://github.com/Lancger/study_new/blob/master/images/django-init.png)
+  
+# 七、生成requirements.txt文件
+```
+#快速生成requirements.txt文件
+pip3 freeze > requirements.txt
+
+#安装requirements依赖
+cd /opt/Workflow
+pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/  -r requirements/dev.txt
+```
