@@ -18,12 +18,12 @@ pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/ django
 ```
 cd /opt/
 
-django-admin.py startproject Workflow
+django-admin.py startproject workflow
 
 ```
 # 三、创建app
 ```
-cd /opt/Workflow/
+cd /opt/workflow/
 
 django-admin startapp accounts
 django-admin startapp content
