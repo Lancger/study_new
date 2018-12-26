@@ -1,9 +1,11 @@
 # 一、django自定义用户模型
 ```
+# vim setting.py
+
 ALLOWED_HOSTS = ['*']
 
 #重载系统的用户，让UserProfile生效
-AUTH_USER_MODEL = 'accounts.UserProfile'
+AUTH_USER_MODEL = 'accounts.UserProfile'       ---注意这里不要写apps.accounts.UserProfile
 
 INSTALLED_APPS = [
     'django.contrib.admin',
