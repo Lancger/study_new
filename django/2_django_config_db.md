@@ -1,6 +1,6 @@
 # 一、项目使用mysql驱动
 ```
-vim Workflow/settings.py
+vim workflow/settings.py
 
 # DATABASES = {
 #     'default': {
@@ -29,7 +29,7 @@ DATABASES = {
 pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/ pymysql
 
 ###在工程目录中的__init__.py中添加如下代码
-vim Workflow/settings.py
+vim workflow/settings.py
 
 import pymysql
 pymysql.install_as_MySQLdb()
