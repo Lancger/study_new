@@ -5,11 +5,11 @@ wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py
 pip3 install --upgrade pip
 
-## 这里使用虚拟环境(loonflow虚拟环境)
+## 这里使用虚拟环境(workflow虚拟环境)
 cd /usr/local/
-python3 -m venv Workflow
-cd Workflow
-source /usr/local/Workflow/bin/activate
+python3 -m venv workflow
+cd workflow
+source /usr/local/workflow/bin/activate
 
 #安装django
 pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/ django
@@ -32,8 +32,8 @@ django-admin startapp dashboard
 
 # 四、目录结构
 ```
-(fms) [root@localhost Workflow]# tree  /opt/Workflow/
-/opt/Workflow/
+(fms) [root@localhost workflow]# tree  /opt/workflow/
+/opt/workflow/
 ├── accounts
 │   ├── admin.py
 │   ├── apps.py
