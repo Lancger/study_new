@@ -150,3 +150,25 @@ class AccountsListView(View):
         return HttpResponse(json.dumps(json_list), content_type="application/json")
 	
 ```
+
+# 四、报错分析
+```
+# 报错日志
+TypeError at /accounts/
+
+Object of type 'date' is not JSON serializable
+
+Request Method: 	GET
+Request URL: 	http://127.0.0.1:8000/accounts/
+Django Version: 	2.1.4
+Exception Type: 	TypeError
+Exception Value: 	
+
+Object of type 'date' is not JSON serializable
+
+
+Server time: 	星期五, 28 十二月 2018 08:13:35 +0000
+
+# 问题分析
+日期类型数据不支持json序列化
+```
