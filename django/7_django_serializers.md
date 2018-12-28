@@ -72,9 +72,23 @@ class AccountsListView(View):
 
   ![serializers_错误示例](https://github.com/Lancger/study_new/blob/master/images/serializers_01.png)
   
-  这里需要使用JsonResponse返回
+  #### 这里需要使用JsonResponse返回
   ```
-          # return JsonResponse(json_data, safe=False)
+# 使用serializers实现用户数据序列化
+class AccountsListView(View):
+    def get(self, request):
+        # 通过serializers实现用户数据序列化
+        accounts = UserProfile.objects.all()
+
+        from django.core import serializers
+        from django.http import JsonResponse, HttpResponse
+        import json
+        json_data = serializers.serialize('json', accounts)
+        json_data = json.loads(json_data)
+
+        #In order to allow non-dict objects to be serialized set the safe parameter to False.
+        return JsonResponse(json_data, safe=False)    ----使用这个返回
+        #return HttpResponse(json_data, content_type="application/json")
   ```
   
   ![serializers_json示例](https://github.com/Lancger/study_new/blob/master/images/serializers_json.png)
