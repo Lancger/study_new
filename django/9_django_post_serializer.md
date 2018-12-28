@@ -40,3 +40,4 @@ class AccountListView(APIView):
   ![post_data示例](https://github.com/Lancger/study_new/blob/master/images/post_data_success.png)
 
   ![post_data示例](https://github.com/Lancger/study_new/blob/master/images/post_data_success_01.png)
+
