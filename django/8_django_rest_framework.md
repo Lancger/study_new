@@ -78,6 +78,8 @@ class UserProfile(AbstractUser):
 ```
 vim workflow/apps/accounts/serializers.py
 
+```
+```
 # accounts/serializers.py
 
 from rest_framework import serializers
