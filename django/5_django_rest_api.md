@@ -80,7 +80,7 @@ class Index(View):
 ```
 
 
-https://www.cnblogs.com/weiman3389/p/6896624.html    django中的FBV和CBV
+https://www.cnblogs.com/weiman3389/p/6896624.html        django中的FBV和CBV
 
 
 # 三、django实现api_json数据返回
