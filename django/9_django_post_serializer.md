@@ -1,4 +1,4 @@
-# 一、post接口封装
+# 一、POST数据
 ```
 vim workflow/apps/accounts/models.py
 ```
@@ -24,9 +24,13 @@ class AccountListView(APIView):
         return Response(accounts_serializer.data)
 
     def post(self, request, format=None):
-        serializer = UserSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data)   --- 这里可以解析所有数据，不再需要判断是post还是get请求，还有body数据也可以解析
+        print("post数据")
+        print(serializer)
+        print("post数据")
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 ```
+# 二、示例测试
