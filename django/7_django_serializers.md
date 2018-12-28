@@ -20,6 +20,7 @@ class AccountsListView(View):
         import json
         json_data = serializers.serialize('json', accounts)
         json_data = json.loads(json_data)
+        
         #In order to allow non-dict objects to be serialized set the safe parameter to False.
         return JsonResponse(json_data, safe=False)
 
