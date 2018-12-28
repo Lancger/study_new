@@ -71,8 +71,21 @@ class UserSerializer(serializers.Serializer):
 #         # fields = ("name", "mobile")
 #         fields = "__all__"
 ```
-
-# 三、示例测试
+# 三、报错处理
+create() must be implemented.        ----serializers.py文件中必须存在create,update方法，或者save方法代替
+```
+NotImplementedError at /accounts/
+`create()` must be implemented.
+Request Method:	POST
+Request URL:	http://127.0.0.1:8000/accounts/
+Django Version:	2.1.4
+Exception Type:	NotImplementedError
+Exception Value:	
+`create()` must be implemented.
+Exception Location:	/Users/Lancger/demo/lib/python3.6/site-packages/rest_framework/serializers.py in create, line 169
+Python Executable:	/Users/Lancger/demo/bin/python
+```
+# 四、示例测试
 
   ![post_data示例](https://github.com/Lancger/study_new/blob/master/images/json_post.png)
 
