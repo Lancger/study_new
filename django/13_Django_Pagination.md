@@ -8,13 +8,13 @@ REST_FRAMEWORK = {
 
 # 二、示例
 
+  ![全局分页示例01](https://github.com/Lancger/study_new/blob/master/images/Pagination01.png)
+
 
 # 二、自定义封装分页函数
 ```
 
 ```
-
-# s
 
 参考资料：
 
