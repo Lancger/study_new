@@ -1,4 +1,4 @@
-# 一/
+# 一、GenericAPIView
 ```
 # -*- coding: utf-8 -*-
 __author__ = 'Bryan'
@@ -50,7 +50,9 @@ class AccountListView(mixins.ListModelMixin, generics.GenericAPIView):
 #             return Response(serializer.data, status=status.HTTP_201_CREATED)
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 ```
-# 示例
+# 二、示例
+
+  ![GenericAPIView示例](https://github.com/Lancger/study_new/blob/master/images/GenericAPIView_minxin.png)
 
 
 参考资料：
