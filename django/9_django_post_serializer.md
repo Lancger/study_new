@@ -87,6 +87,12 @@ Python Executable:	/Users/Lancger/demo/bin/python
 ```
 # 四、示例测试
 
+```
+serializers.py 中打印validated_data的数据示例
+创建数据
+{'id': 8, 'name': '测员', 'username': '哈哈', 'mobile': 1888898898, 'webchat': '奔跑信'}
+```
+
   ![post_data示例](https://github.com/Lancger/study_new/blob/master/images/json_post.png)
 
   ![post_data示例](https://github.com/Lancger/study_new/blob/master/images/post_data_success.png)
