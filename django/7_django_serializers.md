@@ -67,3 +67,5 @@ class AccountsListView(View):
 ```
 
 # 二、示例返回
+
+  ![erializers_json示例](https://github.com/Lancger/study_new/blob/master/images/serializers_json.png)
