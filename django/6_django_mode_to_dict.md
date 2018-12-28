@@ -1,4 +1,4 @@
-# 使用django的model_to_dict实现
+# 一、使用django的model_to_dict实现
 
 ```
 # -*- coding:utf-8 -*-
@@ -13,7 +13,7 @@ from apps.accounts.models import UserProfile, VerifyCode
 # 使用model_to_dict实现
 class AccountsListView(View):
     def get(self, request):
-        # 通过django的view实现用户列表页
+        # 通过model_to_dict实现用户数据序列化
         json_list = []
         accounts = UserProfile.objects.all()
         from django.forms.models import model_to_dict
