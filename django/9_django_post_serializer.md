@@ -1,4 +1,4 @@
-# 一、POST数据view函数中写个post方法
+# 一、view函数中写个post方法
 ```
 vim workflow/apps/accounts/models.py
 ```
@@ -33,7 +33,8 @@ class AccountListView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 ```
-# 二、然后serializers写个create，update方法更新post过来的数据，或者直接用save代替
+# 二、然后serializers接收
+写个create，update方法更新post过来的数据，或者直接用save代替
 ```
 vim workflow/apps/accounts/serializers.py
 ```
@@ -71,7 +72,7 @@ class UserSerializer(serializers.Serializer):
 #         fields = "__all__"
 ```
 
-# 二、示例测试
+# 三、示例测试
 
   ![post_data示例](https://github.com/Lancger/study_new/blob/master/images/json_post.png)
 
