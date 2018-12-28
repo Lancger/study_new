@@ -13,8 +13,37 @@ REST_FRAMEWORK = {
 
 # 二、自定义封装分页函数
 ```
+# -*- coding: utf-8 -*-
+__author__ = 'Bryan'
+
+
+from apps.accounts.serializers import UserSerializer
+# from rest_framework.views import APIView
+from rest_framework import mixins
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.pagination import PageNumberPagination   ---需要引入这个
+
+from .models import UserProfile
+
+# 自定义分页函数
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 1
+    page_size_query_param = 'page_size'
+    page_query_param = 'p'   ---自定义分页参数
+    max_page_size = 1000
+
+# 使用ListAPIView实现
+class AccountListView(generics.ListAPIView):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserSerializer
+    #加载分页函数
+    pagination_class = StandardResultsSetPagination
 
 ```
+
+# 四、示例
 
 参考资料：
 
