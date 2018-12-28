@@ -1,6 +1,6 @@
 ## 1、FBV示例
 ```
-#####
+#####    url配置
 urls.py
 
 from django.conf.urls import url, include
@@ -12,7 +12,7 @@ urlpatterns = [
     url(r‘^index/‘, views.index),
 ]
 
-#####
+#####    view配置
 views.py
 
 from django.shortcuts import render
@@ -51,7 +51,7 @@ index.html
 ```
 CBV（class base views） 就是在视图里使用类处理请求。
 
-###########
+#####    url配置
 将上述代码中的urls.py 修改为如下：
 	
 from mytest import views
@@ -63,7 +63,8 @@ urlpatterns = [
 
 注：url(r‘^index/‘, views.Index.as_view()),  是固定用法。
 
-###########
+#####    view配置
+
 将上述代码中的views.py 修改为如下：
 from django.views import View
  
