@@ -173,6 +173,6 @@ Server time: 	星期五, 28 十二月 2018 08:13:35 +0000
 日期类型数据不支持json序列化
 ```
 
-# 六、示例返回
+# 五、示例返回
   ![api_json示例](https://github.com/Lancger/opslinux/blob/master/images/MHA测试架构.png)
 
