@@ -88,7 +88,8 @@ Python Executable:	/Users/Lancger/demo/bin/python
 # 四、示例测试
 
 ```
-serializers.py 中打印validated_data的数据示例
+#serializers.py 中打印validated_data的数据示例
+
 创建数据
 {'id': 8, 'name': '测员', 'username': '哈哈', 'mobile': 1888898898, 'webchat': '奔跑信'}
 ```
