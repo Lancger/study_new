@@ -1,4 +1,4 @@
-1、FBV
+## 1、FBV示例
 ```
 #####
 urls.py
@@ -47,7 +47,7 @@ index.html
 上面就是FBV的使用
 ```
 
-2、CBV
+## 2、CBV示例
 ```
 CBV（class base views） 就是在视图里使用类处理请求。
 
@@ -83,7 +83,7 @@ class Index(View):
 https://www.cnblogs.com/weiman3389/p/6896624.html
 
 
-# 一、django 实现api json返回
+# 三、django 实现api json返回
 ```bash
 
 ```
