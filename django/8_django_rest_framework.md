@@ -74,10 +74,24 @@ class UserProfile(AbstractUser):
         return self.username
 ```
 
-# 三、DRF serializers 示例
+# 三、DRF serializers 示例(编写serializers.py文件)
 ```
+vim workflow/apps/accounts/serializers.py
 
+# accounts/serializers.py
 
+from rest_framework import serializers
+from apps.accounts.models import UserProfile
+
+class UserSerializer(serializers.Serializer):
+    name = serializers.CharField(required=True, allow_blank=True, max_length=100)
+    mobile = serializers.IntegerField(default='18320940196')
+
+    def create(self, validated_data):
+        """
+        Create and return a new `Snippet` instance, given the validated data.
+        """
+        return UserProfile.objects.create(**validated_data)
 ```
 
 参考文档：
