@@ -60,6 +60,18 @@ python manage.py migrate
 
 ```
 
+# 四、创建用户
+```
+1、创建超级管理员
+python manage.py createsuperuser
+
+2、修改密码
+python manage.py changepassword
+
+3、清除sessions
+python manage.py clearsessions
+```
+
 详情参考：  https://my.oschina.net/u/3138954/blog/1476562
 
 
