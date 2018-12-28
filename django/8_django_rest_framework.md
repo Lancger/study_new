@@ -90,7 +90,7 @@ from apps.accounts.models import UserProfile
 
 class UserSerializer(serializers.Serializer):
     name = serializers.CharField(required=True, allow_blank=True, max_length=100)
-    mobile = serializers.IntegerField(default='18320940196')
+    mobile = serializers.IntegerField(default='18320940196')   #这里只抽了2个字段作为展示
 
     def create(self, validated_data):
         """
@@ -98,6 +98,31 @@ class UserSerializer(serializers.Serializer):
         """
         return UserProfile.objects.create(**validated_data)
 ```
+
+# 四、APIview实现model编写
+```
+# -*- coding: utf-8 -*-
+__author__ = 'Bryan'
+
+
+from apps.accounts.serializers import UserSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+from .models import UserProfile
+
+class AccountListView(APIView):
+    """
+    List all accounts, or create a new account.
+    """
+    def get(self, request, format=None):
+        accounts = UserProfile.objects.all()
+        accounts_serializer = UserSerializer(accounts, many=True)
+        return Response(accounts_serializer.data)
+```
+
+# 五、接口访问
+
 
 参考文档：
 
