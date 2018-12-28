@@ -10,7 +10,7 @@ from django.views.generic.base import View
 from apps.accounts.models import UserProfile, VerifyCode
 
 
-# 使用model_to_dict实现
+# 使用model_to_dict序列化数据
 class AccountsListView(View):
     def get(self, request):
         # 通过model_to_dict实现用户数据序列化
