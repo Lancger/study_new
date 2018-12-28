@@ -40,7 +40,25 @@ pymysql.install_as_MySQLdb()
 pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/ mysqlclient
 ```
 
+# 三、初始化数据
+```
+# 报错一：
 
+    parent = self.check_key(parent, key[0])
+  File "/Users/Lancger/demo/lib/python3.6/site-packages/django/db/migrations/loader.py", line 173, in check_key
+    raise ValueError("Dependency on app with no migrations: %s" % key[0])
+ValueError: Dependency on app with no migrations: accounts
+
+解决办法：
+上面这个报错是因为没有执行数据库同步操作
+
+# 执行数据库同步操作
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+```
 
 详情参考：  https://my.oschina.net/u/3138954/blog/1476562
 
