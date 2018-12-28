@@ -6,6 +6,8 @@ pip3 install django-filter  # Filtering support
 pip3 install djangorestframework-jwt
 pip3 install django-rest-swagger
 pip3 install djangorestframework-jwt
+pip3 install django-guardian      支持对象权限
+pip3 install coreapi    api接口文档需要
 
 ```
 
