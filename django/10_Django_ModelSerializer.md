@@ -77,5 +77,5 @@ class GoodsSerializer(serializers.ModelSerializer):
 
 # 三、示例
 
-  ![嵌套serializers示例](https://github.com/Lancger/study_new/blob/master/images/json_post.png)
+  ![嵌套serializers示例](https://github.com/Lancger/study_new/blob/master/images/%E5%B5%8C%E5%A5%97serializers.png)
 
