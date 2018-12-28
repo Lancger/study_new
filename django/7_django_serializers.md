@@ -72,6 +72,11 @@ class AccountsListView(View):
 
   ![serializers_错误示例](https://github.com/Lancger/study_new/blob/master/images/serializers_01.png)
   
+  这里需要使用JsonResponse返回
+  ```
+          # return JsonResponse(json_data, safe=False)
+  ```
+  
   ![serializers_json示例](https://github.com/Lancger/study_new/blob/master/images/serializers_json.png)
 
   
