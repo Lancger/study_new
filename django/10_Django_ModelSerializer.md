@@ -14,7 +14,9 @@ from apps.accounts.models import UserProfile
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ("name", "mobile")
+        #fields = ("name", "mobile")
+        fields = "__all__"   #序列化所有字段
+
 
 # class UserSerializer(serializers.Serializer):
 #     name = serializers.CharField(required=True, allow_blank=True, max_length=100)
