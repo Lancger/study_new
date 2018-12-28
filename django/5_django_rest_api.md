@@ -174,5 +174,5 @@ Server time: 	星期五, 28 十二月 2018 08:13:35 +0000
 ```
 
 # 五、示例返回
-  ![api_json示例](https://github.com/Lancger/opslinux/blob/master/images/MHA测试架构.png)
+  ![api_json示例](https://github.com/Lancger/study_new/blob/master/images/api_json.png)
 
