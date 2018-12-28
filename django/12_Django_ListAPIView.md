@@ -66,3 +66,6 @@ class AccountListView(generics.ListAPIView):
 #             return Response(serializer.data, status=status.HTTP_201_CREATED)
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 ```
+# 三、Generic 封装的高级views
+
+  ![GenericAPIView示例](https://github.com/Lancger/study_new/blob/master/images/generics_views.png)
