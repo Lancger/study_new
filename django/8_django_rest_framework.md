@@ -21,8 +21,16 @@ INSTALLED_APPS = (
 ```
 If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views. Add the following to your root urls.py file.
 ```
+from django.urls import path
+from django.conf.urls import url, include
+from rest_framework.documentation import include_docs_urls
+
+
 urlpatterns = [
     ...
+    #drf文档，title自定义
+    path('docs',include_docs_urls(title='工单接口文档')),
+    
     url(r'^api-auth/', include('rest_framework.urls'))
 ]
 ```
