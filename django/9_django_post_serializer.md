@@ -10,7 +10,7 @@ __author__ = 'Bryan'
 from apps.accounts.serializers import UserSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status    ---需要导入状态码
 
 from .models import UserProfile
 
