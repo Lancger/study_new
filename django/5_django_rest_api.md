@@ -1,4 +1,4 @@
-## 1、FBV示例
+## 一、FBV示例
 ```
 #####    url配置
 urls.py
@@ -47,7 +47,7 @@ index.html
 上面就是FBV的使用
 ```
 
-## 2、CBV示例
+## 二、CBV示例
 ```
 CBV（class base views） 就是在视图里使用类处理请求。
 
