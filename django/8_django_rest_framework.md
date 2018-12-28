@@ -101,6 +101,9 @@ class UserSerializer(serializers.Serializer):
 
 # 四、APIview实现model编写
 ```
+vim workflow/apps/accounts/models.py
+```
+```
 # -*- coding: utf-8 -*-
 __author__ = 'Bryan'
 
