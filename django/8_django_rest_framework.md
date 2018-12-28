@@ -123,6 +123,8 @@ class AccountListView(APIView):
 
 # 五、接口访问
 
+  ![APIview示例](https://github.com/Lancger/study_new/blob/master/images/APIview.png)
+
 
 参考文档：
 
