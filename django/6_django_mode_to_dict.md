@@ -51,3 +51,7 @@ class AccountsListView(View):
 
 
 ```
+
+# 二、报错
+
+  ![mode_to_dict示例](https://github.com/Lancger/study_new/blob/master/images/mode_to_dict.png)
