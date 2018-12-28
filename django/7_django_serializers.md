@@ -91,6 +91,8 @@ class AccountsListView(View):
         #return HttpResponse(json_data, content_type="application/json")
   ```
   
+  # 三、正常示例返回
+  
   ![serializers_json示例](https://github.com/Lancger/study_new/blob/master/images/serializers_json.png)
 
   
