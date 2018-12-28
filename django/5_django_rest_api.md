@@ -80,11 +80,73 @@ class Index(View):
 ```
 
 
-
 https://www.cnblogs.com/weiman3389/p/6896624.html    django中的FBV和CBV
 
 
-# 三、django 实现api json返回
+# 三、django实现api_json数据返回
 ```bash
 
+一、url配置
+
+"""workflow URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/2.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+
+from django.urls import path
+from django.conf.urls import url
+from django.contrib import admin
+from apps.accounts.views_base import AccountsListView
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    url(r'accounts/$', AccountsListView.as_view(), name="accounts-list"),
+]
+
+
+二、views_base.py文件
+
+# -*- coding:utf-8 -*-
+__author__ = 'Bryan'
+
+
+from django.views.generic.base import View
+# from django.views.generic import ListView
+from apps.accounts.models import UserProfile, VerifyCode
+
+
+class AccountsListView(View):
+    def get(self, request):
+        #通过django的view实现用户列表页
+        json_list = []
+        accounts = UserProfile.objects.all()
+        print (accounts)
+
+        for account in accounts:
+            json_dict = {}
+            # 获取用户的每个字段，键值对形式
+            json_dict['name'] = account.name
+            # json_dict['birthday'] = account.birthday   #注意这里日期类型的不支持
+            json_dict['gender'] = account.gender
+            json_dict['mobile'] = account.mobile
+            json_dict['email'] = account.email
+            json_dict['webchat'] = account.webchat
+            json_list.append(json_dict)
+
+        from django.http import HttpResponse
+        import json
+        return HttpResponse(json.dumps(json_list), content_type="application/json")
+	
 ```
