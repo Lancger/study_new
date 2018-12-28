@@ -45,6 +45,9 @@ class AccountListView(generics.ListAPIView):
 
 # 四、示例
 
+  ![全局分页示例02](https://github.com/Lancger/study_new/blob/master/images/Pagination02.png)
+
+
 参考资料：
 
 https://www.django-rest-framework.org/api-guide/pagination/
