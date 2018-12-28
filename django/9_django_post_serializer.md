@@ -34,3 +34,5 @@ class AccountListView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 ```
 # 二、示例测试
+
+  ![post_data示例](https://github.com/Lancger/study_new/blob/master/images/post_data.png)
