@@ -27,7 +27,7 @@ def index(req):
     
 注意此处定义的是函数【def index(req):】
 
-#####
+#####    前端页面编写
 index.html
 
 <!DOCTYPE html>
