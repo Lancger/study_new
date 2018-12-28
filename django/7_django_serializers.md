@@ -16,13 +16,15 @@ class AccountsListView(View):
         accounts = UserProfile.objects.all()
 
         from django.core import serializers
-        from django.http import JsonResponse
+        from django.http import JsonResponse, HttpResponse
         import json
         json_data = serializers.serialize('json', accounts)
         json_data = json.loads(json_data)
-        
+
         #In order to allow non-dict objects to be serialized set the safe parameter to False.
-        return JsonResponse(json_data, safe=False)
+        # return JsonResponse(json_data, safe=False)
+        return HttpResponse(json_data, content_type="application/json")
+
 
 # # 使用model_to_dict序列化数据
 # class AccountsListView(View):
@@ -66,6 +68,11 @@ class AccountsListView(View):
 
 ```
 
-# 二、示例返回
+# 二、报错示例返回
 
+  ![serializers_错误示例](https://github.com/Lancger/study_new/blob/master/images/serializers_01.png)
+  
   ![serializers_json示例](https://github.com/Lancger/study_new/blob/master/images/serializers_json.png)
+
+  
+  
