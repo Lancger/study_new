@@ -29,7 +29,7 @@ DATABASES = {
 pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/ pymysql
 
 ###在工程目录中的__init__.py中添加如下代码
-vim workflow/settings.py
+vim workflow/__init__.py
 
 import pymysql
 pymysql.install_as_MySQLdb()
