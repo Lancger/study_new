@@ -153,7 +153,7 @@ class AccountsListView(View):
 
 # 四、报错分析
 ```
-# 报错日志
+一、报错日志
 TypeError at /accounts/
 
 Object of type 'date' is not JSON serializable
@@ -169,6 +169,6 @@ Object of type 'date' is not JSON serializable
 
 Server time: 	星期五, 28 十二月 2018 08:13:35 +0000
 
-# 问题分析
+二、问题分析
 日期类型数据不支持json序列化
 ```
