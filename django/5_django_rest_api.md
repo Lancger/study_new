@@ -1,4 +1,53 @@
-1、CBV
+1、FBV
+```
+#####
+urls.py
+
+from django.conf.urls import url, include
+# from django.contrib import admin
+from mytest import views
+ 
+urlpatterns = [
+    # url(r‘^admin/‘, admin.site.urls),
+    url(r‘^index/‘, views.index),
+]
+
+#####
+views.py
+
+from django.shortcuts import render
+ 
+ 
+def index(req):
+    if req.method == ‘POST‘:
+        print(‘method is :‘ + req.method)
+    elif req.method == ‘GET‘:
+        print(‘method is :‘ + req.method)
+    return render(req, ‘index.html‘)
+    
+注意此处定义的是函数【def index(req):】
+
+#####
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <form action="" method="post">
+        <input type="text" name="A" />
+        <input type="submit" name="b" value="提交" />
+    </form>
+</body>
+</html>
+
+上面就是FBV的使用
+```
+
+2、CBV
 ```
 CBV（class base views） 就是在视图里使用类处理请求。
 
@@ -29,9 +78,7 @@ class Index(View):
         return render(req, ‘index.html‘)
 ```
 
-2、FBV
 
-概念介绍
 
 https://www.cnblogs.com/weiman3389/p/6896624.html
 
