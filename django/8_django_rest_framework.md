@@ -27,6 +27,11 @@ urlpatterns = [
 ]
 ```
 
+# 三、DRF serializers 示例
+```
+
+```
+
 参考文档：
 
 https://www.django-rest-framework.org/#installation
