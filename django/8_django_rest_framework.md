@@ -41,7 +41,10 @@ urlpatterns = [
 ```
 3、models示例
 ```
-# users/models.py
+vim workflow/apps/accounts/models.py
+```
+```
+# accounts/models.py
 __author__ = 'Lancger'
 
 
@@ -77,8 +80,8 @@ class UserProfile(AbstractUser):
 # 三、DRF serializers 示例(编写serializers.py文件)
 ```
 vim workflow/apps/accounts/serializers.py
-
 ```
+
 ```
 # accounts/serializers.py
 
