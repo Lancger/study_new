@@ -11,6 +11,11 @@ python3 -m venv workflow
 cd workflow
 source /usr/local/workflow/bin/activate
 
+## 添加到环境变量
+#vim ~/.bashrc
+source /usr/local/workflow/bin/activate
+
+
 #安装django
 pip3 install -i https://pypi.mirrors.ustc.edu.cn/simple/ django
 ```
