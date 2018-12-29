@@ -4,6 +4,17 @@
 
   ![viewset示例01](https://github.com/Lancger/study_new/blob/master/images/viewset.png)
 
+
+GenericViewSet这里没有定义actions方法，所以需要配合Mixin使用
+```
+class GenericViewSet(ViewSetMixin, generics.GenericAPIView):
+    """
+    The GenericViewSet class does not provide any actions by default,
+    but does include the base set of generic view behavior, such as
+    the `get_object` and `get_queryset` methods.
+    """
+    pass
+```
 # 二、如何使用
 ```
 vim workflow/apps/accounts/views.py
