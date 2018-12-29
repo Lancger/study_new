@@ -17,4 +17,4 @@ mixin
     DestroyModelMixin
 ```
 
-  ![示例01](https://github.com/Lancger/study_new/blob/master/images/viewset.png)
+  ![组合示例01](https://github.com/Lancger/study_new/blob/master/images/GenericAPIView_and_mixin.png)
