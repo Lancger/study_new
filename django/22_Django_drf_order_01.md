@@ -5,6 +5,7 @@ __author__ = 'Bryan'
 
 
 from apps.accounts.serializers import UserSerializer
+# from rest_framework.views import APIView
 from rest_framework import mixins
 
 
@@ -20,29 +21,14 @@ from .filters import AccountsFilter
 class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserSerializer
-    filter_backends = (DjangoFilterBackend, filters.SearchFilter)   --这里配置使用search
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)  --这里使用OrderingFilter
     filter_class = AccountsFilter
-    search_fields = ('username', 'age')  --search的字段
-    # filter_fields = ('username', )
+    search_fields = ('username', 'age')
+    ordering_fields = ('username', 'age')  -- 排序字段
 
 ```
 # 二、示例
 
-  ![drf_search示例](https://github.com/Lancger/study_new/blob/master/images/drf_search01.png)
-
-# 三、扩展
-
-```
-
-    '^' Starts-with search.
-    '=' Exact matches.
-    '@' Full-text search. (Currently only supported Django's MySQL backend.)
-    '$' Regex search.
-
-For example:
-
-search_fields = ('=username', '=email')
+  ![drf_order示例](https://github.com/Lancger/study_new/blob/master/images/drf_order01.png)
 
 
-https://www.django-rest-framework.org/api-guide/filtering/#searchfilter
-```
