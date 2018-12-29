@@ -24,4 +24,4 @@ mixin
 
 # 四、ViewSet和mixin绑定
 
-  ![组合示例01](https://github.com/Lancger/study_new/blob/master/images/viewset_and_mixin.png)
+  ![组合示例01](https://github.com/Lancger/study_new/blob/master/images/viewset_mixin.png)
