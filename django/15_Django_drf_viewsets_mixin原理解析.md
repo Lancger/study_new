@@ -1,4 +1,4 @@
-# 一、原理解析
+# 一、viewsets原理解析
 ```
 GenericViewSet(viewset)  ---drf
      GenericAPIView      ---drf
