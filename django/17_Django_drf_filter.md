@@ -63,7 +63,7 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     def get_queryset(self):
         return UserProfile.objects.filter(username="admin")   ---这里过滤username=admin的数据
 ```
-# 三、返回实例
+# 三、返回示例
 
   ![GenericAPIView示例](https://github.com/Lancger/study_new/blob/master/images/filter01.png)
 
