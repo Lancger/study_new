@@ -70,8 +70,9 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 # 四、获取前端传过来的参数过滤判断
 ```
-# 使用drf_filter结合前端参数过滤数据
+# 重写get_queryset方法配合前端传递过来的参数查询数据
 class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    queryset = UserProfile.objects.all()
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -79,5 +80,11 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
         name_args = self.request.query_params.get("name_args", "admin")
         if name_args:
             queryset = queryset.filter(username=name_args)
-        print (queryset)
+        return queryset
 ```
+# 五、构造查询
+```
+http://127.0.0.1:8000/accounts/?name_args=user01
+
+```
+# 六、返回数据
