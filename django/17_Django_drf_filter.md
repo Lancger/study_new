@@ -55,14 +55,13 @@ class GenericAPIView(views.APIView):
 ```
 # 二、自定义逻辑返回过滤数据
 ```
-
 # 自定义过滤数据逻辑
 class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserSerializer
 
     def get_queryset(self):
-        return UserProfile.objects.filter(username="admin")
+        return UserProfile.objects.filter(username="admin")   ---这里过滤username=admin的数据
 ```
 # 三、返回实例
 
