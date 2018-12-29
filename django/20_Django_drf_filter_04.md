@@ -51,7 +51,7 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 # 三、示例
 
-  ![filter04自定义过滤示例](https://github.com/Lancger/study_new/blob/master/images/filter03.png)
+  ![filter04忽略大小写过滤示例](https://github.com/Lancger/study_new/blob/master/images/filter04.png)
 
 
 参考文档：
