@@ -80,6 +80,7 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
         name_args = self.request.query_params.get("name_args", "admin")   --默认不传参数，则查询username=admin的数据
         if name_args:
             queryset = queryset.filter(username=name_args)
+            #queryset = queryset.filter(shop_price__gt=int(price_min))  #如果是数字的参数，这里需要转换一下
         return queryset
 ```
 # 五、构造查询
