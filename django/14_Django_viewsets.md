@@ -58,7 +58,7 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserSerializer
 ```
-# 三、使用router将viewset和mixin绑定起来
+# 三、将viewset和mixin绑定起来
 ```
 # vim urls.py
 
@@ -74,6 +74,25 @@ urlpatterns = [
     # 用户信息
     url(r'accounts/$', account_list, name="accounts-list"),
 ]
+```
+
+# 四、使用router精简关联
+```
+...
+from rest_framework.routers import DefaultRouter
+from apps.accounts import views
+
+# Create a router and register our viewsets with it.
+router = DefaultRouter()
+
+# 配置accounts的urls
+router.register(r'accounts', views.AccountListViewset)
+
+urlpatterns = [
+    ...
+    path('', include(router.urls)),
+]
+
 ```
 
 参考文档：
