@@ -94,3 +94,4 @@ http://127.0.0.1:8000/accounts/     --默认不传参数，则查询username=adm
 
   ![filter_args示例](https://github.com/Lancger/study_new/blob/master/images/filter_args.png)
 
+
