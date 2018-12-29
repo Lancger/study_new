@@ -16,3 +16,5 @@ mixin
     UpdateModelMixin
     DestroyModelMixin
 ```
+
+  ![示例01](https://github.com/Lancger/study_new/blob/master/images/viewset.png)
