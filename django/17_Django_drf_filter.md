@@ -88,3 +88,6 @@ http://127.0.0.1:8000/accounts/?name_args=user01
 
 ```
 # 六、返回数据
+
+  ![filter_args示例](https://github.com/Lancger/study_new/blob/master/images/filter_args.png)
+
