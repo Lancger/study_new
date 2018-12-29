@@ -17,4 +17,11 @@ mixin
     DestroyModelMixin
 ```
 
+# 三、GenericAPIView和mixin绑定
+
   ![组合示例01](https://github.com/Lancger/study_new/blob/master/images/GenericAPIView_and_mixin.png)
+
+
+# 四、ViewSet和mixin绑定
+
+  ![组合示例01](https://github.com/Lancger/study_new/blob/master/images/viewset_and_mixin.png)
