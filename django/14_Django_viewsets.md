@@ -64,3 +64,4 @@ class AccountListView(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 参考文档：
 
+https://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/
