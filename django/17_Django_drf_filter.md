@@ -65,6 +65,8 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
 ```
 # 三、返回实例
 
+  ![GenericAPIView示例](https://github.com/Lancger/study_new/blob/master/images/filter01.png)
+
 
 # 四、获取前端传过来的参数过滤判断
 ```
