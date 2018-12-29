@@ -40,6 +40,10 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     filter_fields = ('name')   ---这里定义过滤的字段，注意这里是精确匹配
 ```
 
+# 三、示例
+
+  ![filter03精确匹配示例](https://github.com/Lancger/study_new/blob/master/images/filter02.png)
+
 
 参考文档：
 
