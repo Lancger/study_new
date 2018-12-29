@@ -29,3 +29,20 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
 # 二、示例
 
   ![drf_search示例](https://github.com/Lancger/study_new/blob/master/images/drf_search01.png)
+
+# 三、扩展
+
+```
+
+    '^' Starts-with search.
+    '=' Exact matches.
+    '@' Full-text search. (Currently only supported Django's MySQL backend.)
+    '$' Regex search.
+
+For example:
+
+search_fields = ('=username', '=email')
+
+
+https://www.django-rest-framework.org/api-guide/filtering/#searchfilter
+```
