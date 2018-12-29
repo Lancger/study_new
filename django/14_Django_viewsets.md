@@ -15,6 +15,23 @@ class GenericViewSet(ViewSetMixin, generics.GenericAPIView):
     """
     pass
 ```
+ListModelMixin定义了get方法
+```
+class ListModelMixin(object):
+    """
+    List a queryset.
+    """
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+```
 # 二、如何使用
 ```
 vim workflow/apps/accounts/views.py
@@ -22,6 +39,7 @@ vim workflow/apps/accounts/views.py
 ```
 # -*- coding: utf-8 -*-
 __author__ = 'Bryan'
+
 
 from apps.accounts.serializers import UserSerializer
 # from rest_framework.views import APIView
@@ -35,8 +53,8 @@ from rest_framework import  viewsets
 
 from .models import UserProfile
 
-# 使用GenericViewSet实现
-class AccountListView(viewsets.GenericViewSet):
+# 使用GenericViewSet和mixins配合实现(因为GenericViewSet没有定义actions方法，所以要配合mixins封装的这些方法使用）
+class AccountListView(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserSerializer
 ```
