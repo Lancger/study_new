@@ -44,7 +44,6 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
 
   ![filter03精确匹配示例](https://github.com/Lancger/study_new/blob/master/images/filter02.png)
 
-
 参考文档：
 
 https://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend
