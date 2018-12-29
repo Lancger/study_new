@@ -77,7 +77,7 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
 
     def get_queryset(self):
         queryset = UserProfile.objects.all()
-        name_args = self.request.query_params.get("name_args", "admin")
+        name_args = self.request.query_params.get("name_args", "admin")   --默认不传参数，则查询username=admin的数据
         if name_args:
             queryset = queryset.filter(username=name_args)
         return queryset
@@ -85,6 +85,8 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
 # 五、构造查询
 ```
 http://127.0.0.1:8000/accounts/?name_args=user01
+
+http://127.0.0.1:8000/accounts/     --默认不传参数，则查询username=admin的数据
 
 ```
 # 六、返回数据
