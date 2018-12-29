@@ -27,3 +27,5 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 ```
 # 二、示例
+
+  ![drf_search示例](https://github.com/Lancger/study_new/blob/master/images/drf_search01.png)
