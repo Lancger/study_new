@@ -11,8 +11,11 @@ from django_filters import rest_framework as filters
 from .models import UserProfile
 
 class AccountsFilter(filters.FilterSet):
+    """
+    用户的年龄过滤类
+    """
     min_age = filters.NumberFilter(field_name="age", lookup_expr='gte')
-    max_age = filters.NumberFilter(field_name="age", lookup_expr='lte')   针对age字段过滤
+    max_age = filters.NumberFilter(field_name="age", lookup_expr='lte')   --针对age字段过滤
 
     class Meta:
         model = UserProfile
