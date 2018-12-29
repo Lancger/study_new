@@ -58,3 +58,9 @@ class AccountListView(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserSerializer
 ```
+# 三、使用router将viewset和mixin绑定起来
+```
+```
+
+参考文档：
+
