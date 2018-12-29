@@ -64,3 +64,20 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     def get_queryset(self):
         return UserProfile.objects.filter(username="admin")
 ```
+# 三、返回实例
+
+
+# 四、获取前端传过来的参数过滤判断
+```
+# 使用drf_filter过滤数据
+class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        queryset = UserProfile.objects.all()
+        name_args = self.request.query_params.get("name_agrs", "admin")
+        if name_args:
+            queryset = queryset.filter(username=name_args)
+        return queryset
+```
