@@ -47,4 +47,4 @@ class AccountListViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 参考文档：
 
-https://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend
+https://django-filter.readthedocs.io/en/master/guide/rest_framework.html   django-filter官网
