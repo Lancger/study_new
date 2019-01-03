@@ -82,7 +82,7 @@ docker ps -l
 docker stop $(docker ps -a -q)
 
 # 删除所有容器 
-docker rm `docker ps -a -q` 
+docker rm -f `docker ps -a -q` 
 
 # 停止、启动、杀死一个容器 
 docker stop Name/ID
