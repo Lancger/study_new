@@ -25,7 +25,7 @@
 
 ### gin系列目录
 
-1. [Gin实践 连载一 Golang介绍与环境安装](https://github.com/EDDYCJY/blog/blob/master/golang/gin/2018-02-16-Gin%E5%AE%9E%E8%B7%B5-%E8%BF%9E%E8%BD%BD%E4%B8%80-Golang%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.md)
+1. [Gin实践 连载一 Golang介绍与环境安装](https://github.com/Lancger/blog/blob/master/golang/gin/2018-02-16-Gin%E5%AE%9E%E8%B7%B5-%E8%BF%9E%E8%BD%BD%E4%B8%80-Golang%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.md)
 2. [Gin实践 连载二 搭建Blog API's（一）](https://github.com/EDDYCJY/blog/blob/master/golang/gin/2018-02-16-Gin%E5%AE%9E%E8%B7%B5-%E8%BF%9E%E8%BD%BD%E4%BA%8C-%E6%90%AD%E5%BB%BABlogAPIs-01.md)
 3. [Gin实践 连载三 搭建Blog API's（二）](https://github.com/EDDYCJY/blog/blob/master/golang/gin/2018-02-16-Gin%E5%AE%9E%E8%B7%B5-%E8%BF%9E%E8%BD%BD%E4%B8%89-%E6%90%AD%E5%BB%BABlogAPIs-02.md)
 4. [Gin实践 连载四 搭建Blog API's（三）](https://github.com/EDDYCJY/blog/blob/master/golang/gin/2018-02-16-Gin%E5%AE%9E%E8%B7%B5-%E8%BF%9E%E8%BD%BD%E5%9B%9B-%E6%90%AD%E5%BB%BABlogAPIs-03.md)
