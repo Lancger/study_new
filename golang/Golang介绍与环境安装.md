@@ -41,7 +41,7 @@ source /etc/profile
 ```
 那么大家会有些疑问，纠结go本身有什么东西，我们刚刚设置的环境变量是什么？
 
-1、 go本身有什么东西
+### 2、 go本身有什么东西
 
 首先，我们在解压的时候会得到一个名为go的文件夹，其中包括了所有Go语言相关的一些文件，在这下面又包含很多文件夹和文件，我们来简单说明其中主要文件夹的作为：
 
@@ -55,7 +55,7 @@ source /etc/profile
     src：用于存放Go自身、Go标准工具以及标准库的所有源码文件
     test：存放用来测试喝验证Go本身的所有相关文件
 
-2、 刚刚设置的环境变量是什么
+### 3、 刚刚设置的环境变量是什么
 
     GOROOT：Go的根目录
     GOPATH：用户工作区
@@ -72,8 +72,9 @@ source /etc/profile
 4、 什么是命令源码文件？
 
 如果一个源码文件被声明属于main代码包，且该文件代码中包含无参数声明喝结果声明的main函数，则它就是命令源码文件。命令源码文件可通过go run命令直接启动运行
-二、安装Govendor
 
+### 2、安装Govendor
+```
     If using go1.5, ensure GO15VENDOREXPERIMENT=1 is set.
 
 在命令行下执行安装
@@ -117,7 +118,7 @@ mv /usr/local/go/path/bin/govendor /usr/local/go/bin/
 
 #govendor -version
 $ v1.0.9
-
+```
 在这里为什么单独挑出一节来讲govendor呢？
 
 大家可以想想，虽然我们在本地开发，利用$GOPATH达到安装第三方依赖包，然后去使用他，似乎也没有什么问题。
