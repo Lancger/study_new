@@ -77,9 +77,10 @@ source /etc/profile
 如果一个源码文件被声明属于main代码包，且该文件代码中包含无参数声明喝结果声明的main函数，则它就是命令源码文件。命令源码文件可通过go run命令直接启动运行
 
 ### 2、安装Govendor
-```
+
     If using go1.5, ensure GO15VENDOREXPERIMENT=1 is set.
 
+```
 在命令行下执行安装
 
 go get -u github.com/kardianos/govendor
@@ -89,11 +90,12 @@ go get -u github.com/kardianos/govendor
 我们cd /usr/local/go/path（第三方依赖包，会默认安装在GOPATH的第一个目录下）目录，
 
 执行ls，可以在工作区中看到bin、pkg、src三个目录。这就是我们上面一小节所说的工作区了！
+```
 
 那么，我们所安装的govendor去哪里了呢？
 
 答案就在工作区内，所生成的代码包大概是这样。我们所需要的是编译好的可执行文件，在/usr/local/go/path/bin中。
-
+```
 path/
 ├── bin
 │   └── govendor
@@ -108,17 +110,18 @@ path/
         └── kardianos
             └── govendor
                 ├── ...
+```
 
 大家还记得我们先前在环境变量PATH中设置了GOBIN，
 
 我们现在要做的就是把工作区中bin目录下的可执行文件govendor给移动过去，或者你可以将$GOPATH的BIN目录给加入环境变量中
 
 那样就可以直接在命令行直接执行govendor了
-
+```
 mv /usr/local/go/path/bin/govendor /usr/local/go/bin/
-
+```
 移动成功后，在命令行执行govendor -version，若出现版本号，则成功
-
+```
 #govendor -version
 $ v1.0.9
 ```
@@ -145,7 +148,7 @@ go get -u github.com/gin-gonic/gin
 四、测试Gin是否安装成功
 
 编写一个test.go文件
-
+```
 package main
 
 import "github.com/gin-gonic/gin"
@@ -167,7 +170,7 @@ go run test.go
 访问$HOST:8080/ping，若返回{"message":"pong"}则正确
 
 curl 127.0.0.1:8080/ping
-
+```
 至此，我们的环境安装都基本完成了:)
 
 具体gin的介绍从连载二开始，会讲解Demo所涉及的知识点！
