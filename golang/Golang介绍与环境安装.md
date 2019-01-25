@@ -33,7 +33,7 @@ export PATH=$PATH:$GOROOT/bin
 
 添加环境变量GOPATH（这个可按实际情况设置目录位置）
 
-export GOPATH=/usr/local/go/path
+export GOPATH=/opt/path
 
 配置完毕后，执行命令令其生效
 
