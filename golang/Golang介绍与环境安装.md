@@ -10,16 +10,18 @@
 ## 二、准备环节
 ### 1、安装Golang
 
-首先，根据对应的操作系统选择安装包下载，
+首先，根据对应的操作系统选择安装包 https://studygolang.com/dl
 
 在这里我使用的是Centos 64位系统
-```
-wget https://studygolang.com/dl/golang/go1.9.2.linux-amd64.tar.gz
 
-tar -zxvf go1.9.2.linux-amd64.tar.gz
+```
+wget https://dl.google.com/go/go1.11.linux-amd64.tar.gz
+
+tar -zxvf go1.11.linux-amd64.tar.gz
 
 mv go/ /usr/local/
 ```
+
 配置 /etc/profile
 ```
 vi /etc/profile
@@ -39,6 +41,7 @@ source /etc/profile
 
 在控制台输入go version，若输出版本号则安装成功
 ```
+
 那么大家会有些疑问，纠结go本身有什么东西，我们刚刚设置的环境变量是什么？
 
 ### 2、 go本身有什么东西
