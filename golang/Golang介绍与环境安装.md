@@ -1,7 +1,9 @@
 
 ## 一、Golang介绍与环境安装
 
-    Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance -- up to 40 times faster. If you need smashing performance, get yourself some Gin.
+    Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API 
+    with much better performance -- up to 40 times faster. If you need smashing performance,
+    get yourself some Gin.
 
  Gin是用Golang开发的一个微框架，类似Martinier的API，重点是小巧、易用、性能好很多，也因为 httprouter 的性能提高了40倍。
 
