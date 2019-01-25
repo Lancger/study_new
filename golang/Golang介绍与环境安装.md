@@ -1,24 +1,25 @@
 
-Golang介绍与环境安装
+# Golang介绍与环境安装
 
     Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance -- up to 40 times faster. If you need smashing performance, get yourself some Gin.
 
-Gin是用Golang开发的一个微框架，类似Martinier的API，重点是小巧、易用、性能好很多，也因为 httprouter 的性能提高了40倍。
-准备环节
-一、安装Golang
+# Gin是用Golang开发的一个微框架，类似Martinier的API，重点是小巧、易用、性能好很多，也因为 httprouter 的性能提高了40倍。
+
+# 准备环节
+## 一、安装Golang
 
 首先，根据对应的操作系统选择安装包下载，
 
 在这里我使用的是Centos 64位系统
-
+```
 wget https://studygolang.com/dl/golang/go1.9.2.linux-amd64.tar.gz
 
 tar -zxvf go1.9.2.linux-amd64.tar.gz
 
 mv go/ /usr/local/
-
+```
 配置 /etc/profile
-
+```
 vi /etc/profile
 
 添加环境变量GOROOT和将GOBIN添加到PATH中
@@ -35,7 +36,7 @@ export GOPATH=/usr/local/go/path
 source /etc/profile
 
 在控制台输入go version，若输出版本号则安装成功
-
+```
 那么大家会有些疑问，纠结go本身有什么东西，我们刚刚设置的环境变量是什么？
 
 1、 go本身有什么东西
