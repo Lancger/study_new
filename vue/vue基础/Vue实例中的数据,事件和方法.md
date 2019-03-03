@@ -76,7 +76,8 @@
             data: exampleData,
             methods: {
                 handleClick: function() {
-                    this.message = "Welcome back"
+                    this.message = "Welcome back",
+                    console.log(this.message)
                 }
             }
         })
