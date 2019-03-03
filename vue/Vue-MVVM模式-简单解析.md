@@ -17,6 +17,37 @@ ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某�
 从View侧看，ViewModel中的DOM Listeners工具会帮我们监测页面上DOM元素的变化，如果有变化，则更改Model中的数据； 
 从Model侧看，当我们更新Model中的数据时，Data Bindings工具会帮我们更新页面中的DOM元素。
 
+## 三、Hello World示例
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+ 
+    <body>
+        <!--这是我们的View-->
+        <div id="app">
+            {{ message }}
+        </div>
+    </body>
+    <script src="js/vue.js"></script>
+    <script>
+        // 这是我们的Model
+        var exampleData = {
+            message: 'Hello World!'
+        }
+ 
+        // 创建一个 Vue 实例或 "ViewModel"
+        // 它连接 View 与 Model
+        new Vue({
+            el: '#app',
+            data: exampleData
+        })
+    </script>
+</html>
+```
 参考资料：
 
 https://blog.csdn.net/youlingxx/article/details/79361979
