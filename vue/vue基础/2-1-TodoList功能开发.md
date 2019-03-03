@@ -1,3 +1,4 @@
+# TodoList基础功能
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -29,8 +30,8 @@
             },
             methods: {
                   handleSubmit: function() {
-                    this.list.push(this.inputValue)
-                    this.inputValue = ''
+                    this.list.push(this.inputValue)  //点击事件，将当前输入的数据插入到list列表里
+                    this.inputValue = ''   //这里是为了输入框置为空
                   }
                 }
         })
