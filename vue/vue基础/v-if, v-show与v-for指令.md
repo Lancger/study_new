@@ -67,7 +67,7 @@ v-show指令是通过改变属性来实现 style="display: none;"
 </html>
 ```
 ## 三、v-for 指令
-v-for指令小tips，注意记得增加key属性，提升渲染的效率
+v-for指令小tips，注意记得增加key属性，提升渲染的效率（key值不能相同，不然会有问题）
 ```
 <!DOCTYPE html>
 <html lang="en">
