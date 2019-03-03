@@ -44,6 +44,10 @@ ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某�
             el: '#app',
             data: exampleData
         })
+
+        // 操作dom方式
+        var dom= document.getElementById("root")
+        dom.innerHTML = "Hello World"
     </script>
     
 </body>
