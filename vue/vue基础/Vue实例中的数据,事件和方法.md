@@ -10,25 +10,31 @@
 </head>
 
 <body>
-        <!--Vue实例中的数据,事件和方法-->
+    <!--Vue实例中的数据,事件和方法-->
+
+    <!--这是我们的View-->
     <div id="app">
-        <div v-on:click="handleClick"> {{content}}</div>
+        <div v-on:click="handleClick"> {{message}}</div>
     </div>
 
     <script>
+        // 这是我们的Model
+        var exampleData = {
+            message: 'Hello World!'
+        }
+
         // 创建一个 Vue 实例或 "ViewModel"
         // 它连接 View 与 Model
         new Vue({
             el: '#app',
-            data: {
-                content: "world",
-            },
+            data: exampleData,
             methods: {
                 handleClick: function() {
                     alert(123)
                 }
             }
         })
+
     </script>
 
 </body>
