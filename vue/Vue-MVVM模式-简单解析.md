@@ -20,25 +20,24 @@ ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某�
 ## 三、Hello World示例
 ```
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
- 
-    <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <!-- <script src="js/vue.js"></script> -->
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
         <!--这是我们的View-->
         <div id="app">
             {{ message }}
         </div>
-    </body>
-    <script src="js/vue.js"></script>
     <script>
         // 这是我们的Model
         var exampleData = {
             message: 'Hello World!'
         }
- 
         // 创建一个 Vue 实例或 "ViewModel"
         // 它连接 View 与 Model
         new Vue({
@@ -46,6 +45,9 @@ ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某�
             data: exampleData
         })
     </script>
+    
+</body>
+
 </html>
 ```
 使用Vue的过程就是定义MVVM各个组成部分的过程的过程。
