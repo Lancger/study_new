@@ -62,7 +62,10 @@ ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某�
 
 在创建Vue实例时，需要传入一个选项对象，选项对象可以包含数据、挂载元素、方法、模生命周期钩子等等。
 
-在这个示例中，选项对象的el属性指向View，el: ‘#app’表示该Vue实例将挂载到<div id="app">...</div>这个元素；data属性指向Model，data: exampleData表示我们的Model是exampleData对象。 
+在这个示例中，选项对象的el属性指向View，el: ‘#app’表示该Vue实例将挂载到<div id="app">...</div>这个元素；
+
+data属性指向Model，data: exampleData表示我们的Model是exampleData对象。 
+
 Vue.js有多种数据绑定的语法，最基础的形式是文本插值，使用一对大括号语法，在运行时{{ message }}会被数据对象的message属性替换，所以页面上会输出”Hello World!”。
 参考资料：
 
