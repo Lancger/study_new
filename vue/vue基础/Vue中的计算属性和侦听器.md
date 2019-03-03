@@ -42,7 +42,7 @@
     <div id="app">
         姓: <input v-model="firstName"/>
         名: <input v-model="lastName"/>
-        <div>{{ fullname }}</div>
+        <div>{{ fullName }}</div>
     </div>
 
     <script>
@@ -53,7 +53,7 @@
                 lastName: ""
             },
             computed: {
-                fullname: function () {
+                fullName: function () {
                     return this.firstName + ' ' + this.lastName
                 }
             }
