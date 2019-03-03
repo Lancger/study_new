@@ -81,8 +81,8 @@ v-show指令是通过改变属性来实现 style="display: none;"
       <div v-show="show">hello world</div>
       <button @click="handleClick">toggle</button>
       <ul>
-          <!-- <li v-for="item of list" :key="item">{{ item }}</li> -->
-          <li v-for="(item, index) of list" :key="index">{{ item }}</li>
+          <!-- <li v-for="item of list" :key="item">{{ item }}</li> -->  这里增加一个key属性，是为了更效率
+          <li v-for="(item, index) of list" :key="index">{{ item }}</li> 这里使用索引来作为key值
       </ul>
     </div>
 
