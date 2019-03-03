@@ -67,6 +67,7 @@ v-show指令是通过改变属性来实现 style="display: none;"
 </html>
 ```
 ## 三、v-for 指令
+v-for指令小tips，注意记得增加key属性，提升渲染的效率
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +82,7 @@ v-show指令是通过改变属性来实现 style="display: none;"
       <div v-show="show">hello world</div>
       <button @click="handleClick">toggle</button>
       <ul>
-          <!-- <li v-for="item of list" :key="item">{{ item }}</li> -->  这里增加一个key属性，是为了更效率
+          <!-- <li v-for="item of list" :key="item">{{ item }}</li> -->  这里增加一个key属性，可以提升每项渲染的性能或者效率
           <li v-for="(item, index) of list" :key="index">{{ item }}</li> 这里使用索引来作为key值
       </ul>
     </div>
