@@ -56,7 +56,11 @@
 
     <!--这是我们的View-->
     <div id="app">
-        <div @click="handleClick"> {{ message }}</div>    --这里使用了 @click 代替了 v-on:click
+        <div @click="handleClick">    <!--这里使用了 @click 代替了 v-on:click-->
+            <!-- {{message}} -->
+            <!-- 使用div标签，结合v-text v-html等来显示 -->
+            <div v-text="message"></div>
+        </div>  
     </div>
 
     <script>
