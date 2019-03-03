@@ -54,7 +54,7 @@
             el: '#app',
             data: {
                 title: "this is hello world",
-                content: "this is content",
+                content: "this is content",    <!--这里决定了页面的显示，无法改变-->
             }
         })
     </script>
