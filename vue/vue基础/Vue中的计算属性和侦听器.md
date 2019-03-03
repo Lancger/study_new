@@ -28,7 +28,8 @@
 
 </html>
 ```
-## 二、使用计算属性fullname得出姓名
+## 二、使用计算属性fullName得出姓名
+计算属性性能还是比较高的，当firstName或者lastName都没有变的时候，fullName会使用上一次的缓存结果
 ```
 <!DOCTYPE html>
 <html lang="en">
