@@ -1,7 +1,7 @@
 ## 一、polipo
 通过设置大部分程序都识别的的环境变量：http_proxy和https_proxy，将请求通过代理服务器以http或https的方式发出去。
 
-## 检测当前环境
+### 检测当前环境
 ```
 curl ip.gs
 ```
