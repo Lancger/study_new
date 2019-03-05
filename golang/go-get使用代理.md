@@ -53,8 +53,8 @@ socksProxyType = socks5
 
 使用代理
 ```
-export http_proxy="http://127.0.0.1:8090/"
-export https_proxy="http://127.0.0.1:8090/"
+export http_proxy="http://13.229.223.57:8090/"
+export https_proxy="http://13.229.223.57:8090/"
 ```
 
 参考文档：
