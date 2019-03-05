@@ -34,3 +34,5 @@ export https_proxy="http://127.0.0.1:8123/"
 参考文档：
 
 https://blog.csdn.net/ys5773477/article/details/73929161
+
+https://www.jianshu.com/p/fe933bdfe103  建立基于polipo的代理
