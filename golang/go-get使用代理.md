@@ -11,8 +11,29 @@ curl ip.gs
 # mac下
 brew install polipo
 
-# linux
+# ubuntu
 sudo apt-get install polipo
+
+# centos
+
+git clone https://github.com/jech/polipo.git
+cd polipo
+
+# make.info需要这个
+sudo yum install texinfo
+make -sj
+sudo make install
+sudo mkdir /etc/polipo
+echo -e '
+proxyAddress = "::0"
+socksParentProxy = "localhost:8090"
+socksProxyType = socks5
+daemonise = true
+' > /etc/polipo/config
+
+# run now
+sudo polipo
+
 ```
 
  配置
