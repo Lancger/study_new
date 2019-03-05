@@ -1,3 +1,7 @@
+## 最简单方式
+```
+http_proxy=13.229.223.57:8388 https_proxy=13.229.223.57:8388 go get
+```
 ## 一、polipo
 通过设置大部分程序都识别的的环境变量：http_proxy和https_proxy，将请求通过代理服务器以http或https的方式发出去。
 
