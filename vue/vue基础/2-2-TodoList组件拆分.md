@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TodoList功能开发</title>
-    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
 
 <body>
