@@ -74,6 +74,13 @@
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
       
+      
+      #测试指定有密码的私钥登录
+      [ansible@linux-node2 .ssh]$ ssh -i /opt/ansible/.ssh/id_rsa 'root@192.168.56.12'
+      Enter passphrase for key '/opt/ansible/.ssh/id_rsa':  123456  --- 这里输入私钥密码
+      Last login: Sun Apr 28 20:48:54 2019 from 192.168.56.12
+      [root@linux-node2 ~]#
+      
 
 4、配置ansible
 
