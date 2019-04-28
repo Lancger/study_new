@@ -110,12 +110,12 @@
 
       #vim /etc/ansible/hosts
       [mysql]
-      192.168.56.12
+      node-02 ansible_ssh_host=192.168.56.12 ansible_ssh_user=root ansible_ssh_pass='123456' comment=zhangsan 
 
       [nginx]
-      192.168.56.11
-      192.168.56.12
-      192.168.56.13
+      node-02 ansible_ssh_host=192.168.56.12 ansible_ssh_user=root ansible_ssh_pass='123456' comment=zhangsan 
+      node-04 ansible_ssh_host=192.168.56.14 ansible_ssh_user=root ansible_ssh_pass='123456' comment=zhangsan 
+
       
       4.使用模块
       ansible 192.168.56.11 -m command -a "date"
