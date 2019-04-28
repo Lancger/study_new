@@ -14,7 +14,7 @@
       ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
       ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
 
-2、普通用户运行
+2、普通用户运行（私钥无密码）
 
       [ansible@linux-node2 ansible]$ useradd ansible -d /opt/ansible/
       [ansible@linux-node2 ansible]$ su - ansible
@@ -46,7 +46,7 @@
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
 
-3、产生有密码的私钥证书
+3、普通用户运行（私钥有密码）
 
       [ansible@linux-node2 .ssh]$ ssh-keygen -t rsa
       Generating public/private rsa key pair.
