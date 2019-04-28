@@ -6,12 +6,24 @@
       yum install epel-release
       yum install ansible ansible-doc -y
 
+# ansible运行
+1、root用户运行
+
       ssh-keygen -t rsa
       ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.11
       ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
       ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
 
+2、普通用户运行
 
+      useradd ansible -d /opt/ansible/
+      
+      ssh-keygen -t rsa
+      ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.11
+      ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
+      ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
+      
+      
       #vim /etc/ansible/hosts
       [mysql]
       192.168.56.12
