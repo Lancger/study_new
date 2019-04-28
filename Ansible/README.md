@@ -46,7 +46,33 @@
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
 
-3、配置ansible
+3、产生有密码的私钥证书
+
+      [ansible@linux-node2 .ssh]$ ssh-keygen -t rsa
+      Generating public/private rsa key pair.
+      Enter file in which to save the key (/opt/ansible//.ssh/id_rsa):
+      Enter passphrase (empty for no passphrase):  123456   ---这里输入私钥的证书
+      Enter same passphrase again: 123456   ---这里确认输入私钥的证书
+      Your identification has been saved in /opt/ansible//.ssh/id_rsa.
+      Your public key has been saved in /opt/ansible//.ssh/id_rsa.pub.
+      The key fingerprint is:
+      SHA256:tJGz/QA36ASPeg0yMSLJ2FwdB7PChJQVg7GjwC7k+VQ ansible@linux-node2
+      The key's randomart image is:
+      +---[RSA 2048]----+
+      |+=+BOo=o.        |
+      |+o*= +.B o       |
+      |.oo =E+ X o      |
+      |=....= * O .     |
+      |o+ .. . S o      |
+      |. o  .     o     |
+      |   .        .    |
+      |                 |
+      |                 |
+      +----[SHA256]-----+
+      [ansible@linux-node2 .ssh]$
+      
+
+4、配置ansible
 
       #vim /etc/ansible/hosts
       [mysql]
