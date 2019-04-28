@@ -16,8 +16,8 @@
 
 2、普通用户运行
 
-      useradd ansible -d /opt/ansible/
-      su - ansible
+      [ansible@linux-node2 ansible]$ useradd ansible -d /opt/ansible/
+      [ansible@linux-node2 ansible]$ su - ansible
       
       [ansible@linux-node2 ansible]$ ssh-keygen -t rsa
       Generating public/private rsa key pair.
