@@ -17,6 +17,7 @@
 2、普通用户运行
 
       useradd ansible -d /opt/ansible/
+      su - ansible
       
       ssh-keygen -t rsa
       ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.11
