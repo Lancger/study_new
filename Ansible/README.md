@@ -4,7 +4,7 @@
       yum clean all
       yum makecache
       yum install epel-release
-      yum install ansible -y
+      yum install ansible ansible-doc -y
 
       ssh-keygen -t rsa
       ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.11
