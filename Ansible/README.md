@@ -1,4 +1,4 @@
-# Ansible介绍及安装部署
+# 一、Ansible介绍及安装部署
 
       wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
       yum clean all
@@ -6,7 +6,7 @@
       yum install epel-release
       yum install ansible ansible-doc -y
 
-# ansible运行
+# 二、ansible运行
 1、root用户运行
 
       ssh-keygen -t rsa
@@ -87,9 +87,26 @@
       Enter passphrase for key '/opt/ansible/.ssh/id_rsa':  123456  --- 这里输入私钥密码
       Last login: Sun Apr 28 20:48:54 2019 from 192.168.56.12
       [root@linux-node2 ~]#
-      
 
-4、配置ansible
+4、SSH私钥取消密码（passphrase ）
+
+      1. 使用openssl命令去掉私钥的密码
+
+      openssl rsa -in ~/.ssh/id_rsa -out ~/.ssh/id_rsa_new
+
+      2. 备份旧私钥
+
+      mv ~/.ssh/id_rsa ~/.ssh/id_rsa.backup
+
+      3. 使用新私钥
+
+      mv ~/.ssh/id_rsa_new ~/.ssh/id_rsa
+
+      4. 设置权限
+
+      chmod 600 ~/.ssh/id_rsa
+
+5、配置ansible
 
       #vim /etc/ansible/hosts
       [mysql]
@@ -107,7 +124,7 @@
       列出当前主机可以使用的ansible模块：
       ansible-doc -l
       
-# 二、roles示例
+# 三、roles示例
 
       假设有3台主机，192.168.56.11主机上安装MySQL，192.168.56.12上安装nginx，192.168.56.13上安装MySQL和nginx。我们建立两个角色websrvs和dbsrvs，然后应用到这几个主机上。
       
@@ -230,4 +247,5 @@
       
  参看文档： https://www.cnblogs.com/zhaojiankai/p/7655855.html
 
+https://www.cnblogs.com/littlemonsters/p/5783672.html     SSH私钥取消密码（passphrase ）
 
