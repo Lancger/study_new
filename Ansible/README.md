@@ -108,6 +108,8 @@
 
 5、配置ansible
 
+a、编辑hosts文件
+
       #vim /etc/ansible/hosts
       [mysql]
       node-02 ansible_ssh_host=192.168.56.12 ansible_ssh_user=root ansible_ssh_pass='123456' comment=zhangsan 
@@ -116,6 +118,17 @@
       node-02 ansible_ssh_host=192.168.56.12 ansible_ssh_user=root ansible_ssh_pass='123456' comment=zhangsan 
       node-04 ansible_ssh_host=192.168.56.14 ansible_ssh_user=root ansible_ssh_pass='123456' comment=zhangsan 
 
+b、编辑ansible.cfg
+
+     #vim /etc/ansible/ansible.cfg
+      
+
+      
+6、测试运行
+
+      [ansible@linux-node2 ~]$ ansible node-02 --private-key /opt/ansible/.ssh/id_rsa -m command -a "date"
+      node-02 | CHANGED | rc=0 >>
+      Sun Apr 28 21:34:17 CST 2019
       
       4.使用模块
       ansible 192.168.56.11 -m command -a "date"
