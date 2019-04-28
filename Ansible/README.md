@@ -70,6 +70,9 @@
       |                 |
       +----[SHA256]-----+
       [ansible@linux-node2 .ssh]$
+      [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.11
+      [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
+      [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
       
 
 4、配置ansible
