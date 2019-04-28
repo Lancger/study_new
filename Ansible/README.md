@@ -45,6 +45,12 @@
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.11
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
+      
+      
+      #测试指定无密码的私钥登录
+      [ansible@linux-node2 .ssh]$ ssh -i /opt/ansible/.ssh/id_rsa 'root@192.168.56.12'
+      Last login: Sun Apr 28 20:48:54 2019 from 192.168.56.12
+      [root@linux-node2 ~]#
 
 3、普通用户运行（私钥有密码）
 
@@ -70,6 +76,7 @@
       |                 |
       +----[SHA256]-----+
       [ansible@linux-node2 .ssh]$
+      
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.11
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
