@@ -46,7 +46,8 @@
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
       [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
 
-      
+3、配置ansible
+
       #vim /etc/ansible/hosts
       [mysql]
       192.168.56.12
