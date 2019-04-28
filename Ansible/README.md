@@ -19,11 +19,33 @@
       useradd ansible -d /opt/ansible/
       su - ansible
       
-      ssh-keygen -t rsa
-      ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.11
-      ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
-      ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
+      [ansible@linux-node2 ansible]$ ssh-keygen -t rsa
+      Generating public/private rsa key pair.
+      Enter file in which to save the key (/opt/ansible//.ssh/id_rsa):
+      Enter passphrase (empty for no passphrase):
+      Enter same passphrase again:
+      Your identification has been saved in /opt/ansible//.ssh/id_rsa.
+      Your public key has been saved in /opt/ansible//.ssh/id_rsa.pub.
+      The key fingerprint is:
+      SHA256:mdZDJ4TPowiwPQtGZf0HoqAtY98rJN/fG+pfVBOCmGc ansible@linux-node2
+      The key's randomart image is:
+      +---[RSA 2048]----+
+      |   .o.  o.o. .   |
+      |  +.  oooE  . .  |
+      | + = . oo+o .o   |
+      |+.= =   .==o. .  |
+      |.+...+ .Sooo     |
+      | . o..... ..     |
+      |  + . .  . .     |
+      |   o o  o o      |
+      |    . o+.+.      |
+      +----[SHA256]-----+
+      [ansible@linux-node2 ansible]$
       
+      [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.11
+      [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.12
+      [ansible@linux-node2 ansible]$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.56.13
+
       
       #vim /etc/ansible/hosts
       [mysql]
