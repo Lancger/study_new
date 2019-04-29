@@ -4,7 +4,7 @@ mkdir -pv /opt/ansible/playbooks/roles/node_exporter/{tasks,files,templates,meta
 
 1、下载及解压安装包
 
-cd /usr/local/src/
+cd /opt/ansible/playbooks/roles/node_exporter/files/
 wget https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
 
 mkdir -p /data0/prometheus 
