@@ -114,3 +114,7 @@
       [root@node1 ansible_playbooks]# ansible-playbook site.yml
 
       当然也可以把这些内容写入同一个playbook中。playbook的名字可以自定义。
+      
+      
+       参看文档： https://www.cnblogs.com/zhaojiankai/p/7655855.html
+
