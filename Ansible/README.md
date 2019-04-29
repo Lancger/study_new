@@ -141,7 +141,7 @@ b、编辑ansible.cfg
       module_utils   = /usr/share/my_module_utils/
       remote_tmp     = ~/.ansible/tmp
       local_tmp      = ~/.ansible/tmp
-      roles_path    = /opt/ansible/roles
+      roles_path    = /opt/ansible/playbooks/roles
       #关闭第一次使用ansible连接客户端是输入命令提示,关闭StrictHostKeyChecking检查
       host_key_checking = False
       timeout = 10
