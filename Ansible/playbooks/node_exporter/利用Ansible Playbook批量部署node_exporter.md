@@ -1,6 +1,9 @@
+# 一、初始化node_exporter playbook环境
+```
+mkdir -pv /opt/ansible/roles/node_exporter/{tasks,files,templates,meta,handlers,vars}
+
 1、下载及解压安装包
 
-```
 cd /usr/local/src/
 wget https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
 
@@ -13,10 +16,10 @@ cd /usr/local/src/
 mv node_exporter-0.17.0.linux-amd64 /data0/prometheus/node_exporter
  
 chown -R prometheus.prometheus /data0/prometheus
-
 ```
 
-2、play-book文件编写
+
+# 二、play-book文件编写
 ```
 - hosts: yourservers
   user: root
