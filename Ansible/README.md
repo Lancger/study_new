@@ -129,11 +129,12 @@ b、编辑ansible.cfg
       remote_tmp     = ~/.ansible/tmp
       local_tmp      = ~/.ansible/tmp
       roles_path    = /opt/ansible/roles
-      #关闭第一次使用ansible连接客户端是输入命令提示
-      host_key_checking = False //关闭StrictHostKeyChecking检查
+      #关闭第一次使用ansible连接客户端是输入命令提示,关闭StrictHostKeyChecking检查
+      host_key_checking = False
       timeout = 10
       log_path = /var/log/ansible.log
-      gathering = smart  //smart 表示默认收集 facts，但 facts 已有的情况下不会收集，即使用缓存 facts
+      #smart 表示默认收集 facts，但 facts 已有的情况下不会收集，即使用缓存 facts
+      gathering = smart
       fact_caching = jsonfile
       fact_caching_connection=/tmp/.ansible_caching
       [inventory]
@@ -141,11 +142,11 @@ b、编辑ansible.cfg
       [paramiko_connection]
       [ssh_connection]
       #开启SSH长连接
-      ssh_args = -C -o ControlMaster=auto -o ControlPersist=600s // ControlPersist 即持久化 socket，一次验证，长连接时间保持10分钟
+      ssh_args = -C -o ControlMaster=auto -o ControlPersist=600s
       control_path_dir = ~/.ansible/cp
       control_path = %(directory)s/%%h-%%r
       #默认情况下，ansible的执行流程是把生成好的本地python脚本PUT到远程服务器然后运行。如果开启了pipelining，整个流程少了一个PUT脚本到远程服务器的步骤，直接在SSH的会话中进行，可以提高整个执行效率。
-      pipelining = True //加速 Ansible 执行速度
+      pipelining = True
       #scp将代替用来为远程主机传输文件
       scp_if_ssh=False
       [persistent_connection]
