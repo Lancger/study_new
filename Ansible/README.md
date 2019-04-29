@@ -121,8 +121,39 @@ a、编辑hosts文件
 
 b、编辑ansible.cfg
 
-     #vim /etc/ansible/ansible.cfg
-      
+      cat > /etc/ansible/ansible.cfg <<EOF
+      [defaults]
+      inventory      = /etc/ansible/hosts
+      library        = /usr/share/my_modules/
+      module_utils   = /usr/share/my_module_utils/
+      remote_tmp     = ~/.ansible/tmp
+      local_tmp      = ~/.ansible/tmp
+      roles_path    = /opt/ansible/roles
+      #关闭第一次使用ansible连接客户端是输入命令提示
+      host_key_checking = False //关闭StrictHostKeyChecking检查
+      timeout = 10
+      log_path = /var/log/ansible.log
+      gathering = smart  //smart 表示默认收集 facts，但 facts 已有的情况下不会收集，即使用缓存 facts
+      fact_caching = jsonfile
+      fact_caching_connection=/tmp/.ansible_caching
+      [inventory]
+      [privilege_escalation]
+      [paramiko_connection]
+      [ssh_connection]
+      #开启SSH长连接
+      ssh_args = -C -o ControlMaster=auto -o ControlPersist=600s // ControlPersist 即持久化 socket，一次验证，长连接时间保持10分钟
+      control_path_dir = ~/.ansible/cp
+      control_path = %(directory)s/%%h-%%r
+      #默认情况下，ansible的执行流程是把生成好的本地python脚本PUT到远程服务器然后运行。如果开启了pipelining，整个流程少了一个PUT脚本到远程服务器的步骤，直接在SSH的会话中进行，可以提高整个执行效率。
+      pipelining = True //加速 Ansible 执行速度
+      #scp将代替用来为远程主机传输文件
+      scp_if_ssh=False
+      [persistent_connection]
+      [accelerate]
+      [selinux]
+      [colors]
+      [diff]
+      EOF      
 
       
 6、测试运行
@@ -136,6 +167,22 @@ b、编辑ansible.cfg
       [ansible@linux-node2 ~]$ ansible node-02 --private-key /opt/ansible/.ssh/id_rsa -m command -a "date"
       node-02 | CHANGED | rc=0 >>
       Sun Apr 28 21:34:17 CST 2019
+
+# 三、配置参数验证
+
+1、验证缓存配置
+      
+      使用setup模块获取主机信息
+      [ansible@linux-node2 ~]$ ansible all -m setup
+      
+      #然后验证缓存jsonfile文件
+      [ansible@linux-node2 .ansible_caching]$ pwd
+      /tmp/.ansible_caching
+      [ansible@linux-node2 .ansible_caching]$ ls
+      node-02  node-04
+      
+2、验证长连接
+
 
       4.使用模块
       ansible 192.168.56.11 -m command -a "date"
