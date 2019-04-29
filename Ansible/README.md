@@ -183,10 +183,15 @@ b、编辑ansible.cfg
       node-02  node-04
       
 2、验证长连接
-
-
-      4.使用模块
-      ansible 192.168.56.11 -m command -a "date"
+      
+      #执行一条指令
+      [ansible@linux-node2 cp]$ ansible node-02 -m command -a "date"
+      
+      #验证目录是否有socket文件
+      [ansible@linux-node2 cp]$ ls -l /opt/ansible/.ansible/cp/
+      total 0
+      srw-------. 1 ansible ansible 0 Apr 29 08:44 192.168.56.12-root
+      srw-------. 1 ansible ansible 0 Apr 29 08:44 192.168.56.14-root
       
       列出当前主机可以使用的ansible模块：
       ansible-doc -l
