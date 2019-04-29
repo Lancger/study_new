@@ -1,6 +1,19 @@
 # 一、Ansible介绍及安装部署
 
+      #备份当前的yum源
+      mv /etc/yum.repos.d /etc/yum.repos.d_backup
+
+      #新建空的yum源设置目录
+      mkdir /etc/yum.repos.d
+
+      #centos6系统
+      wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS6-Base-163.repo
+      wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+
+      #centos7系统
       wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
+      wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+
       yum clean all
       yum makecache
       yum install epel-release
