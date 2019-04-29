@@ -153,7 +153,7 @@ b、编辑ansible.cfg
       [selinux]
       [colors]
       [diff]
-      EOF      
+      EOF
 
       
 6、测试运行
