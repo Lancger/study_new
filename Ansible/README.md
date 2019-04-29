@@ -16,7 +16,7 @@
 
       yum clean all
       yum makecache
-      yum install epel-release
+      yum install epel-release openssh-clients
       yum install ansible ansible-doc -y
 
 # 二、ansible运行
