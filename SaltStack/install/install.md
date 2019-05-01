@@ -8,6 +8,17 @@
 
 # 二、安装
 ```
+0) 准备工作
+
+准备两台机器，这两台机器都关闭 selinux，清空 iptables 规则并保存。
+
+master：192.168.56.11
+slaver：192.168.56.12
+
+vim /etc/hosts
+192.168.56.11  master.test.com
+192.168.56.12  slaver.test.com
+
 1）服务端安装
 
 [iyunv@master ~]# yum install -y epel-release
