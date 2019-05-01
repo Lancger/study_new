@@ -1,6 +1,5 @@
 # 一、安装
 ```
-一、安装
 1）服务端安装
 
 [iyunv@master ~]# yum install -y epel-release
