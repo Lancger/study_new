@@ -19,3 +19,42 @@
 [iyunv@slaver ~]# yum install -y salt-minion
 
 ```
+
+# 三、配置
+```
+1）服务端和客户端都要配置 master
+# vim /etc/salt/minion                   //在第16行添加，冒号后有一个空格
+master: 192.168.0.109
+
+
+2）启动服务
+
+
+
+
+```
+
+# 四、配置认证
+```
+1）在服务端上操作
+
+[iyunv@master ~]# salt-key -a  slaver.test.com
+[iyunv@master ~]# salt-key -a  master.test.com
+[iyunv@master ~]# salt-key
+
+说明：
+-a ：accept ，
+-A：accept-all，
+-d：delete，
+-D：delete-all。
+可以使用 salt-key 命令查看到已经签名的客户端。此时我们在客户端的 /etc/salt/pki/minion 目录下面会多出一个minion_master.pub 文件。
+
+
+2）测试验证
+
+示例1： salt '*' test.ping                  //检测通讯是否正常，也可以指定其中一个 'slaver.test.com'
+
+示例2:  salt '*' cmd.run   'df -h'        //远程执行命令
+
+说明： 这里的 * 必须是在 master 上已经被接受过的客户端，可以通过 salt-key 查到，通常是我们已经设定的 id 值。关于这部分内容，它支持通配、列表以及正则。 比如两台客户端 web10、web11， 那我们可以写成  salt 'web*'    salt 'web1[02]'  salt -L 'web10,web11'   salt -E 'web(10|11)' 等形式，使用列表，即多个机器用逗号分隔，而且需要加-L，使用正则必须要带-E选项。 它还支持 grains 和 pillar，分别加 -G 和 -I 选项，下面会介绍到。
+```
