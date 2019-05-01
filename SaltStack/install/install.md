@@ -15,7 +15,8 @@
 master：192.168.56.11
 slaver：192.168.56.12
 
-vim /etc/hosts
+#vim /etc/hosts
+
 192.168.56.11  master.test.com
 192.168.56.12  slaver.test.com
 
