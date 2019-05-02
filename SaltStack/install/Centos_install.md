@@ -46,6 +46,8 @@ yum install -y salt-minion
 1）服务端和客户端都要配置 master
 
 以下两种方式都可以，选择其中一种即可
+# vim /etc/salt/minion
+
 # master改为服务端的主机名
 master: master.test.com
 
