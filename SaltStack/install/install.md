@@ -21,6 +21,11 @@ sudo tee /etc/hosts << 'EOF'
 192.168.56.11  master.test.com
 192.168.56.12  slaver.test.com
 EOF
+或
+cat > /etc/hosts << \EOF       加 \ 表示不解析变量
+192.168.56.11  master.test.com
+192.168.56.12  slaver.test.com
+EOF
 
 1）服务端安装
 
