@@ -59,6 +59,12 @@ master: 182.168.56.11
 # vim /etc/salt/minion +78
 id: slaver.test.com
 
+最终修改
+sudo tee /etc/salt/minion << 'EOF'
+master: 182.168.56.11
+id: slaver.test.com
+EOF
+
 
 2）启动saltstack服务
 
