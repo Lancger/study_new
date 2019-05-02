@@ -55,10 +55,8 @@ master: 182.168.56.11
 
 分别修改三台机器minion文件中的的id为自己的主机名
 # vim /etc/salt/minion +78
-id: client1
+id: slaver.test.com
 
-# vim /etc/salt/minion +78
-id: client2
 
 2）启动saltstack服务
 
