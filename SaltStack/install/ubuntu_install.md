@@ -5,6 +5,7 @@ sudo apt-get install salt-minion salt-ssh
 
 sudo systemctl restart salt-minion
 
+sudo systemctl enable salt-minion
 
 #最终修改
 sudo tee /etc/salt/minion << 'EOF'
