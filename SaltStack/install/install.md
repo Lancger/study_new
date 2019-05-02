@@ -15,10 +15,11 @@
 master：192.168.56.11
 slaver：192.168.56.12
 
-#vim /etc/hosts
-
+0) 修改hosts
+sudo tee /etc/hosts << 'EOF'
 192.168.56.11  master.test.com
 192.168.56.12  slaver.test.com
+EOF
 
 1）服务端安装
 
