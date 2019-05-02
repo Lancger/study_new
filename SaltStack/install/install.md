@@ -44,15 +44,34 @@ yum install -y salt-minion
 # 三、配置
 ```
 1）服务端和客户端都要配置 master
-# vim /etc/salt/minion                   //在第16行添加，冒号后有一个空格
-master: 192.168.0.109
+
+以下两种方式都可以，选择其中一种即可
+# master改为服务端的主机名
+master: master.test.com
+
+# master改为服务端的IP
+master: 182.168.56.11
 
 
-2）启动服务
+分别修改三台机器minion文件中的的id为自己的主机名
+# vim /etc/salt/minion +78
+id: client1
 
+# vim /etc/salt/minion +78
+id: client2
 
+2）启动saltstack服务
 
+服务端
 
+systemctl enable salt-master
+systemctl enable salt-minion
+systemctl restart salt-master
+systemctl restart salt-minion
+
+客户端
+systemctl enable salt-minion
+systemctl restart salt-minion
 ```
 
 # 四、配置认证
