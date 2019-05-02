@@ -108,3 +108,18 @@ salt '*' cmd.run   'df -h'         //远程执行命令
 
 说明： 这里的 * 必须是在 master 上已经被接受过的客户端，可以通过 salt-key 查到，通常是我们已经设定的 id 值。关于这部分内容，它支持通配、列表以及正则。 比如两台客户端 web10、web11， 那我们可以写成  salt 'web*'    salt 'web1[02]'  salt -L 'web10,web11'   salt -E 'web(10|11)' 等形式，使用列表，即多个机器用逗号分隔，而且需要加-L，使用正则必须要带-E选项。 它还支持 grains 和 pillar，分别加 -G 和 -I 选项，下面会介绍到。
 ```
+
+
+命令行
+```
+yum install -y epel-release
+yum install -y salt-minion
+
+sudo tee /etc/salt/minion << 'EOF'
+master: 192.168.56.11
+id: slaver.test.com
+EOF
+
+systemctl enable salt-minion
+systemctl restart salt-minion
+```
