@@ -2,7 +2,8 @@
 
 https://cn.vuejs.org/v2/guide/installation.html
 
-1、直接引入vue.js
+1、直接从官网找到vue.js的开发版本或者生产版本保存为vue.js
+https://vuejs.org/js/vue.js
 
 ```
 <!DOCTYPE html>
