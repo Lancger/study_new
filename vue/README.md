@@ -15,6 +15,7 @@
 
 ## 二、命令行工具 vue-cli
 
+    vue-cil是vue的脚手架工具
     # 全局安装 vue-cli
     cnpm install --global vue-cli
     
