@@ -59,7 +59,9 @@ ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某�
 使用Vue的过程就是定义MVVM各个组成部分的过程的过程。
 
 定义View 
+
 定义Model 
+
 创建一个Vue实例或”ViewModel”，它用于连接View和Model
 
 在创建Vue实例时，需要传入一个选项对象，选项对象可以包含数据、挂载元素、方法、模生命周期钩子等等。
