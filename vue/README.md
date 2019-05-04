@@ -21,3 +21,9 @@
     
     # 创建一个基于 webpack 模板的新项目
     vue init webpack my-project
+
+
+
+参考文档：
+
+https://my.oschina.net/u/3138954/blog/2056301
