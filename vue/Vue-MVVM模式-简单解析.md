@@ -58,11 +58,11 @@ ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某�
 ```
 使用Vue的过程就是定义MVVM各个组成部分的过程的过程。
 
-定义View 
+## 定义View 
 
-定义Model 
+## 定义Model 
 
-创建一个Vue实例或”ViewModel”，它用于连接View和Model
+## 创建一个Vue实例或”ViewModel”，它用于连接View和Model
 
 在创建Vue实例时，需要传入一个选项对象，选项对象可以包含数据、挂载元素、方法、模生命周期钩子等等。
 
@@ -70,6 +70,21 @@ ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某�
 
 Vue.js有多种数据绑定的语法，最基础的形式是文本插值，使用一对大括号语法，在运行时{{ message }}会被数据对象的message属性替换，所以页面上会输出”Hello World!”。
 
+# 四、双向绑定示例
+
+MVVM模式本身是实现了双向绑定的，在Vue.js中可以使用v-model指令在表单元素上创建双向数据绑定。
+
+```
+<!--这是我们的View-->
+<div id="app">
+    <p>{{ message }}</p>
+    <input type="text" v-model="message"/>
+</div>
+```
+
+将message绑定到文本框，当更改文本框的值时，<p>{{ message }}</p> 中的内容也会被更新。 
+
+反过来，如果改变message的值，文本框的值也会被更新，我们可以在Chrome控制台进行尝试。 
 
 参考资料：
 
