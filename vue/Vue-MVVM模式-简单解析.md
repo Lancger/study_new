@@ -31,10 +31,10 @@ ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某�
 </head>
 
 <body>
-        <!--这是我们的View-->
-        <div id="app">
-            {{ message }}
-        </div>
+    <!--这是我们的View-->
+    <div id="app">
+        {{ message }}
+    </div>
     <script>
         // 这是我们的Model
         var exampleData = {
