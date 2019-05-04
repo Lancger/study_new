@@ -12,8 +12,8 @@
     <div id="app">
         <!-- <div title="this is hello world">hello world</div>  title 是html的一个属性 -->
         <!-- <div v-bind:title="title">hello world</div>  使用数据的对应属性绑定 -->
-        <div :title="title">hello world</div>
-        <!-- <div :title="'dell le ' + title ">hello world</div>  支持模板语法拼接 -->
+        <div :title="title">hello world</div>  <!--: 表示属性简写方式-->
+        <!-- <div :title="'dell lee ' + title ">hello world</div>  支持模板语法拼接 -->
     </div>
 
     <script>
