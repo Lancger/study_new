@@ -15,11 +15,10 @@ https://vuejs.org/js/vue.js
     <script src="js/vue.js"></script>
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app">{{ msg }}</div>
     <script>
         new Vue({
             el: '#app',
-            template: '<h1>Hello {{ msg }}</h1>',
             data: {
                 msg: "world"
             }
