@@ -9,6 +9,8 @@ Vue.js是当下很火的一个JavaScript MVVM库，它是以数据驱动和组�
 ## 二、MVVM模式
 下图不仅概括了MVVM模式（Model-View-ViewModel），还描述了在Vue.js中ViewModel是如何和View以及Model进行交互的。
 
+  ![mvvm](https://github.com/Lancger/study_new/blob/master/images/mvvm.png)
+
 ViewModel是Vue.js的核心，它是一个Vue实例。Vue实例是作用于某一个HTML元素上的，这个元素可以是HTML的body元素，也可以是指定了id的某个元素。
 
 当创建了ViewModel后，双向绑定是如何达成的呢？
