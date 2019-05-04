@@ -56,4 +56,28 @@ https://vuejs.org/js/vue.js
 # 二、对比jquery
 
 ```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <!-- <script src="js/vue.js"></script> -->
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">{{ msg }}</div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: "Hello World"
+            }
+        })
+
+        // jquery操作dom方式
+        var dom = document.getElementById("app")
+        dom.innerHTML = "Hello World"
+    </script>
+</body>
+</html>
 ```
