@@ -20,7 +20,7 @@ https://vuejs.org/js/vue.js
         new Vue({
             el: '#app',
             data: {
-                msg: "world"
+                msg: "Hello World"
             }
         })
     </script>
