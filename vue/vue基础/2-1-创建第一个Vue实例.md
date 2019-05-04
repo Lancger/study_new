@@ -27,8 +27,8 @@ https://vuejs.org/js/vue.js
 </body>
 </html>
 ```
-2、cdn方式引入
 
+2、cdn方式引入
 
 ```
 <!DOCTYPE html>
@@ -39,24 +39,16 @@ https://vuejs.org/js/vue.js
     <!-- <script src="js/vue.js"></script> -->
     <script type="text/javascript" src="https://unpkg.com/vue"></script>
 </head>
-
 <body>
-    <!--挂载点， 模板，实例之间的关系-->
-    <div id="app"></div>
-    
+    <div id="app">{{ msg }}</div>
     <script>
-        // 创建一个 Vue 实例或 "ViewModel"
-        // 它连接 View 与 Model
         new Vue({
             el: '#app',
-            template: '<h1>Hello {{ msg }}</h1>',
             data: {
-                msg: "world"
+                msg: "Hello World"
             }
         })
     </script>
-
 </body>
-
 </html>
 ```
