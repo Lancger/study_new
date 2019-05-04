@@ -1,7 +1,8 @@
-# 一、引入Vue.js
+# 一、引入Vue.js的几种方式
 
-https://cn.vuejs.org/v2/guide/
+https://cn.vuejs.org/v2/guide/installation.html
 
+1、直接引入vue.js
 
 ```
 <!DOCTYPE html>
