@@ -1,5 +1,6 @@
 # 一、ansible-playbook测试
 ```
+#进入目录
 cd /opt/ansible/playbooks/roles/node_exporter_install
 
 #安装
