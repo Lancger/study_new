@@ -144,6 +144,7 @@ b、编辑ansible.cfg
       roles_path    = /opt/ansible/playbooks/roles
       #关闭第一次使用ansible连接客户端是输入命令提示,关闭StrictHostKeyChecking检查
       host_key_checking = False
+      deprecation_warnings=False
       timeout = 10
       log_path = /var/log/ansible.log
       #smart 表示默认收集 facts，但 facts 已有的情况下不会收集，即使用缓存 facts
