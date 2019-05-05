@@ -6,6 +6,7 @@ mkdir -pv /opt/ansible/playbooks/roles/node_exporter/{defaults,files,handlers,me
 #创建入口文件
 touch /opt/ansible/playbooks/roles/node_exporter/node_exporter.yml
 
+
 1、下载及解压安装包
 
 cd /opt/ansible/playbooks/roles/node_exporter/files/
