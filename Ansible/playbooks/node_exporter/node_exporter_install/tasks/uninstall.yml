@@ -1,0 +1,29 @@
+---
+# author: Bryan
+
+- name: "uninstall | stop node_exporter service"
+  service: name=node_exporter.service state=stopped 
+
+- name: "uninstall | disable chattr -i"
+  shell: "chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*"
+
+- name: "uninstall | Remove {{ user_name }} user."
+  user: name={{ user_name }} state=absent
+  #user: name={{ user_name }} state=absent remove=yes   会删除家目录
+
+- name: "uninstall | Remove {{ group_name }} group."
+  group: name={{ group_name }} state=absent
+
+- name: "uninstall | enable chattr +i"
+  shell: "chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow*"
+
+#- name: uninstall | Remove daemonize
+#  yum: name=daemonize state=removed
+
+- name: "uninstall | rm /usr/local/prometheus/node_exporter/ directory"
+  #shell: "rm -rf /usr/local/prometheus/node_exporter/"
+  file: dest=/usr/local/prometheus/node_exporter/ state=absent
+
+- name: "uninstall | rm /usr/lib/systemd/system/node_exporter.service"
+  #shell: "rm -rf /usr/local/prometheus/node_exporter/"
+  file: dest=/usr/lib/systemd/system/node_exporter.service state=absent

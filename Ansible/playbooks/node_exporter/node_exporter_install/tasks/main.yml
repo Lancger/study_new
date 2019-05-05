@@ -1,0 +1,7 @@
+---
+- include: install.yml
+  tags: install
+- include: uninstall.yml
+  tags: uninstall
+- include: restart.yml
+  tags: restart
