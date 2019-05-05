@@ -1,5 +1,0 @@
----
-- include: install.yml
-  tags: install
-- include: uninstall.yml
-  tags: uninstall
