@@ -211,7 +211,32 @@ b、编辑ansible.cfg
       ansible-doc -l
       
       
+# 四、添加时间计时模块
+
+ansible中可以加入一个计时模块在执行ansible-playbook时显示执行时长。方便使用。
+
+1、配置方法
+```
+cd /etc/ansible
+mkdir callback_plugins
+cd callback_plugins
+wget https://raw.githubusercontent.com/jlafon/ansible- \ profile/master/callback_plugins/profile_tasks.py
+
+注意：ansible2.0以上版本需在ansible.cdg中加入以下内容
+[defaults] 下面加入
+callback_whitelist= profile_tasks
+再次执行ansbile-playbook时显示执行时长
+```
+2、测试结果
+```
+```
+
+
+
+
  参看文档： https://www.cnblogs.com/zhaojiankai/p/7655855.html
 
 https://www.cnblogs.com/littlemonsters/p/5783672.html     SSH私钥取消密码（passphrase ）
+
+https://blog.51cto.com/lxlxlx/1894386  ansible自动化部署之第三方模块添加（时间计时模块）
 
