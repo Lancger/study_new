@@ -1,6 +1,10 @@
 # 一、初始化node_exporter playbook环境
 ```
+#初始化目录文件
 mkdir -pv /opt/ansible/playbooks/roles/node_exporter/{defaults,files,handlers,meta,tasks,templates,vars}
+
+#创建入口文件
+touch /opt/ansible/playbooks/roles/node_exporter/node_exporter.yml
 
 1、下载及解压安装包
 
