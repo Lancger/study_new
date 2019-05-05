@@ -2,4 +2,4 @@
 # author: Bryan
 
 - name: restart node_exporter
-  service: name=node_exporter enabled=yes state=restarted
+  service: name=node_exporter.service enabled=yes state=restarted
