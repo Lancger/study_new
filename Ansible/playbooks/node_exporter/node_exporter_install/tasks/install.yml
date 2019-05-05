@@ -1,0 +1,30 @@
+---
+# author: Bryan
+
+- name: "install | disable chattr -i"
+  shell: "chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*"
+
+- name: "install | Create {{ group_name }} group."
+  group: name={{ group_name }}
+
+- name: "install | Create {{ user_name }} user."
+  user: name={{ user_name }} group={{ group_name }} shell=/sbin/nologin
+
+- name: "install | enable chattr +i"
+  shell: "chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow*"
+
+- name: install | Install daemonize.
+  yum: name=daemonize state=present
+
+- name: install | mkdir node_exporter directory
+  #shell: mkdir -p /usr/local/prometheus/node_exporter/
+  file: path=/usr/local/prometheus/node_exporter/ state=directory recurse=yes owner={{ user_name }} group={{ group_name }} mode=0655
+
+- name: install | unarchive node_exporter-0.17.0.linux-amd64.tar.gz
+  unarchive:
+    src: "node_exporter-0.17.0.linux-amd64.tar.gz"
+    dest: /usr/local/prometheus/node_exporter/
+    owner: "prometheus"
+    group: "prometheus"
+    mode: 0655
+    copy: yes

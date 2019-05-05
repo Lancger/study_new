@@ -1,0 +1,7 @@
+---
+- hosts: node_exporter
+  remote_user: root
+  gather_facts: False
+  sudo: false
+  roles:
+    - node_exporter_install 
