@@ -21,5 +21,6 @@ yarn global add @vue/cli
 
 参考文档：
 
+https://cli.vuejs.org/zh/guide/installation.html  VUE_CLI
 
 https://my.oschina.net/u/3138954/blog/2056301
