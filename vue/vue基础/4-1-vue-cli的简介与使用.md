@@ -26,6 +26,20 @@ npm install -g @vue/cli-init
 # `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同
 
 vue init webpack my-project
+
+```
+
+# 旧版本
+```
+# 全局安装 vue-cli
+npm install --global vue-cli
+
+#创建一个基于 webpack 模板的新项目
+vue init webpack my-project
+
+#安装依赖
+cd my-project
+npm run dev
 ```
 
 ## vue技术栈开发实战
