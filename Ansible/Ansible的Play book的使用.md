@@ -82,29 +82,30 @@
 
 6、Play book变量的使用
 
-（1）facts: 可直接调用
-（2）ansible-playbook 命令的命令行中的自定义变量
-    -e EXTRA_VARS, --extra-vars=EXTRA_VARS  #命令行中定义变量传递至yaml文件。
-（3）通过roles传递变量
-（4）Host Inventory
-（a）向不同的主机传递不同的变量；
-    IP/HOSTANME varable=value var2=value2
-    在hosts 组ip后添加变量
-（b）向组中的主机传递相同的变量
-    [group:var]         
-    arable=value
-注意：Inventory参数：
- 用于定义ansible远程连接目标主机时使用的参数，而非传递给playbook的变量。
-    ansible_ssh_host   
-    ansible_ssh_user
-    ansible_ssh_port
-    ansible_ssh_pass
-    ansible_sudo_pass
-		….
-查看远程主机的全部系统信息
-ansible all -m setup  #收集到的远程主机的变量
+	（1）facts: 可直接调用
+	（2）ansible-playbook 命令的命令行中的自定义变量
+	    -e EXTRA_VARS, --extra-vars=EXTRA_VARS  #命令行中定义变量传递至yaml文件。
+	（3）通过roles传递变量
+	（4）Host Inventory
+	（a）向不同的主机传递不同的变量；
+	    IP/HOSTANME varable=value var2=value2
+	    在hosts 组ip后添加变量
+	（b）向组中的主机传递相同的变量
+	    [group:var]         
+	    arable=value
+	注意：Inventory参数：
+	 用于定义ansible远程连接目标主机时使用的参数，而非传递给playbook的变量。
+	    ansible_ssh_host   
+	    ansible_ssh_user
+	    ansible_ssh_port
+	    ansible_ssh_pass
+	    ansible_sudo_pass
+			….
+	查看远程主机的全部系统信息
+	ansible all -m setup  #收集到的远程主机的变量
 
-(1)变量的定义示例:         
+(1)变量的定义示例:
+
 	变量定义位置 /etc/ansible/hosts
 	普通变量
 		[web]
@@ -124,44 +125,47 @@ ansible all -m setup  #收集到的远程主机的变量
 		nsible-playbook -e  调用
 
 示例1：hosts定义变量使用方法
-[root@centos7_1 ~]#vim /etc/ansible/hosts
-[web]
-172.16.250.90 hname=node1
-[root@centos7_1 ~]# cd /apps/yaml/
-[root@centos7_1 yaml]# vim hosname.yml
----
-- hosts: web
-  remote_user: root
-  tasks:
-  - name: sethostname
-    hostname:name={{ hname }}
-[root@centos7_1 yaml]# ansible-playbook  hosname.yml
+
+	[root@centos7_1 ~]#vim /etc/ansible/hosts
+	[web]
+	172.16.250.90 hname=node1
+	[root@centos7_1 ~]# cd /apps/yaml/
+	[root@centos7_1 yaml]# vim hosname.yml
+	---
+	- hosts: web
+	  remote_user: root
+	  tasks:
+	  - name: sethostname
+	    hostname:name={{ hname }}
+	[root@centos7_1 yaml]# ansible-playbook  hosname.yml
 
 示例2：在playbook中定义变量的方法
-[root@centos7_1yaml]# vim user1.yml
----
-- hosts: web
- remote_user: root
- vars:  #定义变量
- - username: testuser1   #变量列表
- - groupname: testgroup1
- tasks:
- - name: crete group
-   group: name={{ groupname }} state=present
- - name: crate user
-   user: name={{ username }} state=present                                                                                                                                                           
-[root@centos7_1 yaml]#ansible-playbook  user1.yml
+
+	[root@centos7_1yaml]# vim user1.yml
+	---
+	- hosts: web
+	 remote_user: root
+	 vars:  #定义变量
+	 - username: testuser1   #变量列表
+	 - groupname: testgroup1
+	 tasks:
+	 - name: crete group
+	   group: name={{ groupname }} state=present
+	 - name: crate user
+	   user: name={{ username }} state=present                                                                                                                                                           
+	[root@centos7_1 yaml]#ansible-playbook  user1.yml
 
 示例3：命令行参数传递
 利用命令行定义变量传递参数至剧本安装memcached。
-[root@centos7_1 yaml]#vim forth.yml
----
-- hosts: web
- remote_user: root
- tasks:
- - name: install $pkname
-yum: name={{pkname }} state=present       
-[root@centos7_1yaml]# ansible-playbook -e pkname=memcached forth.yml
+
+	[root@centos7_1 yaml]#vim forth.yml
+	---
+	- hosts: web
+	 remote_user: root
+	 tasks:
+	 - name: install $pkname
+	yum: name={{pkname }} state=present       
+	[root@centos7_1yaml]# ansible-playbook -e pkname=memcached forth.yml
 
 7、Play book中notifyh和handlers的使用
 
@@ -177,29 +181,28 @@ handler是由通知者进行notify，如果没有被notify，handler是不会执
 
 handlers最佳的应用场景是用来重启服务，或者触发系统重启操作的。除此之外很少会用到的。
 
- 
 
 示例：触发
 
 利用notify、handlers触发式重启服务。
 
-[root@centos7_1yaml]# vim web-2.yml
----
-- hosts: web
-  remote_user: root
-  tasks:
-  - name: install httpdpackage
-    yum: name=httpdstate=present
-  - name: install configurefile
-copy: src=/apps/work/files/httpd.confdest=/etc/httpd/conf/ 
-#该文件与目标主机文件不完全一致变回触发。
-    notify: restart httpd
-  - name: start httpd service
-    service: name=httpdstate=started
-  handlers:
-  - name: restart httpd
-service: name=httpd state=restarted
-[root@centos7_1 yaml]#ansible-playbook  web-2.yml
+	[root@centos7_1yaml]# vim web-2.yml
+	---
+	- hosts: web
+	  remote_user: root
+	  tasks:
+	  - name: install httpdpackage
+	    yum: name=httpdstate=present
+	  - name: install configurefile
+	copy: src=/apps/work/files/httpd.confdest=/etc/httpd/conf/ 
+	#该文件与目标主机文件不完全一致变回触发。
+	    notify: restart httpd
+	  - name: start httpd service
+	    service: name=httpdstate=started
+	  handlers:
+	  - name: restart httpd
+	service: name=httpd state=restarted
+	[root@centos7_1 yaml]#ansible-playbook  web-2.yml
 
 8、Play book中tags的使用
 
@@ -207,22 +210,22 @@ service: name=httpd state=restarted
 
 示例：执行指定tags
 
-[root@centos7_1yaml]# vim web-3.yml
----
-- hosts: web
- remote_user: root
- tasks:
- - name: install httpd package
-   yum: name=httpd state=present
- - name: install configure file
-   copy: src=/apps/work/files/httpd.conf dest=/etc/httpd/conf/
-   tags: instconf              #tags
- - name: start httpd service
-   service: name=httpd state=started
-[root@centos7_1 yaml]# ansible-playbook -tinstconf  web-3.yml 
+	[root@centos7_1yaml]# vim web-3.yml
+	---
+	- hosts: web
+	 remote_user: root
+	 tasks:
+	 - name: install httpd package
+	   yum: name=httpd state=present
+	 - name: install configure file
+	   copy: src=/apps/work/files/httpd.conf dest=/etc/httpd/conf/
+	   tags: instconf              #tags
+	 - name: start httpd service
+	   service: name=httpd state=started
+	[root@centos7_1 yaml]# ansible-playbook -tinstconf  web-3.yml 
 
 #指定tags instconf 执行。
-ansible-playbookweb-3.yml --tags=" instconf "  
+	ansible-playbookweb-3.yml --tags=" instconf "  
 执行此命令同样仅执行instconf 标签内容。
 
 9、tepmplates 模板的使用
@@ -235,64 +238,66 @@ template是文本文件，嵌套有脚本(使用模板编程语言编写)的配�
     Jinja2是基于python的模板引擎，功能比较类似于PHP的smarty，J2ee的Freemarker和velocity。它能完全支持    unicode，并具有集成的沙箱执行环境，应用广泛。
 
 Jinja2 语言：
-  字面量：
-    字符串：使用单引号或双引号；
-    数字：整数，浮点数
-    列表：[item1,item2 …..]
-    元组：(item1item2…,)
-    字典：{key1：value，key2：value….}
-      布尔型： true/filase
-    算数运算：
-      +,- , * , / , // , % **
-    比较操作：
-      ==， != , >=  ,<=
-    逻辑运算：
-      and，or， not，
-    流表达式
-      For、IF、when
+
+	  字面量：
+	    字符串：使用单引号或双引号；
+	    数字：整数，浮点数
+	    列表：[item1,item2 …..]
+	    元组：(item1item2…,)
+	    字典：{key1：value，key2：value….}
+	      布尔型： true/filase
+	    算数运算：
+	      +,- , * , / , // , % **
+	    比较操作：
+	      ==， != , >=  ,<=
+	    逻辑运算：
+	      and，or， not，
+	    流表达式
+	      For、IF、when
 
 示例：模板安装nginx
 
 模板配置文件nginx.conf.j2
 
-Worker_porcesses {{ ansible_precossor_vcpus }}  #注意空格哦。
-此变量执行ansible all -m setup  (收集到的远程主机的变量) 即可查看到
-Worker_porcesses {{ ansible_precossor_vcpus +1 }}
-此表达式也可。此处只为表示可支持算数运算。
+	Worker_porcesses {{ ansible_precossor_vcpus }}  #注意空格哦。
+	此变量执行ansible all -m setup  (收集到的远程主机的变量) 即可查看到
+	Worker_porcesses {{ ansible_precossor_vcpus +1 }}
+	此表达式也可。此处只为表示可支持算数运算。
 
-[root@centos7_1 yaml]# vim nginx.yml
----
-- hosts: web
- remote_user: root
- tasks:
- - name: install nginx
-  yum: name=nginx state=present
- - name: install conf file
-  template: src=/apps/work/files/nginx.conf.j2 dest=/etc/nginx/nginx.conf
-  notify: restart nginx
-  tags: instconf
- - name: start nginx service
-  service: name=nginx state=started
- handlers:
- - name: restart nginx
-    service:name=nginx state=restarted
-[root@centos7_1 yaml]# ansible-playbook  nginx.yml
+	[root@centos7_1 yaml]# vim nginx.yml
+	---
+	- hosts: web
+	 remote_user: root
+	 tasks:
+	 - name: install nginx
+	  yum: name=nginx state=present
+	 - name: install conf file
+	  template: src=/apps/work/files/nginx.conf.j2 dest=/etc/nginx/nginx.conf
+	  notify: restart nginx
+	  tags: instconf
+	 - name: start nginx service
+	  service: name=nginx state=started
+	 handlers:
+	 - name: restart nginx
+	    service:name=nginx state=restarted
+	[root@centos7_1 yaml]# ansible-playbook  nginx.yml
 
 9.2、when条件判断    
 
-when 语句：在task中使用。Jinja2的语法格式
+	when 语句：在task中使用。Jinja2的语法格式
 
-tasks：
-- name: install conf file to Centos7
-  template:src=files/nginxconf.c7.j2 dest=/etc/nginx/nginx.conf
-when: ansible_distribution_major_version==”7”
-- name: install conf file to Centos6
-  template:src=files/nginxconf.c6.j2 dest=/etc/nginx/nginx.conf
-  when:ansible_distribution_major_version ==”6”
+	tasks：
+	- name: install conf file to Centos7
+	  template:src=files/nginxconf.c7.j2 dest=/etc/nginx/nginx.conf
+	when: ansible_distribution_major_version==”7”
+	- name: install conf file to Centos6
+	  template:src=files/nginxconf.c6.j2 dest=/etc/nginx/nginx.conf
+	  when:ansible_distribution_major_version ==”6”
 
-以上语法表示若查询远程主机系统为centos6则执行，install conf file to Centos6。
+	以上语法表示若查询远程主机系统为centos6则执行，install conf file to Centos6。
 
-若为cenos7则执行install conf file to Centos7。
+	若为cenos7则执行install conf file to Centos7。
+	
 9.3、迭代with_items
 
     循环迭代，需要重复执行的任务；对迭代项引用，固定变量名为item，而后在task中使用with_items给定迭代的元素列表；
@@ -305,14 +310,14 @@ when: ansible_distribution_major_version==”7”
 
 示例1：
 
-字符串方式
+	字符串方式
 
-- name： install some package
-  yum：name={{ item }}  state=present
-   with_items:
-  - nginx
-   - memecached
-   - php-fpm
+	- name： install some package
+	  yum：name={{ item }}  state=present
+	   with_items:
+	  - nginx
+	   - memecached
+	   - php-fpm
 
 示例2：
 
@@ -344,26 +349,26 @@ when: ansible_distribution_major_version==”7”
 11、Playbook案例剖析
 
 实例：
----
-- hosts: all
-  sudo: yes
- 
-  tasks:
-   - name: 安装Apache
-     yum: name={{ item }} state=present
-     with_items:
-     - httpd
-     - httpd-devel
-   - name: 复制配置文件
-     copy:
-       src=\'#\'" /tmp/httpd.conf",
-         dest: "/etc/httpd/conf/httpd.conf" }
-     - {
-       src=\'#\'" /tmp/httpd-vhosts.conf",
-       dest: "/etc/httpd/conf/httpd-vhosts.conf"
-       }
-   - name: 检查Apache运行状态，并设置开机启动
-     service: name=httpd state=started enabled=yes
+	---
+	- hosts: all
+	  sudo: yes
+
+	  tasks:
+	   - name: 安装Apache
+	     yum: name={{ item }} state=present
+	     with_items:
+	     - httpd
+	     - httpd-devel
+	   - name: 复制配置文件
+	     copy:
+	       src=\'#\'" /tmp/httpd.conf",
+		 dest: "/etc/httpd/conf/httpd.conf" }
+	     - {
+	       src=\'#\'" /tmp/httpd-vhosts.conf",
+	       dest: "/etc/httpd/conf/httpd-vhosts.conf"
+	       }
+	   - name: 检查Apache运行状态，并设置开机启动
+	     service: name=httpd state=started enabled=yes
 
 12、执行playbook文件
 
@@ -371,49 +376,50 @@ when: ansible_distribution_major_version==”7”
 
 (1) 检测语法
 
-ansible-playbook  --syntax-check  /path/to/playbook.yaml
+	ansible-playbook  --syntax-check  /path/to/playbook.yaml
 
 (2) 测试运行
 
-ansible-playbook -C /path/to/playbook.yaml
---list-hosts   # 列出主机
---list-tasks  # 列出任务
---list-tags   # 列出标签
+	ansible-playbook -C /path/to/playbook.yaml
+	--list-hosts   # 列出主机
+	--list-tasks  # 列出任务
+	--list-tags   # 列出标签
 
  (3) 运行
 
-ansible-playbook  /path/to/playbook.yaml
--t TAGS, --tags=TAGS
---skip-tags=SKIP_TAGS
---start-at-task=START_AT
+	ansible-playbook  /path/to/playbook.yaml
+	-t TAGS, --tags=TAGS
+	--skip-tags=SKIP_TAGS
+	--start-at-task=START_AT
 
 在执行playbook前，可以做些检查
 
 检查palybook语法
 
-ansible-playbook -i hosts httpd.yml --syntax-check
+	ansible-playbook -i hosts httpd.yml --syntax-check
 
 列出要执行的主机
 
-ansible-playbook -i hosts httpd.yml --list-hosts
+	ansible-playbook -i hosts httpd.yml --list-hosts
 
 列出要执行的任务
 
-ansible-playbook -i hosts httpd.yml --list-tasks
+	ansible-playbook -i hosts httpd.yml --list-tasks
 
 13、debug你的playbook
 
-检查语法：ansible-playbook --syntax-check playbook.yml 
-查看host列表：ansible-playbook --list-hosts playbook.yml
-查看task列表：ansible-playbook --list-tasks playbook.yml
-检查模式(不会运行): ansible-playbook --check playbook.yml
-diff模式(查看文件变化)： ansible-playbook --check --diff playbook.yml
-从指定的task开始运行：ansible-playbook --start-at-task="install packages" playbook.yml
-逐个task运行，运行前需要你确认：ansible-playbook --step playbook.yml
-指定tags：ansible-playbook --tags=foo,bar playbook.yml
-跳过tags：ansible-playbook --skip-tags=baz,quux playbook.yml
+	检查语法：ansible-playbook --syntax-check playbook.yml 
+	查看host列表：ansible-playbook --list-hosts playbook.yml
+	查看task列表：ansible-playbook --list-tasks playbook.yml
+	检查模式(不会运行): ansible-playbook --check playbook.yml
+	diff模式(查看文件变化)： ansible-playbook --check --diff playbook.yml
+	从指定的task开始运行：ansible-playbook --start-at-task="install packages" playbook.yml
+	逐个task运行，运行前需要你确认：ansible-playbook --step playbook.yml
+	指定tags：ansible-playbook --tags=foo,bar playbook.yml
+	跳过tags：ansible-playbook --skip-tags=baz,quux playbook.yml
 
 六：ROLES
+
 ROLES 角色
 
     对于以上所有的方式有个弊端就是无法实现复用假设在同时部署Web、db、ha 时或不同服务器组合不同的应用就需要写多个yml文件。很难实现灵活的调用。。
@@ -422,26 +428,26 @@ ROLES 角色
 
     roles每个角色中，以特定的层级目录进行组织
 
-Mysql/  角色
- Files/     #存放有copy或script模块等调用的文件；’
- Tepmlates/    #template模块查找所需要模板文件目录；
- Tasks/           #定义任务；至少应该包含一个名为main.yml的文件；其他的文件需要在此文件中通过include进行包含。
- Handlers/      #定义触发器；至少应该包含一个名为main.yml的文件；其他的文件需要在此文件中通过include进行包含。
- Vars/              #定义变量；至少应该包含一个名为main.yml的文件；其他的文件需要在此文件中通过include进行包含。
- Meta/             #定义变量；至少应该包含一个名为main.yml的文件；定义当前角色的特殊设定及其依赖
-关系；其他的文件需要在此文件中通过include进行包含。
- Default/         #设定默认变量时使用此目录中的main.yml文件。
+	Mysql/  角色
+	 Files/     #存放有copy或script模块等调用的文件；’
+	 Tepmlates/    #template模块查找所需要模板文件目录；
+	 Tasks/           #定义任务；至少应该包含一个名为main.yml的文件；其他的文件需要在此文件中通过include进行包含。
+	 Handlers/      #定义触发器；至少应该包含一个名为main.yml的文件；其他的文件需要在此文件中通过include进行包含。
+	 Vars/              #定义变量；至少应该包含一个名为main.yml的文件；其他的文件需要在此文件中通过include进行包含。
+	 Meta/             #定义变量；至少应该包含一个名为main.yml的文件；定义当前角色的特殊设定及其依赖
+	关系；其他的文件需要在此文件中通过include进行包含。
+	 Default/         #设定默认变量时使用此目录中的main.yml文件。
 
 2、角色调用
 
-[root@centos7_1 yaml]# vim roles.yml
-   ---
-    Hosts：web
-   Remote_user：root
-   Roles：
-   - mysql
-   - memchached
-   - nginx
+	[root@centos7_1 yaml]# vim roles.yml
+	   ---
+	    Hosts：web
+	   Remote_user：root
+	   Roles：
+	   - mysql
+	   - memchached
+	   - nginx
 
 
 3、层级结构展示
@@ -449,131 +455,132 @@ Mysql/  角色
 示例1：利用ansible角色安装nginx
  
 
-[root@centos7_1 ~]# mkdir/etc/ansible/roles/nginx/{files,tasks,templates,handlers,vars, \
-default,mata} –pv
-#创建固定目录结构
-[root@centos7_1 ~]# tree  /etc/ansible/roles/nginx/
-/etc/ansible/roles/nginx/
-├── default
-├── files
-├── handlers
-├── mata
-├── tasks
-├── templates
-└── vars
-[root@centos7_1 ~]# cd/etc/ansible/roles/nginx/
-[root@centos7_1 nginx]# vimtasks/main.yml  #创建任务
-- name: install nginx package
- yum: name=nginx state=present
-- name: install conf file
- template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf 
- #此处源文件可不写绝对路径，系统自查找。
-- name: start nginx
- service: name=nginx state=started
-[root@centos7_1 ~]# cp/apps/work/files/nginx.conf.c6.j2 ../templates/nginx.conf.j2 
-#将配置文件拷贝至templates目录内。
-[root@centos7_1 ~]# cd /apps/yaml/
-[root@centos7_1 yaml]# cat roles.yml #创建调用文件
----
-- hosts: web
- remote_user: root
- roles:
- - nginx
-[root@centos7_1 yaml]#ansible-playbook roles.yml  #利用ansible-playbook执行。
+	[root@centos7_1 ~]# mkdir/etc/ansible/roles/nginx/{files,tasks,templates,handlers,vars, \
+	default,mata} –pv
+	#创建固定目录结构
+	[root@centos7_1 ~]# tree  /etc/ansible/roles/nginx/
+	/etc/ansible/roles/nginx/
+	├── default
+	├── files
+	├── handlers
+	├── mata
+	├── tasks
+	├── templates
+	└── vars
+	[root@centos7_1 ~]# cd/etc/ansible/roles/nginx/
+	[root@centos7_1 nginx]# vimtasks/main.yml  #创建任务
+	- name: install nginx package
+	 yum: name=nginx state=present
+	- name: install conf file
+	 template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf 
+	 #此处源文件可不写绝对路径，系统自查找。
+	- name: start nginx
+	 service: name=nginx state=started
+ 
+	[root@centos7_1 ~]# cp/apps/work/files/nginx.conf.c6.j2 ../templates/nginx.conf.j2 
+	#将配置文件拷贝至templates目录内。
+	[root@centos7_1 ~]# cd /apps/yaml/
+	[root@centos7_1 yaml]# cat roles.yml #创建调用文件
+	---
+	- hosts: web
+	 remote_user: root
+	 roles:
+	 - nginx
+	[root@centos7_1 yaml]#ansible-playbook roles.yml  #利用ansible-playbook执行。
 
 示例2：变量调用
-利用定义变量使远程主机的nginx服务运行用户变更为daemon
+	利用定义变量使远程主机的nginx服务运行用户变更为daemon
 
-[root@centos7_1 ~]# vim/etc/ansible/roles/nginx/vars/main.yml
-username: daemon
-[root@centos7_1 ~]# vim/etc/ansible/roles/nginx/templates/nginx.conf.j2
-user {{ username }};  #  将此处原有用户修改为变量
-[root@centos7_1 ~]# cd/apps/yaml/
-[root@centos7_1 yaml]#ansible-playbook  roles.yml
-[root@centos7_1 yaml]#ansible-playbook  -e"username=adm"  roles.yml
-#也可以直接利用命令行传递变量参数给剧本文件。
+	[root@centos7_1 ~]# vim/etc/ansible/roles/nginx/vars/main.yml
+	username: daemon
+	[root@centos7_1 ~]# vim/etc/ansible/roles/nginx/templates/nginx.conf.j2
+	user {{ username }};  #  将此处原有用户修改为变量
+	[root@centos7_1 ~]# cd/apps/yaml/
+	[root@centos7_1 yaml]#ansible-playbook  roles.yml
+	[root@centos7_1 yaml]#ansible-playbook  -e"username=adm"  roles.yml
+	#也可以直接利用命令行传递变量参数给剧本文件。
 
 示例3：在playbook调用角色方法:传递变量给角色
 
-[root@centos7_1 yaml]vim roles.yml
----
- - hosts：web
-  remote_user:root
-  roles:
-  - {role: nigix, username: nginx } 
-  #在调用nginx角色是使用变量username:nginx时服务运行用户为nginx
-   键role:用于指定角色名称；后续的键值对用户传递变量给角色
-[root@centos7_1yaml]# ansible-playbook roles.yml
+	[root@centos7_1 yaml]vim roles.yml
+	---
+	 - hosts：web
+	  remote_user:root
+	  roles:
+	  - {role: nigix, username: nginx } 
+	  #在调用nginx角色是使用变量username:nginx时服务运行用户为nginx
+	   键role:用于指定角色名称；后续的键值对用户传递变量给角色
+	[root@centos7_1yaml]# ansible-playbook roles.yml
 
 示例4：条件测试角色调用
    还可以基于条件测试实现角色调用；
 
-[root@centos7_1yaml]vim roles.yml
----
-- hosts：web
-  remote_user: root
-  roles:
- {role: nigix, username: nginx ,when: “ansible_distribution_major_version ==’7’”}
-#基于条件测试调用变量赋予nginx。
-[root@centos7_1 yaml]#ansible-playbook -t instconf  roles.yml
+	[root@centos7_1yaml]vim roles.yml
+	---
+	- hosts：web
+	  remote_user: root
+	  roles:
+	 {role: nigix, username: nginx ,when: “ansible_distribution_major_version ==’7’”}
+	#基于条件测试调用变量赋予nginx。
+	[root@centos7_1 yaml]#ansible-playbook -t instconf  roles.yml
 
 示例5：角色安装
 
-[root@centos7_1 ~]# mkdir/etc/ansible/roles/memcached/tasks -pv
-[root@centos7_1 ~]# vim  /etc/ansible/roles/memcached/tasks/main.yml
-- name: install package
- yum: name=memcached state=present
-- name: start memecached
- service: name=memcached state=started
-    
-[root@centos7_1 ~]# cd/apps/yaml/
-[root@centos7_1 yaml]# cat mem.yml
----
-- hosts: web
-  remote_user: root
-  roles:
-  - { role: nginx,when:ansible_distribution_version == '7' }  
-  #系统为centos7时调用执行nginx
-  - { role: memcached,when: ansible_hostname =='memcached' }  
-  #系统用户名为memcached的主机调用执行角色memcached。
+	[root@centos7_1 ~]# mkdir/etc/ansible/roles/memcached/tasks -pv
+	[root@centos7_1 ~]# vim  /etc/ansible/roles/memcached/tasks/main.yml
+	- name: install package
+	 yum: name=memcached state=present
+	- name: start memecached
+	 service: name=memcached state=started
+
+	[root@centos7_1 ~]# cd/apps/yaml/
+	[root@centos7_1 yaml]# cat mem.yml
+	---
+	- hosts: web
+	  remote_user: root
+	  roles:
+	  - { role: nginx,when:ansible_distribution_version == '7' }  
+	  #系统为centos7时调用执行nginx
+	  - { role: memcached,when: ansible_hostname =='memcached' }  
+	  #系统用户名为memcached的主机调用执行角色memcached。
 
 示例6：角色变量调整memcached内存大小
 利用变量使远程主机上的Memcahed的缓存大小占用系统内存大小的三分之一。
 
-[root@centos7_1 ~]# cd/etc/ansible/roles/memcached/
-[root@centos7_1 memcached]#ls
-handlers/  tasks/    templates/
-[root@centos7_1 memcached]#mkdir  templates
-[root@centos7_1memcached]# scp 172.16.254.216:/etc/sysconfig/memcached \
-    ./templates//memcached.j2
-[root@centos7_1 memcached]#vim templates/memcached.j2
-PORT="11211"
-USER="memcached"
-MAXCONN="1024"
-CACHESIZE="{{ansible_memtotal_mb//3 }}"
- #变量设置内存的3分之一  此变量为远程主机的总内存//3 指除3取商
-  便为远程主机的三分之一
-[root@centos7_1 memcached]#mkdir handlers/
-[root@centos7_1 memcached]#vim handlers/main.yml
-- name: restart memcached
-  service: name=memcached state=restarted
-[root@centos7_1 memcached]#cd /apps/yaml/
-root@centos7_1 yaml]#ansible-playbook   mem.yml  #执行剧本
+	[root@centos7_1 ~]# cd/etc/ansible/roles/memcached/
+	[root@centos7_1 memcached]#ls
+	handlers/  tasks/    templates/
+	[root@centos7_1 memcached]#mkdir  templates
+	[root@centos7_1memcached]# scp 172.16.254.216:/etc/sysconfig/memcached \
+	    ./templates//memcached.j2
+	[root@centos7_1 memcached]#vim templates/memcached.j2
+	PORT="11211"
+	USER="memcached"
+	MAXCONN="1024"
+	CACHESIZE="{{ansible_memtotal_mb//3 }}"
+	 #变量设置内存的3分之一  此变量为远程主机的总内存//3 指除3取商
+	  便为远程主机的三分之一
+	[root@centos7_1 memcached]#mkdir handlers/
+	[root@centos7_1 memcached]#vim handlers/main.yml
+	- name: restart memcached
+	  service: name=memcached state=restarted
+	[root@centos7_1 memcached]#cd /apps/yaml/
+	root@centos7_1 yaml]#ansible-playbook   mem.yml  #执行剧本
 
 4、时间计时模块
 
 ansible中可以加入一个计时模块在执行ansible-playbook时显示执行时长。方便使用。
 
-1、配置方法
-  cd /etc/ansible
-  mkdir callback_plugins
-  cd callback_plugins
-  wget https://raw.githubusercontent.com/jlafon/ansible- \ profile/master/callback_plugins/profile_tasks.py
-注意：ansible2.0以上版本需在ansible.cdg中加入以下内容
-  [defaults] 下面加入
-  callback_whitelist= profile_tasks
-  再次执行ansbile-playbook时显示执行时长
-2、测试结果
+	1、配置方法
+	  cd /etc/ansible
+	  mkdir callback_plugins
+	  cd callback_plugins
+	  wget https://raw.githubusercontent.com/jlafon/ansible- \ profile/master/callback_plugins/profile_tasks.py
+	注意：ansible2.0以上版本需在ansible.cdg中加入以下内容
+	  [defaults] 下面加入
+	  callback_whitelist= profile_tasks
+	  再次执行ansbile-playbook时显示执行时长
+	2、测试结果
 
 参考文档：
 
