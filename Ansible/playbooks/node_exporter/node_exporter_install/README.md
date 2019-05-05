@@ -35,6 +35,15 @@ scp_if_ssh=False
 [colors]
 [diff]
 EOF
+
+cat > /etc/ansible/hosts <<EOF
+[mysql]
+node-02 ansible_ssh_host=192.168.56.12 ansible_ssh_user=root ansible_ssh_pass='123456' comment=zhangsan
+
+[node_exporter]
+node-02 ansible_ssh_host=192.168.56.12 ansible_ssh_user=root ansible_ssh_pass='123456' comment=zhangsan
+node-03 ansible_ssh_host=192.168.56.13 ansible_ssh_user=root ansible_ssh_pass='123456' comment=zhangsan
+EOF
 ```
 # 二、ansible-playbook测试
 ```
