@@ -1,14 +1,17 @@
-五：Ansible的Play book的使用
+# 一：Ansible的Play book的使用
+
 1、playbook简介
 
     playbook是ansible用于配置、部署和管理被控节点的剧本，通过playbook的详细描述，执行其中的一系列tasks，可以让远程主机达到预期的状态，playbook就像Ansible控制器给被控节点列出的一系列to-do-list，而被控节点必须要完成。
 
     也可以这样理解，pplaybook是由一个或多个"play"组成的列表。play的主要功能在于将事先归并为一组的主机装扮成事先通过ansible中的task定义好的角色。从根本上来讲所谓task无非是调用ansible的一个module。将多个play组织在一个playbook中即可以让它们联同起来按事先编排的机制同唱一台大戏。
+
 2、playbook使用场景
 
     执行一些简单的任务，使用ad-hoc命令可以方便的解决问题，但是有时一个设施太过于复制，需要大量的操作时，执行ad-hoc命令就不太合适，这时最好使用playbook，就像执行shell命令与写shell脚本一样，也可以理解为批处理任务，不过playbook有自己的语法格式，具体可以看下面介绍。
 
     使用playbook你可以方便的重用这些代码，可以移值到不同的机器上面，像函数一样，最大化的利用代码。在使用ansible的过程中，所处理的大部分操作都是需要编写playbook的。
+
 3、Playbook的核心元素
 
          Hosts：               主机，部署目标
@@ -20,56 +23,56 @@
 
 4、playbook使用
 
-Usage: ansible-playbook playbook.yml
+	Usage: ansible-playbook playbook.yml
 
 相对于ansible，增加了下列选项：
 
 参数   说明
 
---flush-cache 清除fact缓存
---force-handlers  如果任务失败，也要运行handlers
---list-tags   列出所有可用的标签
---list-tasks  列出将要执行的所有任务
---skip-tags=SKIP_TAGS    跳过运行标记此标签的任务
---start-at-task=START_AT_TASK   在此任务处开始运行
---step 一步一步：在运行之前确认每个任务
--t TAGS, --tags=TAGS 只运行标记此标签的任务
+	--flush-cache 清除fact缓存
+	--force-handlers  如果任务失败，也要运行handlers
+	--list-tags   列出所有可用的标签
+	--list-tasks  列出将要执行的所有任务
+	--skip-tags=SKIP_TAGS    跳过运行标记此标签的任务
+	--start-at-task=START_AT_TASK   在此任务处开始运行
+	--step 一步一步：在运行之前确认每个任务
+	-t TAGS, --tags=TAGS 只运行标记此标签的任务
 
 示例：
 
-ansible-playbook -i hosts ssh-addkey.yml                # 指定主机清单文件
-ansible-playbook -i hosts ssh-addkey.yml  --list-tags   # 列出tags
-ansible-playbook -i hosts ssh-addkey.yml  -T install    # 执行install标签的任务
+	ansible-playbook -i hosts ssh-addkey.yml                # 指定主机清单文件
+	ansible-playbook -i hosts ssh-addkey.yml  --list-tags   # 列出tags
+	ansible-playbook -i hosts ssh-addkey.yml  -T install    # 执行install标签的任务
 
 5、playbook的基础组件
 
-hosts: 运行指定任务的目标主机   
-remote_user：在远程主机以哪个用户身份执行；
-sudo_user：非管理员需要拥有sudo权限；
-tasks：任务列表
-  模块，模块参数,格式有如下两种：
-    (1) action: module arguments
-    (2) module: arguments 
+	hosts: 运行指定任务的目标主机   
+	remote_user：在远程主机以哪个用户身份执行；
+	sudo_user：非管理员需要拥有sudo权限；
+	tasks：任务列表
+	  模块，模块参数,格式有如下两种：
+	    (1) action: module arguments
+	    (2) module: arguments 
 
 示例1：
 
-- hosts: all
-remote_user: root
-tasks:
- - name: install a group
-   group: name=mygrp system=true 
- - name: install a user
-   user: name=user1 group=mygrp system=true
+	- hosts: all
+	remote_user: root
+	tasks:
+	 - name: install a group
+	   group: name=mygrp system=true 
+	 - name: install a user
+	   user: name=user1 group=mygrp system=true
 
 示例2
 
-- hosts: websrvs
-remote_user: root
-tasks:
- - name: install httpd package
-  yum: name=httpd
- - name: start httpd service 
-  service: name=httpd state=started
+	- hosts: websrvs
+	remote_user: root
+	tasks:
+	 - name: install httpd package
+	  yum: name=httpd
+	 - name: start httpd service 
+	  service: name=httpd state=started
 
 主要由三个部分组成。
 
