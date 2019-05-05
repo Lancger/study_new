@@ -37,6 +37,26 @@ npm install --global vue-cli
 #创建一个基于 webpack 模板的新项目
 vue init webpack todolist
 
+? Project name todolist
+? Project description A vue.js project
+? Author xumanbai <xumanbai@onething.net>
+? Vue build standalone
+? Install vue-router? No
+? Use ESLint to lint your code? Yes
+? Pick an ESLint preset Standard
+? Set up unit tests No
+? Setup e2e tests with Nightwatch? No
+? Should we run `npm install` for you after the project has been created? (recom
+mended) npm
+
+   vue-cli · Generated "todolist".
+
+
+# Installing project dependencies ...
+# ========================
+
+⸨ ░░░░░░░░░░░░░░░░░⸩ ⠹ fetchMetadata: sill pacote range manifest for extend-shallow@^3.0.2 fetched in 2ms
+
 #安装依赖
 cd todolist
 npm run dev
