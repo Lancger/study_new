@@ -1,5 +1,6 @@
 # 一、配置ansible环境
 ```
+#配置文件
 cat > /etc/ansible/ansible.cfg <<EOF
 [defaults]
 inventory      = /etc/ansible/hosts
@@ -36,6 +37,7 @@ scp_if_ssh=False
 [diff]
 EOF
 
+#配置hosts
 cat > /etc/ansible/hosts <<EOF
 [mysql]
 node-02 ansible_ssh_host=192.168.56.12 ansible_ssh_user=root ansible_ssh_pass='123456' comment=zhangsan
