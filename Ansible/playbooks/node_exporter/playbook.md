@@ -21,6 +21,10 @@ cd /usr/local/src/
 mv node_exporter-0.17.0.linux-amd64 /data0/prometheus/node_exporter
  
 chown -R prometheus.prometheus /data0/prometheus
+
+
+/usr/bin/ansible-playbook  node_exporter.yml --tags="install"
+
 ```
 
 
