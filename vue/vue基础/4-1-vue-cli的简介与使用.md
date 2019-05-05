@@ -14,8 +14,10 @@ npm install -g @vue/cli
 yarn global add @vue/cli
 ```
 
-
-
+运行以下命令来创建一个新项目：
+```
+vue create hello-world
+```
 
 ## vue技术栈开发实战
 
