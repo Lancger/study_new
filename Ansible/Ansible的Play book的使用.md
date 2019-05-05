@@ -1,4 +1,4 @@
-# 一：Ansible的Play book的使用
+# 一、Ansible的Play book的使用
 
 1、playbook简介
 
