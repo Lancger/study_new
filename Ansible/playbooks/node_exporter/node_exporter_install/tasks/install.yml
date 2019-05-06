@@ -27,7 +27,7 @@
     owner: "prometheus"
     group: "prometheus"
     mode: 0755
-    copy: yes
+    copy: yes   #copy=no，会在远程主机上寻找src源文件
 
 - name: "install | copy node_exporter to {{ deploy_file_workpath }}"
   #shell: "cp /tmp/node_exporter-0.17.0.linux-amd64/node_exporter /usr/local/prometheus/node_exporter/"
