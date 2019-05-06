@@ -41,7 +41,7 @@
     remote_src: yes  #no表示src文件在本机上，yes表示src在远程主机上
 
 - name: "install | rsync node_exporter.log log to Centos6"
-  template: src=files/node_exporter.log.c6.j2 dest=/var/log/node_exporter.log mode=0755 owner={{ user_name }} group={{ group_name }} remote_src=no
+  template: src=files/node_exporter.log.c6.j2 dest=/var/log/node_exporter.log mode=0755 owner={{ user_name }} group={{ group_name }}
   when: ansible_distribution_major_version=="6"
   
 - name: "install | daemon-reload node_exporter config"
@@ -49,7 +49,7 @@
   when:  ansible_distribution_major_version=="7"
 
 - name: "install | config node_exporter to Centos6"
-  template: src=files/node_exporter.conf.c6.j2 dest=/etc/sysconfig/node_exporter.conf mode=0655 remote_src=no
+  template: src=files/node_exporter.conf.c6.j2 dest=/etc/sysconfig/node_exporter.conf mode=0655
   when: ansible_distribution_major_version=="6"
   #notify: restart on Centos6
   notify: "restart | restart node_exporter on Centos6"
