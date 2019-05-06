@@ -27,7 +27,13 @@
   
 # - name: "install | Add iptables"
 #   shell: "iptables -I RH-Firewall-1-INPUT -p tcp -m tcp -m multiport --dports 443,80 -j ACCEPT && service iptables save"
-  
+
+- name: "install | Seline modify iptables"
+  lineinfile:
+     dest: /etc/sysconfig/iptables
+     regexp: '^-A RH-Firewall-1-INPUT -s 13.10.28.213/32 -p tcp -m tcp -m multiport --dports 9100'
+     line: '-A RH-Firewall-1-INPUT -s 13.10.28.213/32 -p tcp -m tcp -m multiport --dports 9100:9200 -j ACCEPT'
+     
 - name: "install | Install daemonize"
   yum: name=daemonize state=present
 
