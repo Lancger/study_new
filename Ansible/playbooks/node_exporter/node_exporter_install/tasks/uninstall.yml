@@ -18,7 +18,7 @@
   when: ansible_distribution_major_version=="7"
 
 - name: "uninstall | disable chattr -i"
-  shell: "chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*"
+  shell: "chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow* && chattr -i /etc/gshadow*"
 
 - name: "uninstall | Remove {{ user_name }} user."
   user: name={{ user_name }} state=absent
@@ -28,7 +28,7 @@
   group: name={{ group_name }} state=absent
 
 - name: "uninstall | enable chattr +i"
-  shell: "chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow*"
+  shell: "chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow* && chattr -i /etc/gshadow*"
 
 #- name: uninstall | Remove daemonize
 #  yum: name=daemonize state=removed
