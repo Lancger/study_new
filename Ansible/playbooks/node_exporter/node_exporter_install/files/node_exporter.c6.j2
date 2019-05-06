@@ -4,8 +4,8 @@
 #
 # chkconfig: 2345 80 80
 #
-# config: /etc/prometheus/node_exporter.conf
-# pidfile: /var/run/prometheus/node_exporter.pid
+# config: /etc/sysconfig/node_exporter.conf
+# pidfile: /var/run/node_exporter.pid
 
 # Source function library.
 . /etc/init.d/functions
@@ -15,9 +15,9 @@ RETVAL=0
 PROG="node_exporter"
 DAEMON_SYSCONFIG=/etc/sysconfig/${PROG}.conf
 DAEMON=/usr/local/prometheus/node_exporter/${PROG}
-PID_FILE=/var/run/prometheus/${PROG}.pid
+PID_FILE=/var/run/${PROG}.pid
 LOCK_FILE=/var/lock/subsys/${PROG}
-LOG_FILE=/var/log/prometheus/node_exporter.log
+LOG_FILE=/var/log/node_exporter.log
 DAEMON_USER="prometheus"
 GOMAXPROCS=$(grep -c ^processor /proc/cpuinfo)
 
