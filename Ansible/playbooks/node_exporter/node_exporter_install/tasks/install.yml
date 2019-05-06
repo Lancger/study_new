@@ -44,6 +44,12 @@
   shell: systemctl daemon-reload
   when:  ansible_distribution_major_version=="7"
 
+- name: "install | config node_exporter to Centos6"
+  template: src=files/node_exporter.conf.c6.j2 dest=/etc/sysconfig/node_exporter.conf mode=0655 remote_src=no
+  when: ansible_distribution_major_version=="6"
+  #notify: restart on Centos6
+  notify: "restart | restart node_exporter on Centos6"
+  
 - name: "install | install node_exporter to Centos6"
   template: src=files/node_exporter.c6.j2 dest=/etc/init.d/node_exporter mode=0655
   when: ansible_distribution_major_version=="6"
