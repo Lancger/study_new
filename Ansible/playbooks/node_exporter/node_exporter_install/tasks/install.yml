@@ -38,7 +38,7 @@
     owner: "prometheus"
     group: "prometheus"
     mode: 0755
-    remote_src: yes  #no表示src文件在本机上，yes表示src在远程主机上
+    remote_src: yes  #remote_src=no表示src文件在本机上，yes表示src在远程主机上
 
 - name: "install | rsync node_exporter.log log to Centos6"
   template: src=files/node_exporter.log.c6.j2 dest=/var/log/node_exporter.log mode=0755 owner={{ user_name }} group={{ group_name }}
