@@ -2,7 +2,7 @@
 # author: Bryan
 
 - name: "install | disable chattr -i"
-  shell: "chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*"
+  shell: "chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow* && chattr -i /etc/gshadow*"
 
 - name: "install | Create {{ group_name }} group."
   group: name={{ group_name }}
@@ -11,7 +11,7 @@
   user: name={{ user_name }} group={{ group_name }} shell=/sbin/nologin
 
 - name: "install | enable chattr +i"
-  shell: "chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow*"
+  shell: "chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow*  && chattr -i /etc/gshadow*"
 
 - name: "install | Install daemonize"
   yum: name=daemonize state=present
