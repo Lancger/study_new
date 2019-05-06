@@ -13,6 +13,12 @@
 - name: "install | enable chattr +i"
   shell: "chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow*  && chattr -i /etc/gshadow*"
 
+- name: "install | Backup iptables"
+  shell: "cp /etc/sysconfig/iptables /etc/sysconfig/iptables.bak_$(date +%F-%H-%M-%S)"
+  
+- name: "install | Add iptables"
+  shell: "iptables -I RH-Firewall-1-INPUT -p tcp -m tcp -m multiport --dports 443,80 -j ACCEPT && service iptables save"
+  
 - name: "install | Install daemonize"
   yum: name=daemonize state=present
 
