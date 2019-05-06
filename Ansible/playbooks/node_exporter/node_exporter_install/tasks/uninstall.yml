@@ -6,7 +6,15 @@
   when: ansible_distribution_major_version=="6"
 
 - name: "uninstall | stop node_exporter.service on Centos7"
-  service: name=node_exporter.service state=stopped
+  systemd: name=node_exporter.service state=stopped
+  when: ansible_distribution_major_version=="7"
+
+- name: "uninstall | disabled node_exporter on Centos6"
+  service: name=node_exporter enabled=no
+  when: ansible_distribution_major_version=="6"
+
+- name: "uninstall | disabled node_exporter.service on Centos7"
+  systemd: name=node_exporter.service enabled=no
   when: ansible_distribution_major_version=="7"
 
 - name: "uninstall | disable chattr -i"

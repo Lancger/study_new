@@ -6,5 +6,5 @@
   when: ansible_distribution_major_version=="6"
 
 - name: "stop | stop node_exporter.service on Centos7"
-  service: name=node_exporter.service state=stopped
+  systemd: name=node_exporter.service state=stopped
   when: ansible_distribution_major_version=="7"

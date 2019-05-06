@@ -8,5 +8,5 @@
 
 #- name: restart on Centos7
 - name: "restart | restart node_exporter.service on Centos7"
-  service: name=node_exporter.service enabled=yes state=restarted
+  systemd: name=node_exporter.service enabled=yes state=restarted
   when: ansible_distribution_major_version=="7"
