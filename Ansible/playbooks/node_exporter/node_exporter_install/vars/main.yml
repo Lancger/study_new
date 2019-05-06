@@ -1,5 +1,8 @@
 ---
 # author: Bryam
-
 user_name: prometheus
 group_name: prometheus
+deploy_service_port: "9100"
+# 验证uri
+deploy_verify_uri: ""
+deploy_verify_url: "http://127.0.0.1:{{ deploy_service_port }}{{ deploy_verify_uri }}"

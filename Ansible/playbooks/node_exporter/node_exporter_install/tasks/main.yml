@@ -1,9 +1,9 @@
 ---
-# author: Bryan
-
 - include: install.yml
   tags: install
 - include: uninstall.yml
   tags: uninstall
 - include: restart.yml
   tags: restart
+- import_tasks: stop.yml
+  tags: stop

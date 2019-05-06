@@ -1,5 +1,10 @@
 ---
 # author: Bryan
 
-- name: "restart | restart node_exporter.service"
+- name: "restart | restart node_exporter on Centos6"
+  service: name=node_exporter enabled=yes state=restarted
+  when: ansible_distribution_major_version=="6"
+
+- name: "restart | restart node_exporter.service on Centos7"
   service: name=node_exporter.service enabled=yes state=restarted
+  when: ansible_distribution_major_version=="7"

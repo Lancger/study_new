@@ -1,0 +1,10 @@
+---
+# author: Bryan
+
+- name: "stop | stop node_exporter on Centos6"
+  service: name=node_exporter state=stopped
+  when: ansible_distribution_major_version=="6"
+
+- name: "stop | stop node_exporter.service on Centos7"
+  service: name=node_exporter.service state=stopped
+  when: ansible_distribution_major_version=="7"

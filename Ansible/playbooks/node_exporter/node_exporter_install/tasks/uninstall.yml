@@ -1,8 +1,13 @@
 ---
 # author: Bryan
 
-- name: "uninstall | stop node_exporter service"
-  service: name=node_exporter.service state=stopped 
+- name: "uninstall | stop node_exporter on Centos6"
+  service: name=node_exporter state=stopped
+  when: ansible_distribution_major_version=="6"
+
+- name: "uninstall | stop node_exporter.service on Centos7"
+  service: name=node_exporter.service state=stopped
+  when: ansible_distribution_major_version=="7"
 
 - name: "uninstall | disable chattr -i"
   shell: "chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*"
@@ -24,6 +29,12 @@
   #shell: "rm -rf /usr/local/prometheus/node_exporter/"
   file: dest=/usr/local/prometheus/node_exporter/ state=absent
 
-- name: "uninstall | rm /usr/lib/systemd/system/node_exporter.service"
+- name: "uninstall | rm /etc/init.d/node_exporter on Centos6"
+  #shell: "rm -rf /etec/init.d/node_exporter"
+  file: dest=/etc/init.d/node_exporter state=absent
+  when: ansible_distribution_major_version=="6"
+
+- name: "uninstall | rm /usr/lib/systemd/system/node_exporter.service on Centos7" 
   #shell: "rm -rf /usr/local/prometheus/node_exporter/"
   file: dest=/usr/lib/systemd/system/node_exporter.service state=absent
+  when: ansible_distribution_major_version=="7"

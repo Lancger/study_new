@@ -40,9 +40,25 @@
 
 - name: "install | daemon-reload node_exporter config"
   shell: systemctl daemon-reload
+  when:  ansible_distribution_major_version=="7"
 
-- name: "install | systemctl init node_exporter.service"
-  template: src=node_exporter.service dest=/usr/lib/systemd/system/node_exporter.service
+- name: "install | install node_exporter to Centos6"
+  template: src=files/node_exporter.c6.j2 dest=/etc/init.d/node_exporter
+  when: ansible_distribution_major_version=="6"
+  #notify: restart on Centos6
+  notify: "restart | restart node_exporter on Centos6"
 
-- name: "install | start node_exporter.service"
+- name: "install | install node_exporter.service to Centos7"
+  template: src=files/node_exporter.service.c7.j2 dest=/usr/lib/systemd/system/node_exporter.service
+  when: ansible_distribution_major_version=="7"
+  notify: 
+  # - restart on Centos7
+   - "restart | restart node_exporter.service on Centos7"
+
+- name: "install | start node_exporter on Centos6"
+  service: name=node_exporter state=started enabled=true
+  when: ansible_distribution_major_version=="6"
+
+- name: "install | start node_exporter.service on Centos7"
   service: name=node_exporter.service state=started enabled=true
+  when: ansible_distribution_major_version=="7"
