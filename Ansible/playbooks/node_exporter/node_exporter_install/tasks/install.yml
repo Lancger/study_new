@@ -23,7 +23,7 @@
   
 # 将执行结果打印出来
 - name: "install | show grep_result"
-  debug: var=grep_result
+  debug: var=grep_result verbosity=0
   
 - name: "install | Add iptables"
   shell: "iptables -I RH-Firewall-1-INPUT -s 13.10.28.213/32 -p tcp -m tcp -m multiport --dports 9100:9200 -j ACCEPT && service iptables save"
