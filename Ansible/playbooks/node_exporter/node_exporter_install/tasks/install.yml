@@ -38,6 +38,7 @@
     owner: "prometheus"
     group: "prometheus"
     mode: 0755
+    remote_src: yes  #no表示src文件在本机上，yes表示src在远程主机上
 
 - name: "install | daemon-reload node_exporter config"
   shell: systemctl daemon-reload
