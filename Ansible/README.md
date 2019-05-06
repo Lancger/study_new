@@ -263,3 +263,5 @@ https://blog.51cto.com/lxlxlx/1894386  ansible自动化部署之第三方模块�
 
 https://blog.csdn.net/JackLiu16/article/details/80577972  playbook debug 结合注册变量register打印日志
 
+https://blog.csdn.net/qianggezhishen/article/details/53939188  ansible register 之用法
+
