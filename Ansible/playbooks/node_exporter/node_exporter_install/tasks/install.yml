@@ -44,7 +44,7 @@
   shell: systemctl daemon-reload
   when:  ansible_distribution_major_version=="7"
 
-- name: "install | rsync node_exporter.log log to Centos6"
+- name: "install | rsync node_exporter.log to Centos6"
   template: src=files/node_exporter.log.c6.j2 dest=/var/log/node_exporter.log mode=0655 owner={{ user_name }} group={{ group_name }}
   when: ansible_distribution_major_version=="6"
   
