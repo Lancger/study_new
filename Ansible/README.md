@@ -261,3 +261,5 @@ https://www.cnblogs.com/littlemonsters/p/5783672.html     SSH私钥取消密码�
 
 https://blog.51cto.com/lxlxlx/1894386  ansible自动化部署之第三方模块添加（时间计时模块）
 
+https://blog.csdn.net/JackLiu16/article/details/80577972  playbook debug 结合注册变量register打印日志
+
