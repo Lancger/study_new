@@ -16,6 +16,14 @@
 - name: "uninstall | disabled node_exporter.service on Centos7"
   systemd: name=node_exporter.service enabled=no
   when: ansible_distribution_major_version=="7"
+  
+- name: "uninstall | rm node_exporter.conf on Centos6"
+  file: dest=/etc/sysconfig/node_exporter.conf state=absent
+  when: ansible_distribution_major_version=="6"
+  
+- name: "uninstall | rm node_exporter.log on Centos6"
+  file: dest=/var/log/node_exporter.log state=absent
+  when: ansible_distribution_major_version=="6"
 
 - name: "uninstall | disable chattr -i"
   shell: "chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow* && chattr -i /etc/gshadow*"
