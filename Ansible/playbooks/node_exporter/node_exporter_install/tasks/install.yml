@@ -16,6 +16,15 @@
 - name: "install | Backup iptables"
   shell: "cp /etc/sysconfig/iptables /etc/sysconfig/iptables.bak_$(date +%F-%H-%M-%S)"
   
+- name: "install | grep iptables"
+  shell: "grep 13.10.28.213 /etc/sysconfig/iptables"
+  register: grep_result
+  #ignore_errors: True
+
+- name: "install | Add iptables"
+  shell: "iptables -I RH-Firewall-1-INPUT -s 13.10.28.213/32 -p tcp -m tcp -m multiport --dports 9100:9200 -j ACCEPT && service iptables save"
+  when: grep_result | failed    #当防火墙配置文件不存在这条记录时，才会执行添加动作
+  
 # - name: "install | Add iptables"
 #   shell: "iptables -I RH-Firewall-1-INPUT -p tcp -m tcp -m multiport --dports 443,80 -j ACCEPT && service iptables save"
   
