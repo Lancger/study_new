@@ -25,9 +25,9 @@
 #- name: uninstall | Remove daemonize
 #  yum: name=daemonize state=removed
 
-- name: "uninstall | rm /usr/local/prometheus/node_exporter/ directory"
+- name: "uninstall | rm {{ deploy_file_workpath }} directory"
   #shell: "rm -rf /usr/local/prometheus/node_exporter/"
-  file: dest=/usr/local/prometheus/node_exporter/ state=absent
+  file: dest={{ deploy_file_workpath }} state=absent
 
 - name: "uninstall | rm /etc/init.d/node_exporter on Centos6"
   #shell: "rm -rf /etec/init.d/node_exporter"

@@ -16,9 +16,9 @@
 - name: "install | Install daemonize"
   yum: name=daemonize state=present
 
-- name: "install | mkdir node_exporter directory"
+- name: "install | mkdir {{ deploy_file_workpath }} directory"
   #shell: mkdir -p /usr/local/prometheus/node_exporter/
-  file: path=/usr/local/prometheus/node_exporter/ state=directory recurse=yes owner={{ user_name }} group={{ group_name }} mode=0755
+  file: path={{ deploy_file_workpath }} state=directory recurse=yes owner={{ user_name }} group={{ group_name }} mode=0755
 
 - name: "install | unarchive node_exporter-0.17.0.linux-amd64.tar.gz"
   unarchive:
@@ -29,11 +29,12 @@
     mode: 0755
     copy: yes
 
-- name: "install | copy node_exporter to /usr/local/prometheus/node_exporter/"
+- name: "install | copy node_exporter to {{ deploy_file_workpath }}"
   #shell: "cp /tmp/node_exporter-0.17.0.linux-amd64/node_exporter /usr/local/prometheus/node_exporter/"
   copy:
     src: /tmp/node_exporter-0.17.0.linux-amd64/node_exporter
-    dest: /usr/local/prometheus/node_exporter/node_exporter
+    #dest: /usr/local/prometheus/node_exporter/node_exporter
+    dest: "{{ deploy_file_workpath }}/{{ deploy_file }}"
     owner: "prometheus"
     group: "prometheus"
     mode: 0755
@@ -43,22 +44,14 @@
   when:  ansible_distribution_major_version=="7"
 
 - name: "install | install node_exporter to Centos6"
-  template: src=files/node_exporter.c6.j2 dest=/etc/init.d/node_exporter
+  template: src=files/node_exporter.c6.j2 dest=/etc/init.d/node_exporter mode=0655
   when: ansible_distribution_major_version=="6"
   #notify: restart on Centos6
   notify: "restart | restart node_exporter on Centos6"
 
 - name: "install | install node_exporter.service to Centos7"
-  template: src=files/node_exporter.service.c7.j2 dest=/usr/lib/systemd/system/node_exporter.service
+  template: src=files/node_exporter.service.c7.j2 dest=/usr/lib/systemd/system/node_exporter.service mode=0755
   when: ansible_distribution_major_version=="7"
   notify: 
   # - restart on Centos7
    - "restart | restart node_exporter.service on Centos7"
-
-- name: "install | start node_exporter on Centos6"
-  service: name=node_exporter state=started enabled=true
-  when: ansible_distribution_major_version=="6"
-
-- name: "install | start node_exporter.service on Centos7"
-  service: name=node_exporter.service state=started enabled=true
-  when: ansible_distribution_major_version=="7"
