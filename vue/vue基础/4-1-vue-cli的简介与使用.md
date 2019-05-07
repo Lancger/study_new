@@ -66,8 +66,11 @@ npm run dev
 
 参考文档：
 
+https://segmentfault.com/a/1190000016267443    vue进阶1-2 - 项目搭建（@vue/cli）
+
 https://cli.vuejs.org/zh/guide/installation.html  VUE_CLI
 
 https://my.oschina.net/u/3138954/blog/2056301   vue-ui
 
 https://www.cnblogs.com/tjyoung/p/6832234.html   使用vue-cli脚手架工具搭建vue-webpack项目
+
