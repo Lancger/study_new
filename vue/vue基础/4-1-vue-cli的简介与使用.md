@@ -22,9 +22,9 @@
 
     2、如果你已经全局安装了旧版本的 vue-cli (1.x 或 2.x)，你需要先通过 npm uninstall vue-cli -g 或 yarn global remove vue-cli 卸载它。
 
-    全局安装@vue/cli，在终端输入
+    3、全局安装@vue/cli，在终端输入
 
-      npm install -g @vue/cli
+    npm install -g @vue/cli
 
     安装成功后，可用 vue -V 查看版本。
 
