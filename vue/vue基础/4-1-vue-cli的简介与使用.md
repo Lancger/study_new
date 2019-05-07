@@ -27,6 +27,37 @@
     npm install -g @vue/cli
 
     安装成功后，可用 vue -V 查看版本。
+    
+
+# 五、创建vue项目
+
+```
+一、使用脚手架创建项目，vue3为项目名称
+
+vue create vue3
+
+如下图，你会被提示选取一个 preset。
+default: 适合快速创建一个新项目的原型
+Manually select features: 是面向生产的项目更加需要的
+    
+1、选择 default
+
+2、选择 Manually select features, 可根据自身需求进行选择配置
+
+3、配置项目插件和功能
+```
+
+# 六、启动项目
+
+```
+进入项目目录： 
+cd vue3
+
+启动项目： 
+npm run serve
+
+Vue CLI 3去掉了2.x build和config等目录 ,通过新建 vue.config.js 来进行配置，具体可参考https://cli.vuejs.org/zh/conf...
+```
 
 ## vue技术栈开发实战
 
