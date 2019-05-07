@@ -140,7 +140,7 @@ b、编辑ansible.cfg
       library        = /usr/share/my_modules/
       module_utils   = /usr/share/my_module_utils/
       #计时模块在执行ansible-playbook时显示执行时长
-      callback_whitelist = profile_tasks
+      #callback_whitelist = profile_tasks
       remote_tmp     = ~/.ansible/tmp
       local_tmp      = ~/.ansible/tmp
       roles_path    = /opt/ansible/playbooks/roles
