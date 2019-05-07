@@ -25,8 +25,8 @@
   lineinfile:
      dest: /etc/sysconfig/iptables
      regexp: '^-A RH-Firewall-1-INPUT -s 13.10.28.213/32 -p tcp -m tcp -m multiport --dports 9100'
-     line: '-A RH-Firewall-1-INPUT -s 13.10.28.213/32 -p tcp -m tcp -m multiport --dports 9100:9200 -j ACCEPT'
-
+     state: absent
+     
 - name: "uninstall | rm node_exporter.log on Centos6"
   file: dest=/var/log/node_exporter.log state=absent
   when: ansible_distribution_major_version=="6"
