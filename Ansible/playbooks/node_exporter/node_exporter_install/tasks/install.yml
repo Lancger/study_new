@@ -17,7 +17,8 @@
   shell: "cp /etc/sysconfig/iptables /etc/sysconfig/iptables.bak_$(date +%F-%H-%M-%S)"
   
 - name: "install | grep iptables"
-  shell: "grep 13.10.28.213 /etc/sysconfig/iptables"
+  #shell: "grep 13.10.28.213 /etc/sysconfig/iptables"
+  shell: "iptables -S|grep 13.10.28.213"
   register: grep_result
   ignore_errors: True
   
