@@ -252,7 +252,11 @@ Monday 06 May 2019  06:44:36 +0800 (0:00:01.267)       0:00:01.338 ************
 node_exporter_install : restart | restart node_exporter.service -------------------------------------------------------------------------------------------------------- 1.27s
 ```
 
+# 五、ansible列出所有主机列表
 
+```
+ansible all --list-hosts
+```
 
 
  参看文档： https://www.cnblogs.com/zhaojiankai/p/7655855.html
