@@ -19,7 +19,7 @@
 - name: "install | grep iptables"
   shell: "grep 13.10.28.213 /etc/sysconfig/iptables"
   register: grep_result
-  #ignore_errors: True
+  ignore_errors: True
   
 # 将执行结果打印出来
 - name: "install | show grep_result"
