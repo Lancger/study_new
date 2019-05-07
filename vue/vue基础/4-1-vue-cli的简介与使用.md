@@ -55,6 +55,8 @@ cd vue3
 
 启动项目： 
 npm run serve
+npm run dev  #启动本地开发
+npm run build #打包上线
 
 Vue CLI 3去掉了2.x build和config等目录 ,通过新建 vue.config.js 来进行配置，具体可参考https://cli.vuejs.org/zh/conf...
 ```
