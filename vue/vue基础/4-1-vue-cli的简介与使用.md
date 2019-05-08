@@ -94,6 +94,16 @@ npm run dev
 4、打包上线
 npm run build
 
+
+5、问题处理
+
+npm cache clean --force
+
+rm -rf node_modules
+
+npm install
+
+npm start
 ```
 ## vue技术栈开发实战
 
