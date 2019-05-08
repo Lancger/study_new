@@ -26,7 +26,7 @@
 
 ```
 
-# 一、修改默认主应用程序组件
+# 二、修改默认主应用程序组件
 
 1、App.vue 修改为 TodoList.vue
 
@@ -121,10 +121,10 @@ new Vue({
 ```
 
 
-# 二、正式编写模板文件
+# 三、父组件模板TodoList.vue
 
 ```
-#TodoList.vue内容
+#TodoList.vue
 
 <template>
 <div>    <!--注意template标签中必须只能存在一组div标签，所以最外层要用一个大的div包裹住-->
@@ -185,7 +185,7 @@ export default {
 
 ```
 
-# 三、组件的修改
+# 四、子组件TodoItem.vue
 
 ```
 #TodoItem.vue 内容
@@ -211,11 +211,6 @@ export default {
 </style>
 
 ```
-
-# 三、父子组件传值
-
-
-# 四、属性接收
 
 
 参考文档：
