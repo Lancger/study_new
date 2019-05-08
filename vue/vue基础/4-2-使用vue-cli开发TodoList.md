@@ -163,6 +163,26 @@ export default {
 
 ```
 
+# 三、组件的修改
+
+```
+#Todoitem.vue 内容
+
+<template>
+  <!-- 子组件接收属性后，这里就可以使用差值表达式来直接使用content -->
+  <li>{{ content }}</li>
+</template>
+<script>
+export default {
+  //子组件需要定义一个属性来接收父组件传递过来的参数
+   props: ['content']
+}
+</script>
+<style  scoped>
+
+</style>
+
+```
 
 # 三、父子组件传值
 
