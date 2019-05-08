@@ -47,8 +47,9 @@ node -v
 
 ### 二、编译好的nodejs二进制包
 ```bash
-wget https://nodejs.org/dist/v10.15.3/node-v10.15.3.tar.gz
-tar -zxvf node-v10.15.3.tar.gz
+rm -rf /usr/local/node/
+wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz
+tar -zxvf node-v10.15.3-linux-x64.tar.xz
 mv node-v10.15.3 /usr/local/node
 
 #vim /etc/profile
