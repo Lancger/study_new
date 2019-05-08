@@ -81,3 +81,22 @@ https://vuejs.org/js/vue.js
 </body>
 </html>
 ```
+
+# 三、jquery实现
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        // jquery操作dom方式
+        var dom = document.getElementById("app")
+        dom.innerHTML = "Hello World"
+    </script>
+</body>
+</html>
+```
