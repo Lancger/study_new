@@ -50,7 +50,7 @@ node -v
 rm -rf /usr/local/node/
 wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz
 tar -xf node-v10.15.3-linux-x64.tar.xz
-mv node-v10.15.3 /usr/local/node
+mv node-v10.15.3-linux-x64 /usr/local/node
 
 #vim /etc/profile
 添加
