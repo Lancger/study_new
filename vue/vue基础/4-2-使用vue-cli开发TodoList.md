@@ -28,7 +28,7 @@
 
 # 一、修改默认主应用程序组件
 
-App.vue 修改为 TodoList.vue
+1、App.vue 修改为 TodoList.vue
 
 ```
 #App.vue原来内容
@@ -57,6 +57,25 @@ export default {
 }
 </style>
 ```
+
+2、App.vue 命名为 TodoList.vue之后的内容
+```
+#TodoList.vue的内容
+
+<template>
+  <div>
+  </div>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style>
+</style>
+```
+
 
 
 # 二、封装todoitem组件
