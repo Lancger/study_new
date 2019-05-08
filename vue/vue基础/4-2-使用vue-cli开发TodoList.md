@@ -121,7 +121,45 @@ new Vue({
 ```
 
 
-# 二、封装todoitem组件
+# 二、正式编写模板文件
+
+```
+<template>
+<div>
+  <div>
+    <input v-model="inputValue"/>
+    <button @click="handleSubmit">提交</button>
+  </div>
+  <ul>
+  </ul>
+</div>
+</template>
+
+<script>
+export default {
+  // data: function () {
+  //   return {
+  //     inputValue: ''
+  //   }
+  // },
+  //简写方式
+  data () {
+    return {
+      inputValue: ''
+    }
+  },
+  methods: {
+    handleSummit () {
+      alert(123)
+    }
+  }
+}
+</script>
+
+<style>
+</style>
+
+```
 
 
 # 三、父子组件传值
