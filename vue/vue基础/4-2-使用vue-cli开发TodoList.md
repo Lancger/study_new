@@ -124,8 +124,10 @@ new Vue({
 # 二、正式编写模板文件
 
 ```
+#TodoList.vue内容
+
 <template>
-<div>
+<div>    <!--注意template标签中必须只能存在一组div标签，所以最外层要用一个大的div包裹住-->
   <div>
     <input v-model="inputValue"/>
     <button @click="handleSubmit">提交</button>
@@ -142,7 +144,7 @@ export default {
   //     inputValue: ''
   //   }
   // },
-  //简写方式
+  // ES6函数，简写方式
   data () {
     return {
       inputValue: ''
