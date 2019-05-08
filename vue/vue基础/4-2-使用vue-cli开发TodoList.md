@@ -120,8 +120,25 @@ new Vue({
 })
 ```
 
+# 三、入口main.js
 
-# 三、父组件模板TodoList.vue
+```
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue'
+import TodoList from './TodoList'
+
+Vue.config.productionTip = false
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  components: { TodoList },    //注册的组件为TodoList
+  template: '<TodoList/>'      //显示的内容也为TodoLis
+})
+```
+
+# 四、父组件模板TodoList.vue
 
 ```
 #TodoList.vue
@@ -185,7 +202,7 @@ export default {
 
 ```
 
-# 四、子组件TodoItem.vue
+# 五、子组件TodoItem.vue
 
 ```
 #TodoItem.vue 内容
