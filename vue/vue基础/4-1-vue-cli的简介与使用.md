@@ -61,6 +61,24 @@ npm run build #打包上线
 Vue CLI 3去掉了2.x build和config等目录 ,通过新建 vue.config.js 来进行配置，具体可参考https://cli.vuejs.org/zh/conf...
 ```
 
+# 七、旧版
+
+```
+1、使用npm安装vue-cli
+npm install vue-cli -g
+
+2、下面直接使用vue-cli初始化webpack项目
+vue init webpack todolist(项目名)
+
+3、安装依赖
+npm install
+cnpm install
+npm run dev
+
+4、打包上线
+npm run build
+
+```
 ## vue技术栈开发实战
 
 参考文档：
