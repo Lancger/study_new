@@ -115,8 +115,8 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  components: { TodoList },
-  template: '<TodoList/>'
+  components: { TodoList },    //注册的组件为TodoList
+  template: '<TodoList/>'      //显示的内容也为TodoLis
 })
 ```
 
