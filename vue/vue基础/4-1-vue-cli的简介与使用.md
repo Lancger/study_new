@@ -70,6 +70,22 @@ npm install vue-cli -g
 2、下面直接使用vue-cli初始化webpack项目
 vue init webpack todolist(项目名)
 
+vue vue init webpack todolist
+
+⠧ downloading template
+? Project name todolist
+? Project description A Vue.js project
+? Author Byran <Bryan@qq.com>
+? Vue build standalone
+? Install vue-router? Yes
+? Use ESLint to lint your code? Yes
+? Pick an ESLint preset Standard
+? Set up unit tests No
+? Setup e2e tests with Nightwatch? No
+? Should we run `npm install` for you after the project has been created? (recommended) npm
+
+   vue-cli · Generated "todolist".
+
 3、安装依赖
 npm install
 cnpm install
