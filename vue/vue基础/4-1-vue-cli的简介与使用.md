@@ -70,7 +70,7 @@ sudo npm install vue-cli -g
 2、下面直接使用vue-cli初始化webpack项目
 vue init webpack todolist(项目名)
 
-vue vue init webpack todolist
+vue init webpack todolist
 
 ⠧ downloading template
 ? Project name todolist
