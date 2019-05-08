@@ -65,7 +65,7 @@ Vue CLI 3去掉了2.x build和config等目录 ,通过新建 vue.config.js 来进
 
 ```
 1、使用npm安装vue-cli
-npm install vue-cli -g
+sudo npm install vue-cli -g
 
 2、下面直接使用vue-cli初始化webpack项目
 vue init webpack todolist(项目名)
