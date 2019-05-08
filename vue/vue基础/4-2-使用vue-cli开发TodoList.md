@@ -129,30 +129,52 @@ new Vue({
 <template>
 <div>    <!--注意template标签中必须只能存在一组div标签，所以最外层要用一个大的div包裹住-->
   <div>
-    <input v-model="inputValue"/>
+    <input v-model="inputValue" />
     <button @click="handleSubmit">提交</button>
   </div>
   <ul>
+    <!-- 父组件通过@delete监听子组件触发的delete事件,一旦监听到会触发handleDelete方法 -->
+    <todo-item
+      v-for="(item, index) of list"
+      :key="index"
+      :content="item"
+      :index="index"
+      @delete="handleDelete"
+    ></todo-item>
   </ul>
 </div>
 </template>
 
 <script>
+//引入TodoItem组件
+import TodoItem from './components/TodoItem'
+
 export default {
   // data: function () {
   //   return {
   //     inputValue: ''
   //   }
   // },
+  // 注册TodoItem组件
+  components: {
+    'todo-item': TodoItem
+  },
   // ES6函数，简写方式
   data () {
     return {
-      inputValue: ''
+      inputValue: '',
+      list: []
     }
   },
   methods: {
-    handleSummit () {
-      alert(123)
+    handleSubmit () {
+      //this.list 底层会做个变更，相当于this.$data.list的一个别名或者缩写，如果data中没有，会到computed中去找
+      this.list.push(this.inputValue)
+      //清空输入框的值
+      this.inputValue = ''
+    },
+    handleDelete (index) {
+      this.list.splice(index, 1)
     }
   }
 }
@@ -166,20 +188,26 @@ export default {
 # 三、组件的修改
 
 ```
-#Todoitem.vue 内容
+#TodoItem.vue 内容
 
 <template>
   <!-- 子组件接收属性后，这里就可以使用差值表达式来直接使用content -->
-  <li>{{ content }}</li>
+  <li @click="handleDelete">{{content}}</li>
 </template>
 <script>
 export default {
   //子组件需要定义一个属性来接收父组件传递过来的参数
-   props: ['content']
+   props: ['content', 'index'],
+   methods: {
+     handleDelete () {
+      //  alert(this.index)
+      //  子组件通过$emit向外触发事件
+      this.$emit('delete', this.index)
+     }
+   }
 }
 </script>
 <style  scoped>
-
 </style>
 
 ```
