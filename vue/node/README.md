@@ -47,9 +47,9 @@ node -v
 
 ### 二、编译好的nodejs二进制包
 ```bash
-wget https://nodejs.org/dist/v7.8.0/node-v7.8.0-linux-x64.tar.xz
-tar -xf node-v7.8.0-linux-x64.tar.xz
-mv node-v7.8.0-linux-x64 /usr/local/node
+wget https://nodejs.org/dist/v10.15.3/node-v10.15.3.tar.gz
+tar -xf node-v10.15.3.tar.gz
+mv node-v10.15.3-linux-x64 /usr/local/node
 
 #vim /etc/profile
 添加
@@ -60,7 +60,7 @@ export PATH=$NODE_HOME/bin:$PATH
 source /etc/profile
 
 root># node -v
-v7.8.0
+v10.15.3
 
 root># npm -v
 4.2.0
