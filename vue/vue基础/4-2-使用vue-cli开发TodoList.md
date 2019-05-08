@@ -26,7 +26,10 @@
 
 ```
 
-# 一、修改默认组件
+# 一、修改默认主应用程序组件
+
+App.vue 修改为 TodoList.vue
+
 ```
 <template>
   <div>
