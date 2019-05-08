@@ -77,7 +77,7 @@ vue init webpack todolist
 ? Project description A Vue.js project
 ? Author Byran <Bryan@qq.com>
 ? Vue build standalone
-? Install vue-router? Yes
+? Install vue-router? No
 ? Use ESLint to lint your code? Yes
 ? Pick an ESLint preset Standard
 ? Set up unit tests No
