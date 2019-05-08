@@ -104,6 +104,16 @@ rm -rf node_modules
 npm install
 
 npm start
+
+6、报错
+报错一
+Error: getaddrinfo ENOTFOUND localhost
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+    
+解决办法，主机缺少这个绑定
+127.0.0.1 localhost
+
 ```
 ## vue技术栈开发实战
 
