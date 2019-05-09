@@ -3,10 +3,10 @@
 jenkins账户设置的免key登陆
 
 ```
-[root@Ansible-A]# pwd
+[jenkins@Ansible-A]# pwd
 /opt/jenkins/.ssh
 
-[root@Ansible-A]# cat config 
+[jenkins@Ansible-A]# cat config 
 Host 10.33.99.*
   ProxyCommand ssh -W %h:%p 130.35.35.13
   IdentityFile /opt/jenkins/.ssh/ansible_id_rsa
