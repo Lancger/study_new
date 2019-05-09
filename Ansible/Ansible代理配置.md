@@ -6,6 +6,9 @@ jenkins账户设置的免key登陆
 [jenkins@Ansible-A]# pwd
 /opt/jenkins/.ssh
 
+
+# 匹配内网机器10.33.99.*段的机器通过跳转机130.35.35.13跳转
+
 [jenkins@Ansible-A]# cat config 
 Host 10.33.99.*
   ProxyCommand ssh -W %h:%p 130.35.35.13
@@ -37,9 +40,34 @@ Host 130.35.35.13
   ControlPersist 5m
 ```
 
-# 三、ssh直接验证
+# 三、代理验证
 ```
-ssh直接验证测试
+#在Ansible-B机器验证
+
+ansible test01 -m ping --private-key /opt/ansible/.auth/id_rsa
+test01 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+
+
+#在Ansible-A机器验证(注意需要在/etc/hosts下绑定主机)
+
+vim /etc/hosts
+10.33.99.19 test01
+
+vim /etc/ansible/hosts
+[web]
+test01  ansible_ssh_host=10.33.99.19  ansible_ssh_user=root
+
+ansible test01 -m ping --private-key /opt/ansible/.auth/id_rsa
+test01 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+
+
+#ssh直接验证测试
 
 ssh root@10.33.99.19 -i  /opt/ansible/.auth/id_rsa 
 
@@ -47,5 +75,3 @@ Last login: Thu May  9 16:31:29 2019 from 10.33.99.228
 
 [root@www259 ~]# 
 ```
-
-# 三、
