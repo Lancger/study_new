@@ -1,25 +1,33 @@
+# 一、Ansible-A机器，ssh代理配置
+
+jenkins账户设置的免key登陆
 
 ```
+[root@Ansible-A]# pwd
 /opt/jenkins/.ssh
 
-ansible机器，ssh代理配置
-$ cat config 
-
+[root@Ansible-A]# cat config 
 Host 10.33.99.*
   ProxyCommand ssh -W %h:%p 130.35.35.13
   IdentityFile /opt/jenkins/.ssh/ansible_id_rsa
-
 
 Host 130.35.35.13
   Hostname proxy.ansible.com
   User root
   IdentityFile /opt/jenkins/.ssh/ansible_id_rsa
-  
-ansible代理机器，ssh代理配置
+```
 
-[root@twww921 .ssh]# pwd
+#  二、Ansible-B代理机器，ssh代理配置
+
+root账户设置的免key登陆
+
+```
+
+[root@Ansible-B]# pwd
 /root/.ssh
-[root@twww921 .ssh]# cat config 
+
+[root@Ansible-B]# cat config 
+
 Host 130.35.35.13
   Hostname twww921
   IdentityFile /root/.ssh/id_rsa
@@ -27,10 +35,9 @@ Host 130.35.35.13
   ControlMaster auto
   ControlPath /tmp/.ssh/ansibe-%r@%h:%p
   ControlPersist 5m
-
 ```
 
-# 二、ssh直接验证
+# 三、ssh直接验证
 ```
 ssh直接验证测试
 
