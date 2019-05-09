@@ -75,3 +75,9 @@ Last login: Thu May  9 16:31:29 2019 from 10.33.99.228
 
 [root@www259 ~]# 
 ```
+
+
+参考文档：
+
+https://hoxis.github.io/ansible-jump-server.html
+
