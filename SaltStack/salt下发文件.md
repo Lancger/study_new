@@ -32,5 +32,18 @@ salt-cp "jys*" def.conf /etc/security/limits.d/def.conf
 cd /etc/security/
 ```
 
+# 三、批量修改密码
+```
+#修改密码
+
+Centos服务器：
+
+salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run 'echo "Kda18*s2311KLC}wXd1"|passwd --stdin root'
+
+Ubuntu服务器：
+
+salt "fhex-one-0[1-4]" cmd.run 'echo root:"Kda18*s2311KLC}wXd1" | chpasswd'
+```
+
 参考资料:
 
