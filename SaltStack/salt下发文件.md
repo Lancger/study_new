@@ -12,5 +12,15 @@
     - /srv/pillar
 ```
 
+# 二、下发指定文件
+
+```
+salt-cp "jys*" limits.conf /etc/security/limits.conf
+
+salt-cp "jys*" 90-nproc.conf /etc/security/limits.d/90-nproc.conf
+
+salt-cp "jys*" def.conf /etc/security/limits.d/def.conf
+```
+
 参考资料:
 
