@@ -45,5 +45,6 @@ Ubuntu服务器：
 salt "fhex-one-0[1-4]" cmd.run 'echo root:"Kda18*s2311KLC}wXd1" | chpasswd'
 ```
 
+
 参考资料:
 
