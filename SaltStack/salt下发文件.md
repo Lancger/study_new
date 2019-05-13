@@ -20,6 +20,14 @@ salt-cp "jys*" limits.conf /etc/security/limits.conf
 salt-cp "jys*" 90-nproc.conf /etc/security/limits.d/90-nproc.conf
 
 salt-cp "jys*" def.conf /etc/security/limits.d/def.conf
+
+{'jys001': {'/etc/security/limits.d/def.conf': True},
+ 'jys002': {'/etc/security/limits.d/def.conf': True},
+ 'jys003': {'/etc/security/limits.d/def.conf': True},
+ 'jys004': {'/etc/security/limits.d/def.conf': True},
+ 'jys005': {'/etc/security/limits.d/def.conf': True},
+ 'jys006': {'/etc/security/limits.d/def.conf': True}}
+ 
 ```
 
 参考资料:
