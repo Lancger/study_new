@@ -258,6 +258,10 @@ node_exporter_install : restart | restart node_exporter.service ----------------
 ansible all --list-hosts
 ```
 
+# 六、copy
+```
+ansible centos7 -m copy -a "src=/home/www/.bashrc dest=/home/www/.bashrc owner=www group=www mode=0644"
+```
 
  参看文档： https://www.cnblogs.com/zhaojiankai/p/7655855.html
 
