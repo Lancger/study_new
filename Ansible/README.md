@@ -263,6 +263,17 @@ ansible all --list-hosts
 ansible centos7 -m copy -a "src=/home/www/.bashrc dest=/home/www/.bashrc owner=www group=www mode=0644"
 ```
 
+# 七、shell和command模块区别
+```
+shell 模块可以帮助我们在远程主机上执行命令。与 command 模块不同的是，shell 模块在远程主机中执行命令时，会经过远程主机上的 /bin/sh 程序处理。 
+
+ansible "all" -m command -a "rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm"
+ansible "all" -m command -a "yum install -y zabbix-agent"
+ansible "all" -m copy -a "src=/etc/zabbix_agent_tokok_v4.0.tar.gz dest=/tmp/zabbix_agent_tokok_v4.0.tar.gz owner=zabbix group=zabbix mode=0644"
+ansible "all" -m command -a "systemctl restart zabbix-agent"
+ansible "all" -m shell -a "ps -ef|grep zabbix"
+```
+
  参看文档： https://www.cnblogs.com/zhaojiankai/p/7655855.html
 
 https://www.cnblogs.com/littlemonsters/p/5783672.html     SSH私钥取消密码（passphrase ）
