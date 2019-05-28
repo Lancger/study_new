@@ -271,7 +271,7 @@ ansible "all" -m command -a "rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/
 ansible "all" -m command -a "yum install -y zabbix-agent"
 ansible "all" -m copy -a "src=/etc/zabbix_agent_tokok_v4.0.tar.gz dest=/tmp/zabbix_agent_tokok_v4.0.tar.gz owner=zabbix group=zabbix mode=0644"
 ansible "all" -m shell -a "mv /etc/zabbix /tmp/zabbix_bak"
-ansible "all" -m shell -a "tar -zxvf /tmp/zabbix_agent_tokok_v4.0.tar.gz -c /etc/"
+ansible "all" -m shell -a "tar -zxvf /tmp/zabbix_agent_tokok_v4.0.tar.gz -C /etc/"
 ansible "all" -m command -a "systemctl restart zabbix-agent"
 ansible "all" -m shell -a "ps -ef|grep zabbix"
 ```
