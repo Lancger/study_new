@@ -41,6 +41,11 @@ salt -N centos7-2rd cmd.run "systemctl restart iptables.service"
 
 salt-cp -N centos7-3rd iptables /etc/sysconfig/iptables
 salt -N centos7-3rd cmd.run "systemctl restart iptables.service"
+
+
+
+#下发代码配置
+
 ```
 
 # 三、批量修改密码
