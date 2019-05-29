@@ -30,6 +30,17 @@ salt-cp "jys*" def.conf /etc/security/limits.d/def.conf
  
 #检查
 cd /etc/security/
+
+
+#下发防火墙配置
+salt-cp -N centos7-1rd iptables /etc/sysconfig/iptables
+salt -N centos7-1rd cmd.run "systemctl restart iptables.service"
+
+salt-cp -N centos7-2rd iptables /etc/sysconfig/iptables
+salt -N centos7-2rd cmd.run "systemctl restart iptables.service"
+
+salt-cp -N centos7-3rd iptables /etc/sysconfig/iptables
+salt -N centos7-3rd cmd.run "systemctl restart iptables.service"
 ```
 
 # 三、批量修改密码
