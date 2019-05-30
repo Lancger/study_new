@@ -52,7 +52,7 @@ yum install -y salt-minion
 master: master.test.com
 
 # master改为服务端的IP
-master: 182.168.56.11
+master: 192.168.56.11
 
 
 分别修改三台机器minion文件中的的id为自己的主机名
