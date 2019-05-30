@@ -5,7 +5,7 @@ cat > /etc/sysconfig/iptables << \EOF
 *filter
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
-:OUTPUT ACCEPT [114:10072]
+:OUTPUT ACCEPT [0:0]
 -A INPUT -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
 -A INPUT -p icmp -j ACCEPT
 -A INPUT -i lo -j ACCEPT
