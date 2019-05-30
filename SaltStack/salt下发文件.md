@@ -46,6 +46,20 @@ salt -N centos7-3rd cmd.run "systemctl restart iptables.service"
 
 #下发代码配置
 
+单台下发
+cd /srv/salt/
+salt 'coinearn-io-07-redis-mq-new' cmd.run "mv /opt/cn/ /tmp/cn-2019-bak"
+salt-cp 'coinearn-io-07-redis-mq-new' cn-2rd.tar.gz /tmp/
+salt 'coinearn-io-07-redis-mq-new' cmd.run "tar -zxvf /tmp/cn-2rd.tar.gz -C /opt/"
+
+cd /srv/salt/
+salt -N centos7-2rd cmd.run "mv /opt/cn/ /tmp/cn-2019-bak"
+salt-cp -N centos7-2rd cn-2rd.tar.gz /tmp/
+salt -N centos7-2rd cmd.run "tar -zxvf /tmp/cn-2rd.tar.gz -C /opt/"
+
+salt -N centos7-2rd cmd.run "mv /opt/config-project/ /tmp/config-project-2019-bak"
+salt-cp -N centos7-2rd config-project-2rd.tar.gz /tmp/
+salt -N centos7-2rd cmd.run "tar -zxvf /tmp/config-project-2rd.tar.gz -C /opt/"
 ```
 
 # 三、批量修改密码
