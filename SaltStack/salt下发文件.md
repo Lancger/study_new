@@ -52,6 +52,12 @@ salt 'coinearn-io-07-redis-mq-new' cmd.run "mv /opt/cn/ /tmp/cn-2019-bak"
 salt-cp 'coinearn-io-07-redis-mq-new' cn-2rd.tar.gz /tmp/
 salt 'coinearn-io-07-redis-mq-new' cmd.run "tar -zxvf /tmp/cn-2rd.tar.gz -C /opt/"
 
+salt 'coinearn-io-07-redis-mq-new' cmd.run "mv /opt/config-project/ /tmp/config-project-2019-bak"
+salt-cp 'coinearn-io-07-redis-mq-new' config-project-2rd.tar.gz /tmp/
+salt 'coinearn-io-07-redis-mq-new' cmd.run "tar -zxvf /tmp/config-project-2rd.tar.gz -C /opt/"
+
+
+#分组下发
 cd /srv/salt/
 salt -N centos7-2rd cmd.run "mv /opt/cn/ /tmp/cn-2019-bak"
 salt-cp -N centos7-2rd cn-2rd.tar.gz /tmp/
