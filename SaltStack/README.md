@@ -18,6 +18,9 @@ cat > /etc/sysconfig/iptables << \EOF
 COMMIT
 # Completed on Thu May 30 15:45:20 2019
 EOF
+
+systemctl restart iptables
+systemctl status iptables
 ```
 
 参考资料：
