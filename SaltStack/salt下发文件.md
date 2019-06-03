@@ -66,6 +66,12 @@ salt -N centos7-2rd cmd.run "tar -zxvf /tmp/cn-2rd.tar.gz -C /opt/"
 salt -N centos7-2rd cmd.run "mv /opt/config-project/ /tmp/config-project-2019-bak"
 salt-cp -N centos7-2rd config-project-2rd.tar.gz /tmp/
 salt -N centos7-2rd cmd.run "tar -zxvf /tmp/config-project-2rd.tar.gz -C /opt/"
+
+
+
+#下发配置
+salt-cp -N centos7-2rd server_openapi.xml /data0/opt/tomcat8_8085_openapi/conf/server.xml
+salt-cp -N centos7-2rd server_inner.xml /data0/opt/tomcat8_8083_inner/conf/server.xml
 ```
 
 # 三、批量修改密码
