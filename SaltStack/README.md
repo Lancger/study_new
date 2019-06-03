@@ -42,7 +42,7 @@ cat > /etc/sysconfig/iptables << \EOF
 -A INPUT -s 23.244.63.0/24 -p tcp -m tcp -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
 -A INPUT -p tcp -m multiport --dports 21:25,80,443,33389,9090,3000,10050 -j ACCEPT
--A INPUT -p tcp -m multiport --dports 4505,4506,8161 -j ACCEPT
+-A INPUT -p tcp -m multiport --dports 4505,4506,8161,3306 -j ACCEPT
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
 -A INPUT -j REJECT --reject-with icmp-host-prohibited
 -A FORWARD -j REJECT --reject-with icmp-host-prohibited
