@@ -40,6 +40,8 @@ cat > /etc/sysconfig/iptables << \EOF
 -A INPUT -i lo -j ACCEPT
 -A INPUT -s 192.168.52.0/24 -p tcp -m tcp -j ACCEPT
 -A INPUT -s 23.244.63.0/24 -p tcp -m tcp -j ACCEPT
+#放开salt-master的权限
+-A INPUT -s 13.229.223.57/32 -p tcp -m tcp -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
 #-A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT
 -A INPUT -p tcp -m multiport --dports 21:25,80,443,33389,9090,3000,10050 -j ACCEPT
