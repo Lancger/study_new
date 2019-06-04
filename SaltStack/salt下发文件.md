@@ -42,6 +42,7 @@ salt -N centos7-2rd cmd.run "systemctl restart iptables.service"
 salt-cp -N centos7-3rd iptables /etc/sysconfig/iptables
 salt -N centos7-3rd cmd.run "systemctl restart iptables.service"
 
+salt -N centos7-3rd cmd.run test.ping
 
 
 #下发代码配置
@@ -89,6 +90,8 @@ salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run 'echo "Kda18*s2311KLC}wXd1"|passwd
 Ubuntu服务器：
 
 salt "fhex-one-0[1-4]" cmd.run 'echo root:"Kda18*s2311KLC}wXd1" | chpasswd'
+
+
 ```
 
 
