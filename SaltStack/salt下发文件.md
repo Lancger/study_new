@@ -42,6 +42,8 @@ salt -N centos7-2rd cmd.run "systemctl restart iptables.service"
 salt-cp -N centos7-3rd iptables /etc/sysconfig/iptables
 salt -N centos7-3rd cmd.run "systemctl restart iptables.service"
 
+
+salt -N centos7-3rd cmd.run "systemctl restart supervisord"
 salt -N centos7-3rd test.ping
 
 
