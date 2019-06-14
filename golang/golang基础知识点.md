@@ -1,7 +1,7 @@
 # 一、变量的定义
-```
-1、使用var关键字
 
+1、使用var关键字
+```
 var a, b, c bool
 
 var s1, s2 string = "hello", "world"
@@ -15,9 +15,10 @@ var (
 	bb = true
 	cc = false
 )
+```
 
 2、使用 := 定义变量
-
+```
 a, b, i, s1, s2 := true, false, 3, "hello", "world"
 
 只能在函数内使用
