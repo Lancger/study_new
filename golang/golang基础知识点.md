@@ -38,3 +38,60 @@ func main() {
 	varliablesVal()
 }
 ```
+
+3、常量和枚举
+```
+a、普通枚举类型
+b、自增值枚举类型
+
+变量类型写在变量名之后
+编译器可推测变量类型
+没有char,只有runne
+原始支持复数类型
+
+package main
+
+import "fmt"
+
+// 常量和枚举
+func enmus() {
+
+	// const (
+	// 	cpp    = 0
+	// 	java   = 1
+	// 	python = 2
+	// 	golang = 3
+	// )
+	// fmt.Println(cpp, java, python, golang)
+
+	const (
+		cpp = iota
+		_
+		java
+		python
+		golang
+	)
+	fmt.Println(cpp, java, python, golang)
+
+	//字节转换
+	const (
+		b = 1 << (10 * iota)
+		kb
+		mb
+		gb
+		tb
+		pb
+	)
+	fmt.Println(b, kb, mb, gb, tb, pb)
+
+}
+
+func main() {
+	enmus()
+}
+
+#输出结果
+API server listening at: 127.0.0.1:5595
+0 2 3 4
+1 1024 1048576 1073741824 1099511627776 1125899906842624
+```
