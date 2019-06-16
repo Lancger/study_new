@@ -101,6 +101,7 @@ salt -N centos-all cmd.run "date -R"
 
 #针对所有的ubuntu系统
 salt -N ubuntu-all cmd.run "date -R"
+salt -N ubuntu-all cmd.run "/bin/cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime"
 ```
 
 
