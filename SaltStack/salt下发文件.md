@@ -95,7 +95,14 @@ salt -N centos7-3rd cmd.run "/bin/cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/
 
 salt -N centos7-4rd cmd.run "date -R"
 salt -N centos7-4rd cmd.run "/bin/cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime"
+
+#针对所有的centos系统
+salt -N centos-all cmd.run "date -R"
+
+#针对所有的ubuntu系统
+salt -N ubuntu-all cmd.run "date -R"
 ```
+
 
 # 三、批量修改密码
 ```
