@@ -81,6 +81,17 @@ salt-cp -N centos7-2rd server_match.xml /data0/opt/tomcat8_8084_match/conf/serve
 
 salt -N centos7-2rd cmd.run "grep acceptCount /data0/opt/tomcat8_8085_openapi/conf/server.xml" 
 salt -N centos7-2rd cmd.run "grep acceptCount /data0/opt/tomcat8_8083_inner/conf/server.xml" 
+
+
+#批量修改时区
+salt -N centos7-1rd cmd.run "date -R"
+salt -N centos7-1rd cmd.run "/bin/cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime"
+
+salt -N centos7-2rd cmd.run "date -R"
+salt -N centos7-2rd cmd.run "/bin/cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime"
+
+salt -N centos7-3rd cmd.run "date -R"
+salt -N centos7-3rd cmd.run "/bin/cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime"
 ```
 
 # 三、批量修改密码
