@@ -276,6 +276,27 @@ ansible "all" -m command -a "systemctl restart zabbix-agent"
 ansible "all" -m shell -a "ps -ef|grep zabbix"
 ```
 
+# 八、 ansible普通用户su切换问题
+在现网应用中，安全加固后的主机是不允许直接以root用户登陆的，而很多命令又需要root用户来执行，在不改造现网的情况下。希望通过一个普通用户先登陆，再su切到root执行。而且每台主机的普通用户和root用户的密码又不同。希望在通过ansible执行的时候不需要交互输入密码，而是直接执行后输出结果。
+```
+一、ansible hosts配置文件
+
+在之前的系列文章中我们提到，可以把密码写到hosts配置文件，通过查询官网的相关信息了解了，其除了ansible_ssh_user、ansible_ssh_pass变量外，还为su切换提供了ansible_su_pass变量，通过该变量我们可以把root密码直接写到配置文件中。具体如下：
+
+[root@monitor-server ~]# cat /etc/ansible/hosts 
+[centos7]
+172.16.15.21
+[centos7:vars]
+ansible_ssh_user=www
+ansible_su_pass=1Qaz2Wsx3Edc
+
+二、su切换执行
+
+所以结合上面两块，我们做下简单的测试：
+
+[www@monitor-server ~]$ ansible "centos7" -S -R root -m shell -a "systemctl restart zabbix-agent"
+```
+
  参看文档： https://www.cnblogs.com/zhaojiankai/p/7655855.html
 
 https://www.cnblogs.com/littlemonsters/p/5783672.html     SSH私钥取消密码（passphrase ）
@@ -285,4 +306,6 @@ https://blog.51cto.com/lxlxlx/1894386  ansible自动化部署之第三方模块�
 https://blog.csdn.net/JackLiu16/article/details/80577972  playbook debug 结合注册变量register打印日志
 
 https://blog.csdn.net/qianggezhishen/article/details/53939188  ansible register 之用法
+
+https://www.cnblogs.com/yum777/p/6491254.html  ansible普通用户su切换问题  
 
