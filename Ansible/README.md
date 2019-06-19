@@ -277,6 +277,7 @@ ansible "all" -m shell -a "ps -ef|grep zabbix"
 ```
 
 # 八、 ansible普通用户su切换问题
+
 在现网应用中，安全加固后的主机是不允许直接以root用户登陆的，而很多命令又需要root用户来执行，在不改造现网的情况下。希望通过一个普通用户先登陆，再su切到root执行。而且每台主机的普通用户和root用户的密码又不同。希望在通过ansible执行的时候不需要交互输入密码，而是直接执行后输出结果。
 ```
 一、ansible hosts配置文件
@@ -295,6 +296,13 @@ ansible_su_pass=1Qaz2Wsx3Edc
 所以结合上面两块，我们做下简单的测试：
 
 [www@monitor-server ~]$ ansible "centos7" -S -R root -m shell -a "systemctl restart zabbix-agent"
+
+
+三、再下为我们再看看远程主机的message日志文件确认下是否真的是通过普通用户切换的：
+
+    Dec 3 11:36:20 linux su: (to root) test on /dev/pts/1 //由普通用户test切换为su切换为root的日志
+    Dec 3 11:36:20 linux ansible-command: Invoked with creates=None executable=None chdir=None args=uptime removes=None NO_LOG=None shell=True warn=True //ansible执行的内容
+
 ```
 
  参看文档： https://www.cnblogs.com/zhaojiankai/p/7655855.html
