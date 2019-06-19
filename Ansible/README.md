@@ -291,6 +291,9 @@ ansible "all" -m shell -a "ps -ef|grep zabbix"
 ansible_ssh_user=www
 ansible_su_pass=1Qaz2Wsx3Edc
 
+
+ansible_ssh_user   ----  ssh连接时默认使用的用户名 
+ansible_su_pass    ----  使用su切换到root用户的密码
 二、su切换执行
 
 所以结合上面两块，我们做下简单的测试：
