@@ -294,12 +294,15 @@ ansible_su_pass=1Qaz2Wsx3Edc
 
 ansible_ssh_user   ----  ssh连接时默认使用的用户名 
 ansible_su_pass    ----  使用su切换到root用户的密码
+
 二、su切换执行
 
 所以结合上面两块，我们做下简单的测试：
 
 [www@monitor-server ~]$ ansible "centos7" -S -R root -m shell -a "systemctl restart zabbix-agent"
 
+-S, --su run operations with su (deprecated, use become)
+-R SU_USER, --su-user=SU_USER
 
 三、再下为我们再看看远程主机的message日志文件确认下是否真的是通过普通用户切换的：
 
