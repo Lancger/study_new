@@ -31,6 +31,7 @@ $ npm i element-ui -S
 ```
 1、完整引入
 在 main.js 中写入以下内容：
+
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
@@ -49,5 +50,17 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
 以上代码便完成了 Element 的引入。需要注意的是，样式文件需要单独引入。
+```
+```
+2、按需引入
+借助 babel-plugin-component，我们可以只引入需要的组件，以达到减小项目体积的目的。
+
+首先，安装 babel-plugin-component：
+
+npm install babel-plugin-component -D
+
+然后，将 .babelrc 修改为：
+
 ```
