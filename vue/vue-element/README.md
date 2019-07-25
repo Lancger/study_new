@@ -16,7 +16,7 @@ $ cd vue-demo
 # 安装依赖
 $ npm install -g cnpm --registry=https://registry.npm.taobao.org
 $ npm install
-$ sudo npm install --unsafe-perm  
+$ sudo npm install --unsafe-perm  (Mac和Linux用户权限问题，可使用此命令，正常使用npm install即可)
 
 # 启动项目
 $ npm run dev //启动成功 http://localhost:8080 即可打开测试首页
