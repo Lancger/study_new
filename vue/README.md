@@ -12,6 +12,8 @@
     
     # 最新稳定版
     npm install vue
+    
+    sudo npm install --unsafe-perm
 
 ## 二、命令行工具 vue-cli
 
