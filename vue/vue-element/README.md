@@ -14,7 +14,9 @@ $ vue init webpack vue-demo  // 后续按回车安装默认即可
 $ cd vue-demo
 
 # 安装依赖
+$ npm install -g cnpm --registry=https://registry.npm.taobao.org
 $ npm install
+$ sudo npm install --unsafe-perm  
 
 # 启动项目
 $ npm run dev //启动成功 http://localhost:8080 即可打开测试首页
@@ -24,3 +26,7 @@ $ npm run dev //启动成功 http://localhost:8080 即可打开测试首页
 $ npm i element-ui -S
 ```
 
+# 二、引入Element
+```
+
+```
