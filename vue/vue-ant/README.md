@@ -30,6 +30,7 @@ $ npm run serve
 # 三、引入 antd
 ```
 # 这是 vue-cli 生成的默认目录结构。
+
 ├── README.md
 ├── babel.config
 ├── package.json
@@ -50,4 +51,31 @@ $ npm run serve
 yarn add ant-design-vue
 
 npm i --save ant-design-vue
+
+# 修改 src/main.js，引入 antd 的按钮组件以及全部样式文件。
+
+import Vue from "vue";
+import Button from "ant-design-vue/lib/button";
+import "ant-design-vue/dist/antd.css";
+import App from "./App";
+
+Vue.component(Button.name, Button);
+
+Vue.config.productionTip = false;
+
+new Vue({
+  render: h => h(App)
+}).$mount("#app");
+
+# 修改 src/App.vue的 template 内容。
+
+<template>
+  <div id="app">
+    <img src="./assets/logo.png">
+    <a-button type="primary">Button></a-button>
+  </div>
+</template>
+...
+
+# 好了，现在你应该能看到页面上已经有了 antd 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 vue-cli 的官方文档。
 ```
