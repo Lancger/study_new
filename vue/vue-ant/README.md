@@ -1,13 +1,13 @@
 # 一、安装和初始化 
 ```
-你可能还需要安装 yarn
+1、你可能还需要安装 yarn
 # Mac安装yarn
 
 $ brew install yarn
 ```
 
 ```
-# 我们需要在命令行中安装 vue-cli 工具
+2、# 我们需要在命令行中安装 vue-cli 工具
 
 $ npm install -g @vue/cli
 # OR
@@ -29,7 +29,7 @@ $ npm run serve
 
 # 三、引入 antd
 ```
-# 这是 vue-cli 生成的默认目录结构。
+1、# 这是 vue-cli 生成的默认目录结构。
 
 ├── README.md
 ├── babel.config
@@ -46,13 +46,13 @@ $ npm run serve
 │   └── main.js
 └── yarn.lock
 
-# 现在从 yarn 或 npm 安装并引入 ant-design-vue。
+2、# 现在从 yarn 或 npm 安装并引入 ant-design-vue。
 
 yarn add ant-design-vue
 
 npm i --save ant-design-vue
 
-# 修改 src/main.js，引入 antd 的按钮组件以及全部样式文件。
+3、# 修改 src/main.js，引入 antd 的按钮组件以及全部样式文件。
 
 import Vue from "vue";
 import Button from "ant-design-vue/lib/button";
@@ -67,7 +67,7 @@ new Vue({
   render: h => h(App)
 }).$mount("#app");
 
-# 修改 src/App.vue的 template 内容。
+4、# 修改 src/App.vue的 template 内容。
 
 <template>
   <div id="app">
