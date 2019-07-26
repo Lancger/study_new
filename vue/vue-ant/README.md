@@ -1,7 +1,7 @@
 # 一、安装和初始化 
 ```
-1、你可能还需要安装 yarn
-# Mac安装yarn
+1、# 你可能还需要安装 yarn
+Mac安装yarn
 
 $ brew install yarn
 ```
