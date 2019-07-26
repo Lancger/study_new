@@ -82,4 +82,32 @@ npm install babel-plugin-component -D
 
 npm install --save-dev babel-preset-es2015
 
+在 main.js 中写入以下内容：
+
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue'
+import { Button, Select } from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import App from './App'
+import router from './router'
+
+Vue.config.productionTip = false
+Vue.use(Button)
+Vue.use(Select)
+
+/* 或写为
+Vue.component(Button.name, Button)
+Vue.component(Select.name, Select)
+*/
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
+})
+
+
 ```
