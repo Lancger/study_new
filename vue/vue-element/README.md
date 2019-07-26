@@ -13,10 +13,10 @@ $ vue init webpack vue-demo  // 后续按回车安装默认即可
 # 进入到创建的vue项目
 $ cd vue-demo
 
-# 安装依赖
+# 安装淘宝npm镜像
 $ npm install -g cnpm --registry=https://registry.npm.taobao.org
-$ npm install
-$ sudo npm install --unsafe-perm  (Mac和Linux用户权限问题，可使用此命令，正常使用npm install即可)
+$ cnpm install
+$ sudo cnpm install --unsafe-perm  (Mac和Linux用户权限问题，可使用此命令，正常使用npm install即可)
 
 # 启动项目
 $ npm run dev //启动成功 http://localhost:8080 即可打开测试首页
