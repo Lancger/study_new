@@ -30,6 +30,7 @@ $ npm i element-ui -S
 你可以引入整个 Element，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 Element。
 ```
 1、完整引入
+
 在 main.js 中写入以下内容：
 
 // The Vue build version to load with the `import` command
@@ -55,6 +56,7 @@ new Vue({
 ```
 ```
 2、按需引入
+
 借助 babel-plugin-component，我们可以只引入需要的组件，以达到减小项目体积的目的。
 
 首先，安装 babel-plugin-component：
@@ -62,5 +64,22 @@ new Vue({
 npm install babel-plugin-component -D
 
 然后，将 .babelrc 修改为：
+
+{
+  "presets": [["es2015", { "modules": false }]],
+  "plugins": [
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
+}
+
+然后还需要执行
+
+npm install --save-dev babel-preset-es2015
 
 ```
