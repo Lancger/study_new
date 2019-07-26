@@ -71,11 +71,26 @@ new Vue({
 
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <a-button type="primary">Button></a-button>
   </div>
 </template>
-...
+
+<script>
+export default {
+  name: 'app'
+}
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
 
 # 好了，现在你应该能看到页面上已经有了 antd 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 vue-cli 的官方文档。
 ```
