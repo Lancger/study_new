@@ -94,3 +94,40 @@ export default {
 
 # 好了，现在你应该能看到页面上已经有了 antd 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 vue-cli 的官方文档。
 ```
+
+# 四、按需加载
+
+使用 babel-plugin-import 
+
+```
+使用 vue-cli 3 的小伙伴
+
+1、# 修改babel.config.js文件，配置 babel-plugin-import
+
+module.exports = {
+  presets: [
+    '@vue/app'
+  ],
+  plugins: [
+    [
+      "import",
+      { libraryName: "ant-design-vue", libraryDirectory: "es", style: true }
+    ]
+  ]
+}
+
+2、# 然后移除前面在 src/main.js 里全量添加的 import 'ant-design-vue/dist/antd.css' 样式代码，并且按下面的格式引入模块。
+
+import Vue from 'vue'
+import { Button } from 'ant-design-vue'
+import App from './App.vue'
+
+Vue.component(Button.name, Button);
+
+Vue.config.productionTip = false
+
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
+
+```
