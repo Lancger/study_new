@@ -55,13 +55,13 @@ npm i --save ant-design-vue
 3、# 修改 src/main.js，引入 antd 的按钮组件以及全部样式文件。
 
 import Vue from "vue";
-import Button from "ant-design-vue/lib/button";
-import "ant-design-vue/dist/antd.css";
-import App from "./App";
+import Button from "ant-design-vue/lib/button"
+import "ant-design-vue/dist/antd.css"
+import App from "./App"
 
-Vue.component(Button.name, Button);
+Vue.component(Button.name, Button)
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App)
@@ -122,7 +122,7 @@ import Vue from 'vue'
 import { Button } from 'ant-design-vue'
 import App from './App.vue'
 
-Vue.component(Button.name, Button);
+Vue.component(Button.name, Button)
 
 Vue.config.productionTip = false
 
