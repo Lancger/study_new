@@ -130,3 +130,8 @@ Vue.use(Button);
 
 按照以上设置，项目中所有拥有 size 属性的组件的默认尺寸均为 'small'，弹框的初始 z-index 为 3000。
 ```
+
+
+参考资料：
+
+https://www.jianshu.com/p/6295ee6974c9  Vue框架Element UI+Mint UI教程汇总
