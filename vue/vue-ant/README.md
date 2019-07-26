@@ -26,3 +26,28 @@ $ npm run serve
 
 # 此时浏览器会访问 http://localhost:8080/ ，看到 Welcome to Your Vue.js App 的界面就算成功了。
 ```
+
+# 三、引入 antd
+```
+# 这是 vue-cli 生成的默认目录结构。
+├── README.md
+├── babel.config
+├── package.json
+├── public
+│   ├── favicon.ico
+│   └── index.html
+├── src
+│   ├── assets
+│   │   └── logo.png
+│   ├── components
+│   │   └── HelloWorld.vue
+│   ├── App.vue
+│   └── main.js
+└── yarn.lock
+
+# 现在从 yarn 或 npm 安装并引入 ant-design-vue。
+
+yarn add ant-design-vue
+
+npm i --save ant-design-vue
+```
