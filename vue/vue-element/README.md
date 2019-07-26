@@ -1,7 +1,7 @@
 # 一、安装基础环境
 ```
 1、安装安装 vue-cli（VUE的脚手架工具）
-$ npm install --global vue-cli
+$ sudo npm install --global vue-cli
 
 # 安装完成后，我们在终端中输入
 $ vue -V
