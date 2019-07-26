@@ -82,7 +82,7 @@ npm install babel-plugin-component -D
 
 npm install --save-dev babel-preset-es2015
 
-在 main.js 中写入以下内容：
+接下来，如果你只希望引入部分组件，比如 Button 和 Select，那么需要在 main.js 中写入以下内容：
 
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -108,6 +108,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-
-
 ```
