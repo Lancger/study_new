@@ -147,6 +147,58 @@ export default {
 </script>
 ```
 
+# 三、delete不同方式样例
+```
+<template>
+  <div id="app">
+   <p>Hello</p>
+  </div>
+</template>
+
+<script>
+/*
+    axios请求方法: get,post,put,patch,delete
+
+    get: 获取数据
+    post: 提交数据（表单提交, 文件上传）
+    put: 更新数据 （所有数据推送到后端）
+    patch: 更新数据 （只将修改的数据推送）
+    delete: 删除数据
+
+    post 有两种方式
+    form-data 表单方式提交（图片文件上传）
+    application/json 方式提交
+*/
+import axios from 'axios'
+
+export default {
+  name: 'axios',
+  components: {
+
+  },
+  created () {
+    // detele方法 (参数方式)
+    axios.delte('/delete', {
+      params: {
+        id: 12
+      }
+    }).then((res) => {
+      console.log(res)
+    })
+
+    // detele方法 (传值方式)
+    axios.delte('/delete', {
+      data: {
+        id: 12
+      }
+    }).then((res) => {
+      console.log(res)
+    })
+  }
+}
+</script>
+```
+
 # 三、并发请求
 ```
 function getUserAccount() {
