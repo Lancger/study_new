@@ -1,3 +1,8 @@
+# 一、安装
+```
+npm install axios
+
+```
 # 一、并发请求
 ```
 function getUserAccount() {
