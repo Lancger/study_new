@@ -50,7 +50,7 @@ export default {
 </script>
 ```
 
-# 二、post提交
+# 二、get post put patch样例
 ```
 <template>
   <div id="app">
@@ -130,6 +130,16 @@ export default {
       url: '/post',
       data: formData
     }).then((res) => {
+      console.log(res)
+    })
+
+    // put请求
+    axios.put('/put', data).then((res) => {
+      console.log(res)
+    })
+
+    // patch请求
+    axios.patch('/patch', data).then((res) => {
       console.log(res)
     })
   }
