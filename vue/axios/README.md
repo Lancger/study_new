@@ -346,6 +346,75 @@ export default {
 
 # 七、axios常用配置方法
 ```
+<template>
+  <div id="app">
+   <p>Hello</p>
+  </div>
+</template>
+
+<script>
+/*
+  axios配置参数有哪些
+
+  优先级情况
+  1.axios请求配置-->2.axios实例配置-->3.axios全局配置
+*/
+import axios from 'axios'
+
+export default {
+  name: 'axios-instance',
+  created () {
+    axios.create({
+      baseURL: 'http://localhost:8080', // 请求的域名，基本地址
+      timeout: 1000, // 请求超时时长
+      url: '/data.json', // 请求参数
+      method: 'get, post, put, patch, delete',
+      headers: {
+        token: ''
+      }, // 请求头
+      params: {}, // 请求参数拼接在url
+      data: {} // 请求参数放在请求体
+    })
+
+    // 1. axios全局配置
+    axios.defaults.timeout = 1000
+    axios.defaults.baseURL = 'http://localhost:8090'
+
+    // 2. axios实例配置
+    let instance = axios.create()
+    instance.defaults.timeout = 3000
+
+    // 3. axios请求配置
+    instance.get('/data.json', {
+      timeout: 5000
+    })
+
+    // 实际开发
+    // 有两种请求接口
+    // http://localhost:9090
+    // http://localhost:9091
+    let instance1 = axios.create({
+      baseURL: 'http://localhost:9090',
+      timeout: 1000
+    })
+    let instance2 = axios.create({
+      baseURL: 'http://localhost:9091',
+      timeout: 5000
+    })
+    instance1.get('/contactList', {
+      params: { id: 12 }
+    }).then((res) => {
+      console.log(res)
+    })
+    instance2.get('/orderList', {
+      timeout: 3000
+    }).then((res) => {
+      console.log(res)
+    })
+  }
+}
+</script>
+
 ```
 
 参考资料：
