@@ -548,6 +548,45 @@ export default {
 
 ```
 
+# 十、取消请求
+```
+<template>
+  <div id="app">
+   <p>Hello</p>
+  </div>
+</template>
+
+<script>
+/*
+  取消请求
+*/
+import axios from 'axios'
+
+export default {
+  name: 'axios',
+  created () {
+    let source = ''
+    axios.CancelToken.source()
+
+    axios.get('/data.josn', {
+      cancelToken: source.token
+    }).then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+
+    // 取消请求(message可选)
+    source.cancel('cancel http')
+
+    // 什么情况下可能会用到取消请求
+    // 商城 3-5秒才能出结果
+  }
+}
+</script>
+
+```
+
 参考资料：
 
 https://blog.lee-cloud.xyz/post/1/Axios-zhong-wen-wen-dang  [译]Axios中文文档
