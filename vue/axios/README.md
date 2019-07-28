@@ -495,6 +495,59 @@ export default {
 
 ```
 
+# 九、错误处理
+```
+<template>
+  <div id="app">
+   <p>Hello</p>
+  </div>
+</template>
+
+<script>
+/*
+  错误处理: 请求错误时进行的处理
+*/
+import axios from 'axios'
+
+export default {
+  name: 'axios',
+  created () {
+    // 不管是请求错误, 还是响应错误, 都会进入到 catch 里面
+    axios.get('/data.json').then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+    // 例子： 实际开发过程中，一般添加统一错误处理
+    let instance = axios.create({})
+
+    instance.interceptors.request(config => {
+      return config
+    }, err => {
+      // 请求错误 一般http状态码以4开头，常见401超时 404 not found
+      $('#modal').show()
+      setTimeout(() => {
+        $('modal').hide()
+      }, 2000)
+      return Promise.reject(err)
+    })
+
+    instance.interceptors.response(res => {
+      return res
+    }, err => {
+      // 响应错误处理 一般http状态码以5开头, 500系统错误, 502系统重启
+      $('#modal').show()
+      setTimeout(() => {
+        $('modal').hide()
+      }, 2000)
+      return Promise.reject(err)
+    })
+  }
+}
+</script>
+
+```
+
 参考资料：
 
 https://blog.lee-cloud.xyz/post/1/Axios-zhong-wen-wen-dang  [译]Axios中文文档
