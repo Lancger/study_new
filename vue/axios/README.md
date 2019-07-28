@@ -201,6 +201,44 @@ export default {
 
 # 三、并发请求
 ```
+样例一：
+<template>
+  <div id="app">
+   <p>Hello</p>
+  </div>
+</template>
+
+<script>
+/*
+  //并发请求: 同时进行多个多个请求, 并统一处理返回值
+  例如聊天系统,需要同时展示个人信息和好友列表，但这2个数据是不同接口返回的
+*/
+import axios from 'axios'
+
+export default {
+  name: 'axios',
+  created () {
+    // axios.get('/data.json').then((res) => {
+    //   console.log(res)
+    // })
+
+    // axios.all()  axios.spread
+    axios.all(
+      [
+        axios.get('/data.json'),
+        axios.get('/city.json')
+      ]
+    ).then(axios.spread((dataRes, cityRes) => {
+      console.log(dataRes, cityRes)
+    })
+    )
+  }
+}
+</script>
+
+
+
+样例二：
 function getUserAccount() {
   return axios.get('/user/12345');
 }
