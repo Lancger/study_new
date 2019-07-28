@@ -199,7 +199,7 @@ export default {
 </script>
 ```
 
-# 三、并发请求
+# 四、并发请求
 ```
 样例一：
 <template>
@@ -252,6 +252,48 @@ axios.all([getUserAccount(), getUserPermissions()])
     // Both requests are now complete
 }));
 ```
+
+# 五、创建axios实例
+```
+<template>
+  <div id="app">
+   <p>Hello</p>
+  </div>
+</template>
+
+<script>
+/*
+  let arr = []
+  let arr = new Array()  ---这种就是new了一个数组实例
+
+  axios 实例
+  后端接口地址有多个，并且超时时长不一样
+  这样的话，就可以通过封装axios实例来配置不同的接口地址和超时时长
+*/
+import axios from 'axios'
+
+export default {
+  name: 'axios-instance',
+  created () {
+    let instance1 = axios.create({
+      baseURL: 'http://localhost:8080',
+      timeout: 1000
+    })
+    let instance2 = axios.create({
+      baseURL: 'http://localhost:8080',
+      timeout: 5000
+    })
+    instance1.get('/data.json').then(res => {
+      console.log(res)
+    })
+    instance2.get('/city.json').then(res => {
+      console.log(res)
+    })
+  }
+}
+</script>
+```
+
 参考资料：
 
 https://blog.lee-cloud.xyz/post/1/Axios-zhong-wen-wen-dang  [译]Axios中文文档
