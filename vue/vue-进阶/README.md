@@ -313,11 +313,9 @@ export default {
 
 const getters = {
   appNameWithVersion: (state) => {     ---这个state就是全局的state
-    return `${state.appName}v2.0`      ---这里依赖于state.appName的属性值去得到appNameWithVersion的值
+    return state.appName + 'v2.0'     ---这里依赖于state.appName的属性值去得到appNameWithVersion的值
+    return `${state.appName}v2.0`     ---这里使用了es6的模板语法
   }
 }
 export default getters
-
-
-
 ```
