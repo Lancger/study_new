@@ -149,7 +149,7 @@ export default {
 
   ![vue-store](https://github.com/Lancger/study_new/blob/master/vue/images/store.png)
   
-## 2、使用密闭命名空间方式
+### 1.2、使用密闭命名空间方式
 
 ```
 1、#state数据设置开启命名空间
