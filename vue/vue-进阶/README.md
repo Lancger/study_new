@@ -113,6 +113,10 @@ export default {
       userName: state => state.user.userName
     }),
     
+    ...mapState('user', {                  ---或者也可以这里指定命名空间
+      userName: state => state.userName
+    }),
+    
     ...mapGetters([
       'appNameWithVersion',
       'firstLetter'
