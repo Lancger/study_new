@@ -244,6 +244,8 @@ export default {
 ## 2、getters
 
 ```
+#文件内，通过计算属性获取的
+
 <template>
   <div>
     <a-input @input="handleInput"/>
@@ -302,5 +304,20 @@ export default {
   }
 }
 </script>
+
+```
+
+```
+1、#在store实例，定义全局getters
+#vue-cource/src/store/getters.js 
+
+const getters = {
+  appNameWithVersion: (state) => {     ---这个state就是全局的state
+    return `${state.appName}v2.0`      ---这里依赖于state.appName的属性值去得到appNameWithVersion的值
+  }
+}
+export default getters
+
+
 
 ```
