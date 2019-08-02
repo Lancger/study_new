@@ -105,19 +105,24 @@ export default {
     ...mapState({
       userName: state => state.user.userName
     }),
+    
     ...mapGetters([
       'appNameWithVersion',
       'firstLetter'
     ]),
+    
     appName () {
-      return this.$store.state.appName
+      return this.$store.state.appName      --- store 实例可以在全局中使用
     },
+    
+    // userName () {
+    //   return this.$store.state.user.userName       ---这个是访问模块module中state属性，所以需要在state后加上user模块
+    // },
+    
     // appNameWithVersion () {
     //   return this.$store.getters.appNameWithVersion
     // },
-    // userName () {
-    //   return this.$store.state.user.userName
-    // },
+
     inputValueLastLetter () {
       return this.inputValue.substr(-1, 1)
     }
