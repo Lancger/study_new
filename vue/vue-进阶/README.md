@@ -148,5 +148,29 @@ export default {
 ## 2、使用密闭命名空间方式
 
 ```
+1、#设置开启命名空间
+#vue-cource/src/store/module/user.js
 
+const state = {
+  userName: 'Lison'
+}
+const getters = {
+  firstLetter: (state) => {
+    return state.userName.substr(0, 1)
+  }
+}
+const mutations = {
+  //
+}
+const actions = {
+  //
+}
+
+export default {
+  namespaced: true,
+  getters,
+  state,
+  mutations,
+  actions
+}
 ```
