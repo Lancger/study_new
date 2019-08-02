@@ -167,7 +167,7 @@ const actions = {
 }
 
 export default {
-  namespaced: true,
+  namespaced: true,     ---这里设置开启命名空间
   getters,
   state,
   mutations,
