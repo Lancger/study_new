@@ -38,3 +38,4 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 ```
+  ![vue-store](https://github.com/Lancger/study_new/blob/master/vue/images/store.png)
