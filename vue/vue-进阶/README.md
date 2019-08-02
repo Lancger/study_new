@@ -85,7 +85,7 @@ export default state
 <script>
 import AInput from '_c/AInput.vue'
 import AShow from '_c/AShow.vue'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'   
 export default {
   name: 'store',
   data () {
@@ -98,10 +98,17 @@ export default {
     AShow
   },
   computed: {
-    // ...mapState({
+  
+       ...mapState([       ...展开操作符，第一种使用传入数组方式
+         'appName',
+         'userName'
+       ])
+    
+    // ...mapState({       ...展开操作符，第一种使用传入对象方式
     //   appName: state => state.appName,
     //   userName: state => state.user.userName
     // })
+    
     ...mapState({
       userName: state => state.user.userName
     }),
