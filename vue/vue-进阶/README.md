@@ -19,3 +19,22 @@ Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用�
 ```
 Vuex 使用单一状态树——是的，用一个对象就包含了全部的应用层级状态。(state)至此它便作为一个"唯一数据源"
 ```
+```
+#主文件引入
+#vue-cource/src/main.js 
+
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import Bus from './lib/bus'
+
+Vue.config.productionTip = false
+Vue.prototype.$bus = Bus
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
+```
