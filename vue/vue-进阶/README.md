@@ -141,7 +141,12 @@ export default {
   }
 }
 </script>
-
 ```
 
   ![vue-store](https://github.com/Lancger/study_new/blob/master/vue/images/store.png)
+  
+## 2、使用密闭命名空间方式
+
+```
+
+```
