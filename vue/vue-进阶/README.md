@@ -280,6 +280,11 @@ export default {
     ...mapState({
       userName: state => state.userName
     }),
+    
+    firstLetter () {
+      return this.userName.substr(0, 1)   ---局部获取的数据，只能在本文件内引用，如果要全局使用，最好在store定义getters
+    },
+    
     ...mapGetters([
       'appNameWithVersion',
       'firstLetter'
