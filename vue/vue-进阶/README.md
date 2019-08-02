@@ -189,7 +189,9 @@ export default {
 <script>
 import AInput from '_c/AInput.vue'
 import AShow from '_c/AShow.vue'
-import { mapState, mapGetters } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapState } = createNamespacedHelpers('user')
+
 export default {
   name: 'store',
   data () {
@@ -207,7 +209,7 @@ export default {
     //   userName: state => state.user.userName
     // })
     ...mapState({
-      userName: state => state.user.userName
+      userName: state => state.userName
     }),
     ...mapGetters([
       'appNameWithVersion',
