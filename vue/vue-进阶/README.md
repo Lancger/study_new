@@ -106,7 +106,7 @@ export default {
     
     // ...mapState({       ...展开操作符，第一种使用传入对象方式
     //   appName: state => state.appName,
-    //   userName: state => state.user.userName
+    //   userName: state => state.user.userName   ---这里访问模块中的属性，需要加上user
     // })
     
     ...mapState({
