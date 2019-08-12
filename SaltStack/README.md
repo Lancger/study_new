@@ -57,6 +57,13 @@ systemctl restart iptables
 systemctl status iptables
 systemctl restart supervisord
 ```
+
+# 三、更换master节点需要做的操作
+```
+需要删除旧的master的公钥
+
+rm  -f /etc/salt/pki/minion/minion_master.pub
+```
 参考资料：
 
 https://www.cnblogs.com/lgeng/p/6567424.html    Saltstack 安装配置详解 
