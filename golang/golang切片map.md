@@ -57,3 +57,38 @@ myMap = make(map[string] personInfo, 5)
 numbers["one"] = 1 
 myMap["1234"] = personInfo{"1", "Jack", "Room 101,..."}
 ```
+
+## 4、map元素查找
+
+    在Go语言中，map的查找功能设计得比较精巧。判断是否成功找到特定的键，不需要检查取到的值是否为nil，只需查看第二个返回值。要从map中查找一个特定的键，可以通过下面的代码来实现：
+```
+value, ok := myMap["1234"]
+if ok{
+    //处理找到的value
+}
+```
+
+## 5、map元素修改（赋值）
+
+    5.1 直接修改
+
+numbers["one"] = 11
+
+    5.2 间接修改
+
+    map是一种引用类型，如果两个map同时指向一个底层，那么一个改变，另一个也相应的改变。
+
+numbersTest := numbers
+numbersTest["one"] = "111"
+
+    现在numbers["one"]的值变为"111"了。
+
+## 6、map元素删除
+
+    Go语言提供了一个内置函数delete()，用于删除容器内的元素。如
+
+delete(number, "one")
+
+    上面的代码将从myMap中删除键为“one”的键值对。如果“one”这个键不存在，那么这个调用将什么都不发生，也不会有什么副作用。但是如果传入的map变量的值是nil，该调用将导致程序抛出异常（panic）。
+
+## 7、实例代码
