@@ -8,7 +8,7 @@
 ## 2 map声明
 
 ```
-    声明map的语法如下
+声明map的语法如下
 
 var map变量名 map[key] value
 
@@ -19,7 +19,7 @@ var map变量名 map[key] value
 var numbers map[string] int
 var myMap map[string] personInfo
 
-    personInfo为自定义结构体，存储个人信息，定义如下
+personInfo为自定义结构体，存储个人信息，定义如下
 
 type personInfo struct {
     ID string
