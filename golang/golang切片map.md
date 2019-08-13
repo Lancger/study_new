@@ -194,3 +194,5 @@ map的值可以很方便的修改，通过重新赋值即可。
 参考文档：
 
 https://studygolang.com/articles/3637   golang数据类型map 
+
+https://blog.csdn.net/lengyuezuixue/article/details/81383183  Golang中map的初始化及使用  
