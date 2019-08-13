@@ -87,10 +87,104 @@ numbersTest["one"] = "111"
 
 ## 6、map元素删除
 
-    Go语言提供了一个内置函数delete()，用于删除容器内的元素。如
+Go语言提供了一个内置函数delete()，用于删除容器内的元素。如
 
+```
 delete(number, "one")
+```
 
-    上面的代码将从myMap中删除键为“one”的键值对。如果“one”这个键不存在，那么这个调用将什么都不发生，也不会有什么副作用。但是如果传入的map变量的值是nil，该调用将导致程序抛出异常（panic）。
+上面的代码将从myMap中删除键为“one”的键值对。如果“one”这个键不存在，那么这个调用将什么都不发生，也不会有什么副作用。但是如果传入的map变量的值是nil，该调用将导致程序抛出异常（panic）。
 
 ## 7、实例代码
+```
+package main
+
+import(
+    "fmt"
+)
+
+type persionInfo struct{
+    ID string
+    Name string
+    Address string
+}
+
+func main(){
+    /*
+    //声明一个map变量numbers,键名为string,值为int
+    var numbers map[string] int
+    //给map变量创建值,同时指定最多可以存储3个int值
+    numbers = make(map[string] int, 3)
+    //map元素赋值
+    numbers["one"] = 1
+    numbers["two"] = 2
+    numbers["three"] = 3
+    */
+
+    //上面方式的简写方法
+    numbers := map[string] int{
+        "one": 1,
+        "two": 2,
+        "three": 3,
+    }
+    
+    var myMap map[string] persionInfo
+    myMap = make(map[string] persionInfo)
+    myMap["persion1"] = persionInfo{"1", "Amiee", "Street 101"}
+    myMap["persion2"] = persionInfo{"2", "Beva", "Street 102"}
+    myMap["persion3"] = persionInfo{"3", "Cencey", "Street 103"}
+    
+    /*
+    // 上面方式的简写方法
+    myMap := map[string] persionInfo{
+        "persion1": persionInfo{"1", "Amiee", "Street 101"},
+        "persion2": persionInfo{"2", "Beva", "Street 102"},
+        "persion3": persionInfo{"3", "Cencey", "Street 103"},
+    }
+    */
+    
+    //map元素打印
+    fmt.Printf("%v\n", numbers)
+    fmt.Println(numbers)
+    fmt.Println(numbers["two"])
+
+    fmt.Println(myMap)
+    fmt.Println(myMap["persion1"])
+    
+    //map元素查找
+    p1, ok := myMap["persion1"]
+    if ok{
+        fmt.Println("Found persion1, name", p1.Name, ", info", p1 )
+    }else{
+        fmt.Println("Not Found persion1")
+    }
+    
+    //map元素修改
+    //map是一种引用类型，如果两个map同时指向一个底层，那么一个改变，另一个也相应的改变。
+    numbersTest := numbers
+    numbersTest["one"] = 11
+    fmt.Println(numbers)   
+
+    //map元素删除
+    delete(numbers, "one")
+    fmt.Println(numbers)    
+}
+```
+输出结果如下
+```
+[root@localhost mygo]# go run  test.go 
+map[one:1 two:2 three:3]
+map[one:1 two:2 three:3]
+2
+map[persion1:{1 Amiee Street 101} persion2:{2 Beva Street 102} persion3:{3 Cencey Street 103}]
+{1 Amiee Street 101}
+Found persion1, name Amiee , info {1 Amiee Street 101}
+map[one:11 two:2 three:3]
+map[two:2 three:3]
+```
+## 8、注意事项
+
+map是无序的，每次打印出来的map都会不一样，它不能通过index获取，而必须通过key获取。
+map的长度是不固定的，也就是和slice一样，也是一种引用类型。
+内置的len函数同样适用于map，返回map拥有的key的数量。
+map的值可以很方便的修改，通过重新赋值即可。
