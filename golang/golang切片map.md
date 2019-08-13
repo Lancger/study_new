@@ -31,27 +31,27 @@ type personInfo struct {
 ```
 ## 3、map初始化
 ```
-    3.1 直接初始化（创建）
+3.1 直接初始化（创建）
 
 rating := map[string] float32 {"C":5, "Go":4.5, "Python":4.5, "C++":2 }
 myMap := map[string] personInfo{"1234": personInfo{"1", "Jack", "Room 101,..."},}
 
-    3.2 通过make初始化（创建）
+3.2 通过make初始化（创建）
 
-    Go语言提供的内置函数make()可以用于灵活地创建map。
-    创建了一个键类型为string,值类型为int的map
+Go语言提供的内置函数make()可以用于灵活地创建map。
+创建了一个键类型为string,值类型为int的map
 
 numbers := make(map[string] int)
 
-    创建了一个键类型为string,值类型为personInfo的map
+创建了一个键类型为string,值类型为personInfo的map
 
 myMap = make(map[string] personInfo)
 
-    也可以选择是否在创建时指定该map的初始存储能力，如创建了一个初始存储能力为5的map
+也可以选择是否在创建时指定该map的初始存储能力，如创建了一个初始存储能力为5的map
 
 myMap = make(map[string] personInfo, 5)
 
-    创建后初始化如下：
+创建后初始化如下：
 
 numbers["one"] = 1 
 myMap["1234"] = personInfo{"1", "Jack", "Room 101,..."}
