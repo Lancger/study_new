@@ -184,7 +184,13 @@ map[two:2 three:3]
 ```
 ## 8、注意事项
 
+```
 map是无序的，每次打印出来的map都会不一样，它不能通过index获取，而必须通过key获取。
 map的长度是不固定的，也就是和slice一样，也是一种引用类型。
 内置的len函数同样适用于map，返回map拥有的key的数量。
 map的值可以很方便的修改，通过重新赋值即可。
+
+```
+参考文档：
+
+https://studygolang.com/articles/3637   golang数据类型map 
