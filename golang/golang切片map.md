@@ -34,6 +34,7 @@ type personInfo struct {
 3.1 直接初始化（创建）
 
 rating := map[string] float32 {"C":5, "Go":4.5, "Python":4.5, "C++":2 }
+
 myMap := map[string] personInfo{"1234": personInfo{"1", "Jack", "Room 101,..."},}
 
 3.2 通过make初始化（创建）
