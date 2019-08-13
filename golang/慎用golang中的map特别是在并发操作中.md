@@ -1,3 +1,4 @@
+```
 简单介绍
 map数据类型在很多语言中都有，是一个key，value形式的hash表，从而将key，value进行一一映射，进行快速查找、添加、删除等操作。在Go语言中也不例外，提供了map数据结构类型。
 内建map切忌开箱即用
@@ -125,7 +126,7 @@ func TestMap(t *testing.T) {
     map_test.go:43: range k:method,v=eth_getBlockByHash
 PASS
 
-
+```
 参考文档：
 
 https://www.jianshu.com/p/0c8519f4498e  慎用golang中的map，特别是在并发操作中
