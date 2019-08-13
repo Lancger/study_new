@@ -12,12 +12,14 @@
 ```
 ```
 var map变量名 map[key] value
-```
+
 其中：key为键类型，value为值类型
 
-例如：value不仅可以是标注数据类型，也可以是自定义数据类型
+```
 
 ```
+例如：value不仅可以是标注数据类型，也可以是自定义数据类型
+
 var numbers map[string] int
 var myMap map[string] personInfo
 
