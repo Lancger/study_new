@@ -37,6 +37,63 @@ func main() {
 hello,string
 ```
 
+空接口对切片的影响
+
+1、若将一个array或slice赋值给空接口，这个空接口无法再进行切片
+
+2、array或slice赋值给空接口的行为不是复制，而是类似指针效果，只不过无法再进行切片，但元素和原来的array、slice及其衍生的，都有关联
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    sli := []int{2, 3, 5, 7, 11, 13}
+
+    var e interface{}
+    e = sli
+
+    f := sli[0:3]
+    f[2] = 55
+
+    fmt.Printf("%T,%v\n", sli, sli)
+    fmt.Printf("%T,%v\n", e, e)
+    fmt.Printf("%T,%v\n", f, f)
+}
+
+```
+
+输出
+```
+[]int,[2 3 55 7 11 13]
+[]int,[2 3 55 7 11 13]
+[]int,[2 3 55]
+```
+
+若改为
+```
+package main
+
+import "fmt"
+
+func main() {
+    sli := []int{2, 3, 5, 7, 11, 13}
+
+    var e interface{}
+    e = sli
+
+    g := e[1:3]
+    fmt.Println(g)
+}
+
+```
+
+报错
+```
+./example.go:11: cannot slice e (type interface {})
+
+```
 
 参考资料：
 
