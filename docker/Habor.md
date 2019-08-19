@@ -2,7 +2,7 @@
 ```
 export version="v1.8.2"
 
-wget https://github.com/vmware/harbor/releases/download/v1.8.0/harbor-offline-installer-${version}.tgz
+wget https://storage.googleapis.com/harbor-releases/release-1.8.0/harbor-offline-installer-v1.8.2.tgz
 
 tar xf harbor-offline-installer-${version}.tgz
 cd harbor/
