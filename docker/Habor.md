@@ -34,6 +34,7 @@ REPOSITORY                  TAG                 IMAGE ID            CREATED     
 busybox                     latest              efe10ee6727f        2 weeks ago         1.13MB
 本地基于busybox:latest创建标记hub.wow/busybox:latest
 [root@localhost harbor]# docker tag busybox:latest hub.wow/project_name/busybox:latest
+
 推送本地镜像busybox:latest 到hub.wow私有仓库
 [root@localhost harbor]# docker push hub.wow/project_name/busybox:latest
 
