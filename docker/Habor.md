@@ -1,3 +1,9 @@
+# 基础准备
+```
+chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow* && chattr -i /etc/gshadow*
+chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow* && chattr +i /etc/gshadow*
+
+```
 # 一、Habor部署配置
 ```
 export version="v1.8.2"
