@@ -1,7 +1,9 @@
-# Habor部署配置
+# 一、Habor部署配置
 ```
 export version="v1.8.2"
+
 wget https://github.com/vmware/harbor/releases/download/${version}/harbor-offline-installer-${version}.tgz
+
 tar xf harbor-offline-installer-${version}.tgz
 cd harbor/
 
