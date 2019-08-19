@@ -45,3 +45,7 @@ busybox                     latest              efe10ee6727f        2 weeks ago 
 cd harbor/
 docker-compose -f ./docker-compose.yml [ up|down|ps|stop|start ]
 ```
+
+参考文档：
+
+https://www.centos.bz/2017/08/centos-docker-registry-harbor-install/
