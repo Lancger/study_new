@@ -13,24 +13,6 @@ wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 yum install -y docker-ce
 ```
 
-第三步：启动后台进程：
-```
-#启动docker服务
-systemctl start docker
-
-#设置docker服务开启自启
-systemctl enable docker
-#Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
-
-#查看是否成功设置docker服务开启自启
-systemctl list-unit-files|grep docker
-docker.service                                enabled
-
-#关闭docker服务开启自启
-systemctl disable docker
-#Removed symlink /etc/systemd/system/multi-user.target.wants/docker.service.
-```
-
 ## 2.脚本安装Docker
 ```bash
 #2.1、Docker官方安装脚本
@@ -58,6 +40,7 @@ ExecStart=/usr/bin/dockerd
 #2、修改ExecStart=/usr/bin/dockerd 为 
 ExecStart=/usr/bin/dockerd $OPTIONS
 ```
+
 ## 3.1 最终的配置
 
     注意，有变量的地方需要使用转义符号
@@ -100,6 +83,7 @@ ExecStart=/usr/bin/dockerd $OPTIONS
     EOF
 
 ## 3.2、重新加载docker的配置文件
+
     systemctl daemon-reload
 
 ## 3.3、配置镜像加速器
@@ -107,8 +91,29 @@ ExecStart=/usr/bin/dockerd $OPTIONS
     OPTIONS='--selinux-enabled --registry-mirror=https://i37dz0y4.mirror.aliyuncs.com'
     EOF
 
+## 4、启动后台进程
 
-## 4.通过测试镜像运行一个容器来验证Docker是否安装正确
+```
+#启动docker服务
+systemctl start docker
+
+#设置docker服务开启自启
+systemctl enable docker
+#Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+
+#查看是否成功设置docker服务开启自启
+systemctl list-unit-files|grep docker
+docker.service                                enabled
+
+#关闭docker服务开启自启
+systemctl disable docker
+#Removed symlink /etc/systemd/system/multi-user.target.wants/docker.service.
+
+systemctl daemon-reload
+systemctl restart docker
+```
+
+## 5.通过测试镜像运行一个容器来验证Docker是否安装正确
 ```bash
 docker run hello-world
 ```
