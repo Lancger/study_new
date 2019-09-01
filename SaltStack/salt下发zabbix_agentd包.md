@@ -10,4 +10,7 @@ salt -N cfd cmd.run "mv /tmp/zabbix_agentd_v4.2.1 /opt/zabbix"
 salt -N cfd cmd.run "groupadd zabbix && useradd -M -g zabbix -s /sbin/nologin zabbix"
 salt -N cfd cmd.run "chown -R zabbix:zabbix /opt/zabbix"
 salt -N cfd cmd.run "/opt/zabbix/init/zabbix_agentd restart"
+
+#批量安装simplejson
+salt -N cfd cmd.run "cd /tmp/ && wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py && python get-pip.py && pip install --upgrade pip --trusted-host mirrors.aliyun.com -i https://mirrors.aliyun.com/pypi/simple/ && pip install --upgrade setuptools==30.1.0 && pip install simplejson --trusted-host mirrors.aliyun.com -i https://mirrors.aliyun.com/pypi/simple/"
 ```
