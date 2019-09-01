@@ -13,13 +13,13 @@ cat > /etc/salt/master << \EOF
   base:
     - /srv/pillar
  nodegroups:
-  ubuntu: 'G@os:Ubuntu'
-  centos: 'G@os:Centos'
+  ubuntu_all: 'G@os:Ubuntu'
+  centos_all: 'G@os:Centos'
   cfd: 'L@cfd-001,cfd-002,cfd-003,cfd-004,cfd-005,cfd-006,cfd-007'
 EOF
 systemctl restart salt-master
 
-salt -N ubuntu test.ping
+salt -N centos_all test.ping
 ```
 # 二、salt-master服务器策略
 ```
