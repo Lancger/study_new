@@ -15,7 +15,7 @@ cat > /etc/salt/master << \EOF
  nodegroups:
   ubuntu_all: 'G@os:Ubuntu'
   centos_all: 'G@os:Centos'
-  cfd: 'L@cfd-001,cfd-002,cfd-003,cfd-004,cfd-005,cfd-006,cfd-007'
+  cfd: 'L@node-001,node-002,node-003,node-004,node-005,node-006,node-007'
 EOF
 systemctl restart salt-master
 
