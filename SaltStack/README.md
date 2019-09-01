@@ -1,6 +1,8 @@
 # 一、salt-master分组
   
+  
   ![salt-group-01](https://github.com/Lancger/study_new/blob/master/images/salt-group-01.png)
+
 
 ```
 cat > /etc/salt/master << \EOF
