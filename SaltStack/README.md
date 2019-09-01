@@ -2,6 +2,25 @@
   
   ![salt-group-01](https://github.com/Lancger/study_new/blob/master/images/salt-group-01.png)
 
+```
+cat > /etc/salt/master << \EOF
+ file_recv: True
+ file_recv_max_size: 100000
+ file_roots:
+   base:
+     - /srv/salt/
+ pillar_roots:
+  base:
+    - /srv/pillar
+ nodegroups:
+  ubuntu: 'G@os:Ubuntu'
+  centos: 'G@os:Centos'
+  cfd: 'L@cfd-001,cfd-002,cfd-003,cfd-004,cfd-005,cfd-006,cfd-007'
+EOF
+systemctl restart salt-master
+
+salt -N ubuntu test.ping
+```
 # 二、salt-master服务器策略
 ```
 cat > /etc/sysconfig/iptables << \EOF
