@@ -117,9 +117,52 @@ Ubuntu服务器：
 
 salt "fhex-one-0[1-4]" cmd.run 'echo root:"Kda18*s2311KLC}wXd1" | chpasswd'
 
-
 ```
 
+# 四、安全加固
+```
+cat > /srv/salt/hosts.deny << \EOF
+#
+# hosts.deny    This file contains access rules which are used to
+#               deny connections to network services that either use
+#               the tcp_wrappers library or that have been
+#               started through a tcp_wrappers-enabled xinetd.
+#
+#               The rules in this file can also be set up in
+#               /etc/hosts.allow with a 'deny' option instead.
+#
+#               See 'man 5 hosts_options' and 'man 5 hosts_access'
+#               for information on rule syntax.
+#               See 'man tcpd' for information on tcp_wrappers
+#
+sshd:all:deny
+EOF
+
+cat > /srv/salt/hosts.allow << \EOF
+#
+# hosts.allow   This file contains access rules which are used to
+#               allow or deny connections to network services that
+#               either use the tcp_wrappers library or that have been
+#               started through a tcp_wrappers-enabled xinetd.
+#
+#               See 'man 5 hosts_options' and 'man 5 hosts_access'
+#               for information on rule syntax.
+#               See 'man tcpd' for information on tcp_wrappers
+#
+sshd:192.168.52.0/255.255.255.0
+sshd:139.180.20.37,19.10.20.37
+EOF
+
+cat > /srv/salt/sshrc << \EOF
+/bin/sh  /usr/local/bin/ssh_login_monitor.sh
+EOF
+
+cd /srv/salt/
+salt-cp -N buy hosts.allow /etc/hosts.allow
+salt-cp -N buy hosts.deny /etc/hosts.deny
+salt-cp -N buy sshrc /etc/ssh/sshrc
+salt-cp -N buy ssh_login_monitor_3rd.sh /usr/local/bin/ssh_login_monitor.sh
+```
 
 参考资料:
 
