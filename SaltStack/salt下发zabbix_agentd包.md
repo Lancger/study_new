@@ -48,5 +48,6 @@ EOF
 sed -i 's/Server.*/Server=192.168.52.133/g' /srv/salt/zabbix_agentd.conf
 sed -i 's/ServerActive.*/ServerActive=192.168.52.133/g' /srv/salt/zabbix_agentd.conf
 
-service zabbix-agent restart
+salt-cp -N cfd-ubuntu zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf 
+salt -N cfd-ubuntu cmd.run 'service zabbix-agent restart'
 ```
