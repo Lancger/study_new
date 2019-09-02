@@ -36,7 +36,7 @@ EnableRemoteCommands=1
 UnsafeUserParameters=1
 HostnameItem=system.run[echo $(hostname)]
 HostMetadataItem=system.uname
-Include=/etc/zabbix/zabbix_agentd.conf.d/*.conf
+Include=/etc/zabbix/zabbix_agentd.d/*.conf
 EOF
 
 sed -i 's/Server.*/Server=192.168.52.133/g' /srv/salt/zabbix_agentd.conf
