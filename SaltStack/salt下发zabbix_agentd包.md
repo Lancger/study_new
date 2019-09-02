@@ -46,5 +46,6 @@ HostMetadataItem=system.uname
 Include=/etc/zabbix/zabbix_agentd.conf.d/*.conf
 EOF
 
+sed -i 's/master.*/master: 139.180.210.37/g' /etc/salt/minion
 service zabbix-agent restart
 ```
