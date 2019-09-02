@@ -89,10 +89,9 @@ minion端需要删除旧的master的公钥
 
 sed -i 's/master.*/master: 139.180.210.37/g' /etc/salt/minion
 rm  -f /etc/salt/pki/minion/minion_master.pub
-systemctl stop salt-minion
-systemctl disable salt-minion
-systemctl restart supervisord
-
+systemctl stop supervisord
+systemctl disable supervisord
+systemctl restart salt-minion
 ```
 参考资料：
 
