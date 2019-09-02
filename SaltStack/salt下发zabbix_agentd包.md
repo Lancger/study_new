@@ -25,12 +25,6 @@ salt -N cfd cmd.run 'sed -i "s/^Defaults.*.requiretty/#Defaults    requiretty/" 
 
 # 二、Ubuntu包
 ```
-cd /tmp/
-wget http://repo.zabbix.com/zabbix/4.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.2-1%2Btrusty_all.deb
-dpkg -i zabbix-release_4.2-1+trusty_all.deb
-sudo apt-get update
-sudo apt-get install zabbix-agent
-
 cat > /srv/salt/zabbix_agentd.conf << \EOF
 PidFile=/var/run/zabbix/zabbix_agentd.pid
 LogFile=/var/log/zabbix-agent/zabbix_agentd.log
@@ -47,6 +41,8 @@ EOF
 
 sed -i 's/Server.*/Server=192.168.52.133/g' /srv/salt/zabbix_agentd.conf
 sed -i 's/ServerActive.*/ServerActive=192.168.52.133/g' /srv/salt/zabbix_agentd.conf
+
+salt -N fd-ubuntu cmd.run "cd /tmp/ && wget -O /tmp/zabbix-release.all.deb http://repo.zabbix.com/zabbix/4.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.2-1%2Btrusty_all.deb && dpkg -i zabbix-release.all.deb && apt-get update && apt-get install zabbix-agent"
 
 salt-cp -N cfd-ubuntu zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf 
 salt -N cfd-ubuntu cmd.run 'service zabbix-agent restart'
