@@ -31,8 +31,7 @@ dpkg -i zabbix-release_4.2-1+trusty_all.deb
 sudo apt-get update
 sudo apt-get install zabbix-agent
 
-
-cat > /etc/zabbix/zabbix_agentd.conf << \EOF
+cat > /srv/salt/zabbix_agentd.conf << \EOF
 PidFile=/var/run/zabbix/zabbix_agentd.pid
 LogFile=/var/log/zabbix-agent/zabbix_agentd.log
 LogFileSize=0
@@ -46,6 +45,8 @@ HostMetadataItem=system.uname
 Include=/etc/zabbix/zabbix_agentd.conf.d/*.conf
 EOF
 
-sed -i 's/master.*/master: 139.180.210.37/g' /etc/salt/minion
+sed -i 's/Server.*/Server=192.168.52.133/g' /srv/salt/zabbix_agentd.conf
+sed -i 's/ServerActive.*/ServerActive=192.168.52.133/g' /srv/salt/zabbix_agentd.conf
+
 service zabbix-agent restart
 ```
