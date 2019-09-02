@@ -26,8 +26,8 @@ salt -N cfd cmd.run 'sed -i "s/^Defaults.*.requiretty/#Defaults    requiretty/" 
 # 二、Ubuntu包
 ```
 cat > /srv/salt/zabbix_agentd.conf << \EOF
-PidFile=/var/run/zabbix/zabbix_agentd.pid
-LogFile=/var/log/zabbix-agent/zabbix_agentd.log
+PidFile=/tmp/zabbix_agentd.pid
+LogFile=/tmp/zabbix_agentd.log
 LogFileSize=0
 DebugLevel=2
 Server=192.168.52.133
