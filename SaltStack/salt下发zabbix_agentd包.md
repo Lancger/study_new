@@ -48,5 +48,6 @@ salt -N fd-ubuntu cmd.run "cd /tmp/ && wget -O /tmp/zabbix-release.all.deb http:
 salt -N cfd-ubuntu cmd.run 'mkdir -p /etc/zabbix/zabbix_agentd.d/'
 salt-cp -N cfd-ubuntu zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf 
 salt -N cfd-ubuntu cmd.run 'chown -R zabbix:zabbix /etc/zabbix/zabbix_agentd.d/'
-salt -N cfd-ubuntu cmd.run 'service zabbix-agent restart'
+salt -N cfd-ubuntu cmd.run 'service zabbix-agent stop'
+salt -N cfd-ubuntu cmd.run 'service zabbix-agent start'
 ```
