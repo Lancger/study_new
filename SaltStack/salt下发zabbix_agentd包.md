@@ -44,7 +44,7 @@ sed -i 's/ServerActive.*/ServerActive=192.168.52.133/g' /srv/salt/zabbix_agentd.
 
 #分发
 cd /srv/salt/
-salt -N fd-ubuntu cmd.run "cd /tmp/ && wget -O /tmp/zabbix-release.all.deb http://repo.zabbix.com/zabbix/4.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.2-1%2Btrusty_all.deb && dpkg -i zabbix-release.all.deb && apt-get update && apt-get install zabbix-agent"
+salt -N fd-ubuntu cmd.run "cd /tmp/ && wget -O /tmp/zabbix-release.all.deb http://repo.zabbix.com/zabbix/4.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.2-1%2Btrusty_all.deb && dpkg -i zabbix-release.all.deb && apt-get -y install zabbix-agent && apt-get update -y"
 salt -N cfd-ubuntu cmd.run 'mkdir -p /etc/zabbix/zabbix_agentd.d/'
 salt-cp -N cfd-ubuntu zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf 
 salt -N cfd-ubuntu cmd.run 'chown -R zabbix:zabbix /etc/zabbix/zabbix_agentd.d/'
