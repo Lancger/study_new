@@ -20,8 +20,10 @@ salt -N cfd cmd.run "cd /tmp/ && wget --no-check-certificate https://bootstrap.p
 
 #自动发现
 salt -N cfd cmd.run 'echo "zabbix ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/zabbix'
+salt -N cfd cmd.run 'echo "Defaults:zabbix !requiretty" >> /etc/sudoers.d/zabbix'
 salt -N cfd cmd.run 'sed -i "s/^Defaults.*.requiretty/#Defaults    requiretty/" /etc/sudoers'
 salt -N cfd cmd.run 'cat /etc/sudoers | grep requiretty'
+salt -N cfd cmd.run 'cat /etc/sudoers.d/zabbix'
 ```
 
 # 二、Ubuntu包
