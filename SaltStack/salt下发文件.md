@@ -16,17 +16,17 @@
 
 ```
 #执行命令
-salt-cp "jys*" limits.conf /etc/security/limits.conf
-salt-cp "jys*" 90-nproc.conf /etc/security/limits.d/90-nproc.conf
-salt-cp "jys*" def.conf /etc/security/limits.d/def.conf
+salt-cp "cgs*" limits.conf /etc/security/limits.conf
+salt-cp "cgs*" 90-nproc.conf /etc/security/limits.d/90-nproc.conf
+salt-cp "cgs*" def.conf /etc/security/limits.d/def.conf
 
 #执行结果
-{'jys001': {'/etc/security/limits.d/def.conf': True},
- 'jys002': {'/etc/security/limits.d/def.conf': True},
- 'jys003': {'/etc/security/limits.d/def.conf': True},
- 'jys004': {'/etc/security/limits.d/def.conf': True},
- 'jys005': {'/etc/security/limits.d/def.conf': True},
- 'jys006': {'/etc/security/limits.d/def.conf': True}}
+{'cgs001': {'/etc/security/limits.d/def.conf': True},
+ 'cgs002': {'/etc/security/limits.d/def.conf': True},
+ 'cgs003': {'/etc/security/limits.d/def.conf': True},
+ 'cgs004': {'/etc/security/limits.d/def.conf': True},
+ 'cgs005': {'/etc/security/limits.d/def.conf': True},
+ 'cgs006': {'/etc/security/limits.d/def.conf': True}}
  
 #检查
 cd /etc/security/
@@ -51,13 +51,13 @@ salt -N centos7-3rd test.ping
 
 单台下发
 cd /srv/salt/
-salt 'coinearn-io-07-redis-mq-new' cmd.run "mv /opt/cn/ /tmp/cn-2019-bak"
-salt-cp 'coinearn-io-07-redis-mq-new' cn-2rd.tar.gz /tmp/
-salt 'coinearn-io-07-redis-mq-new' cmd.run "tar -zxvf /tmp/cn-2rd.tar.gz -C /opt/"
+salt 'test-io-07-redis-mq-new' cmd.run "mv /opt/cn/ /tmp/cn-2019-bak"
+salt-cp 'test-io-07-redis-mq-new' cn-2rd.tar.gz /tmp/
+salt 'test-io-07-redis-mq-new' cmd.run "tar -zxvf /tmp/cn-2rd.tar.gz -C /opt/"
 
-salt 'coinearn-io-07-redis-mq-new' cmd.run "mv /opt/config-project/ /tmp/config-project-2019-bak"
-salt-cp 'coinearn-io-07-redis-mq-new' config-project-2rd.tar.gz /tmp/
-salt 'coinearn-io-07-redis-mq-new' cmd.run "tar -zxvf /tmp/config-project-2rd.tar.gz -C /opt/"
+salt 'test-io-07-redis-mq-new' cmd.run "mv /opt/config-project/ /tmp/config-project-2019-bak"
+salt-cp 'test-io-07-redis-mq-new' config-project-2rd.tar.gz /tmp/
+salt 'test-io-07-redis-mq-new' cmd.run "tar -zxvf /tmp/config-project-2rd.tar.gz -C /opt/"
 
 
 #分组下发
@@ -111,11 +111,11 @@ salt -N ubuntu-all cmd.run "ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localt
 
 Centos服务器：
 
-salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run 'echo "Kda18*s2311KLC}wXd1"|passwd --stdin root'
+salt -E "two-one-0[5-9]|two-one-10" cmd.run 'echo "Kda18*s2311KLC}wXd1"|passwd --stdin root'
 
 Ubuntu服务器：
 
-salt "fhex-one-0[1-4]" cmd.run 'echo root:"Kda18*s2311KLC}wXd1" | chpasswd'
+salt "two-one-0[1-4]" cmd.run 'echo root:"Kda18*s2311KLC}wXd1" | chpasswd'
 
 ```
 
