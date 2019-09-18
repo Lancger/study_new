@@ -37,7 +37,7 @@ ii  zabbix-release                        4.2-1+trusty                          
 
 #卸载(dpkg -P 彻底卸载，包括配置文件等。)
 dpkg -P zabbix-agent
-dpkg -Pzabbix-release
+dpkg -P zabbix-release
 ```
 
 ```
