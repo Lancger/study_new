@@ -38,6 +38,12 @@ ii  zabbix-release                        4.2-1+trusty                          
 #卸载(dpkg -P 彻底卸载，包括配置文件等。)
 dpkg -P zabbix-agent
 dpkg -P zabbix-release
+
+#启动脚本
+/lib/systemd/system/zabbix-agent.service
+
+#设置开机启动zabbix-agent
+sudo update-rc.d zabbix-agent enable
 ```
 
 ```
