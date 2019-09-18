@@ -48,7 +48,7 @@ sudo update-rc.d zabbix-agent enable
 
 ```
 cat > /srv/salt/zabbix_agentd.conf << \EOF
-PidFile=/tmp/zabbix_agentd.pid
+PidFile=/run/zabbix/zabbix_agentd.pid
 LogFile=/tmp/zabbix_agentd.log
 LogFileSize=0
 DebugLevel=2
