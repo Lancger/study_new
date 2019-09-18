@@ -28,6 +28,17 @@ salt -N cfd cmd.run 'cat /etc/sudoers.d/zabbix'
 ```
 
 # 二、Ubuntu包
+
+```
+#查看安装软件包
+dpkg -l | grep 'zabbix'
+ii  zabbix-agent                          1:4.2.6-1+trusty                           amd64        Zabbix network monitoring solution - agent
+ii  zabbix-release                        4.2-1+trusty                               all          Zabbix official repository configuration
+
+#卸载
+dpkg -P zabbix-agent
+
+```
 ```
 cat > /srv/salt/zabbix_agentd.conf << \EOF
 PidFile=/tmp/zabbix_agentd.pid
