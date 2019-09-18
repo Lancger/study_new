@@ -73,3 +73,9 @@ salt -N cfd-ubuntu cmd.run 'chown -R zabbix:zabbix /etc/zabbix/zabbix_agentd.d/'
 salt -N cfd-ubuntu cmd.run 'service zabbix-agent stop'
 salt -N cfd-ubuntu cmd.run 'service zabbix-agent start'
 ```
+
+# 三、批量重启
+```
+salt -N centos-all cmd.run "/opt/zabbix/init/zabbix_agentd restart"
+salt -N ubuntu-all cmd.run "service zabbix-agent restart"
+```
