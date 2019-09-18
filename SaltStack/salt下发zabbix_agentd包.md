@@ -35,10 +35,11 @@ dpkg -l | grep 'zabbix'
 ii  zabbix-agent                          1:4.2.6-1+trusty                           amd64        Zabbix network monitoring solution - agent
 ii  zabbix-release                        4.2-1+trusty                               all          Zabbix official repository configuration
 
-#卸载
+#卸载(dpkg -P 彻底卸载，包括配置文件等。)
 dpkg -P zabbix-agent
-
+dpkg -Pzabbix-release
 ```
+
 ```
 cat > /srv/salt/zabbix_agentd.conf << \EOF
 PidFile=/tmp/zabbix_agentd.pid
