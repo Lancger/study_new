@@ -19,6 +19,9 @@ salt -N group cmd.run "/opt/zabbix/init/zabbix_agentd restart"
 #批量安装simplejson
 salt -N cfd cmd.run "cd /tmp/ && wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py && python get-pip.py && pip install --upgrade pip --trusted-host mirrors.aliyun.com -i https://mirrors.aliyun.com/pypi/simple/ && pip install --upgrade setuptools==30.1.0 && pip install simplejson --trusted-host mirrors.aliyun.com -i https://mirrors.aliyun.com/pypi/simple/"
 
+#还需注意自动发现目录的权限
+salt -N cfd cmd.run 'chmod -R 755 /data0/opt/'
+
 #自动发现
 salt -N cfd cmd.run 'echo "zabbix ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/zabbix'
 salt -N cfd cmd.run 'echo "Defaults:zabbix !requiretty" >> /etc/sudoers.d/zabbix'
