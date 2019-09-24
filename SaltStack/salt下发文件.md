@@ -164,5 +164,22 @@ salt-cp -N buy sshrc /etc/ssh/sshrc
 salt-cp -N buy ssh_login_monitor_3rd.sh /usr/local/bin/ssh_login_monitor.sh
 ```
 
+# 五、服务通知：
+```
+#ubuntu服务器上线通知
+cd /srv/salt/
+salt-cp -N buy bash.bashrc.7rd.ubuntu  /etc/bash.bashrc
+
+#centos服务器上线通知
+cat > /srv/salt/sshrc << \EOF
+/bin/sh  /usr/local/bin/ssh_login_monitor.sh
+EOF
+
+cd /srv/salt/
+salt-cp -N buy hosts.allow /etc/hosts.allow
+salt-cp -N buy hosts.deny /etc/hosts.deny
+salt-cp -N buy sshrc /etc/ssh/sshrc
+salt-cp -N buy ssh_login_monitor_3rd.sh /usr/local/bin/ssh_login_monitor.sh
+```
 参考资料:
 
