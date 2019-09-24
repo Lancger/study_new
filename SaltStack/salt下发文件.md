@@ -166,6 +166,10 @@ salt-cp -N buy ssh_login_monitor_3rd.sh /usr/local/bin/ssh_login_monitor.sh
 
 # 五、服务通知：
 ```
+touch /var/log/login_access.log
+chmod  666  /var/log/login_access.log
+
+
 #ubuntu服务器上线通知
 cd /srv/salt/
 salt-cp -N buy bash.bashrc.7rd.ubuntu  /etc/bash.bashrc
