@@ -59,7 +59,7 @@ busybox                     latest              efe10ee6727f        2 weeks ago 
 本地基于busybox:latest创建标记reg.hub.com/busybox:latest
 [root@localhost harbor]# docker tag busybox:latest reg.hub.com/library/busybox:latest
 
-推送本地镜像busybox:latest 到hub.wow私有仓库
+推送本地镜像busybox:latest 到reg.hub.com私有仓库
 [root@localhost harbor]# docker push reg.hub.com/library/busybox:latest
 
 ```
