@@ -51,7 +51,8 @@ curl -sSL https://get.daocloud.io/docker | sh
 
 ### 3.Docker服务文件
 ```bash
-注意，有变量的地方需要使用转义符号
+#注意，有变量的地方需要使用转义符号
+
 cat > /usr/lib/systemd/system/docker.service << EOF
 [Unit]
 Description=Docker Application Container Engine
