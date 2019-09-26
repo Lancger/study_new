@@ -113,8 +113,21 @@ EOF
 ```
 
 ### 3.2、重新加载docker的配置文件
-    systemctl daemon-reload
-    
+```bash
+systemctl daemon-reload
+```
+### 3.3、内核参数配置
+```bash
+#编辑文件
+vim /etc/sysctl.conf
+
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+
+#然后执行
+sysctl -p
+```
+
 ## 4.通过测试镜像运行一个容器来验证Docker是否安装正确
 ```bash
 docker run hello-world
