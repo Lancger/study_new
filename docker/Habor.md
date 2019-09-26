@@ -13,7 +13,7 @@ wget https://storage.googleapis.com/harbor-releases/release-1.8.0/harbor-offline
 tar xf harbor-offline-installer-${version}.tgz
 cd harbor/
 
-vim harbor.cfg
+vim harbor.yml
 hostname = hub.wow
 其他默认(http协议)
 
