@@ -2,7 +2,6 @@
 ```
 chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow* && chattr -i /etc/gshadow*
 chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow* && chattr +i /etc/gshadow*
-
 ```
 # 一、Habor部署配置
 ```
@@ -15,6 +14,7 @@ cd harbor/
 
 vim harbor.yml
 hostname = reg.hub.com
+
 其他默认(http协议)
 
 ./install.sh
