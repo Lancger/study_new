@@ -25,6 +25,7 @@ systemctl enable docker
 
 #查看是否成功设置docker服务开启自启
 systemctl list-unit-files|grep docker
+
 docker.service                                enabled
 
 #关闭docker服务开启自启
@@ -117,6 +118,7 @@ EOF
 ### 3.2、重新加载docker的配置文件
 ```bash
 systemctl daemon-reload
+systemctl restart docker
 ```
 ### 3.3、内核参数配置
 ```bash
@@ -128,6 +130,9 @@ net.bridge.bridge-nf-call-iptables = 1
 
 #然后执行
 sysctl -p
+
+#查看docker信息是否生效
+docker info
 ```
 
 ## 4.通过测试镜像运行一个容器来验证Docker是否安装正确
