@@ -5,7 +5,7 @@
 第一步：使用国内Docker源
 ```
 cd /etc/yum.repos.d/
-wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+wget -O docker-ce.repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
  ```
 
 第二步：Docker安装：
