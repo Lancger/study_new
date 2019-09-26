@@ -46,65 +46,73 @@ curl -sSL https://get.daocloud.io/docker | sh
 
 ```
 
-## 3.配置docker
+### 3.Docker服务文件
 ```bash
-#3.1、修改docker配置文件
-vim /usr/lib/systemd/system/docker.service
+注意，有变量的地方需要使用转义符号
+cat > /usr/lib/systemd/system/docker.service << EOF
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+BindsTo=containerd.service
+After=network-online.target firewalld.service containerd.service
+Wants=network-online.target
+Requires=docker.socket
 
-#1、在ExecStart前面添加下面这一行
-EnvironmentFile=/etc/sysconfig/docker
-ExecStart=/usr/bin/dockerd
+[Service]
+Type=notify
+# the default is not to use systemd for cgroups because the delegate issues still
+# exists and systemd currently does not support the cgroup feature set required
+# for containers run by docker
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+ExecReload=/bin/kill -s HUP \$MAINPID
+TimeoutSec=0
+RestartSec=2
+Restart=always
 
-#2、修改ExecStart=/usr/bin/dockerd 为 
-ExecStart=/usr/bin/dockerd $OPTIONS
+# Note that StartLimit* options were moved from "Service" to "Unit" in systemd 229.
+# Both the old, and new location are accepted by systemd 229 and up, so using the old location
+# to make them work for either version of systemd.
+StartLimitBurst=3
+
+# Note that StartLimitInterval was renamed to StartLimitIntervalSec in systemd 230.
+# Both the old, and new name are accepted by systemd 230 and up, so using the old name to make
+# this option work for either version of systemd.
+StartLimitInterval=60s
+
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+
+# Comment TasksMax if your systemd version does not support it.
+# Only systemd 226 and above support this option.
+TasksMax=infinity
+
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+EOF
 ```
-### 3.1 最终的配置
+## 3.1、配置docker加速器
+```bash
+cat > /etc/docker/daemon.json << \EOF
+{
+  "registry-mirrors": [
+    "https://dockerhub.azk8s.cn",
+    "https://i37dz0y4.mirror.aliyuncs.com"
+  ],
+  "insecure-registries": ["reg.hub.com"]
+}
+EOF
+```
 
-    注意，有变量的地方需要使用转义符号
-    
-    cat > /usr/lib/systemd/system/docker.service << EOF
-    [Unit]
-    Description=Docker Application Container Engine
-    Documentation=https://docs.docker.com
-    After=network-online.target firewalld.service
-    Wants=network-online.target
-
-    [Service]
-    Type=notify
-    # the default is not to use systemd for cgroups because the delegate issues still
-    # exists and systemd currently does not support the cgroup feature set required
-    # for containers run by docker
-    EnvironmentFile=/etc/sysconfig/docker
-    ExecStart=/usr/bin/dockerd \$OPTIONS
-    ExecReload=/bin/kill -s HUP \$MAINPID
-    # Having non-zero Limit*s causes performance problems due to accounting overhead
-    # in the kernel. We recommend using cgroups to do container-local accounting.
-    LimitNOFILE=infinity
-    LimitNPROC=infinity
-    LimitCORE=infinity
-    # Uncomment TasksMax if your systemd version supports it.
-    # Only systemd 226 and above support this version.
-    #TasksMax=infinity
-    TimeoutStartSec=0
-    # set delegate yes so that systemd does not reset the cgroups of docker containers
-    Delegate=yes
-    # kill only the docker process, not all processes in the cgroup
-    KillMode=process
-    # restart the docker process if it exits prematurely
-    Restart=on-failure
-    StartLimitBurst=3
-    StartLimitInterval=60s
-
-    [Install]
-    WantedBy=multi-user.target
-    EOF
-
-### 3.2、配置镜像加速器
-    cat > /etc/sysconfig/docker << EOF
-    OPTIONS='--selinux-enabled --registry-mirror=https://i37dz0y4.mirror.aliyuncs.com'
-    EOF
-
-### 3.3、重新加载docker的配置文件
+### 3.2、重新加载docker的配置文件
     systemctl daemon-reload
     
 ## 4.通过测试镜像运行一个容器来验证Docker是否安装正确
