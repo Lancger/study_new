@@ -27,9 +27,9 @@ hostname = reg.hub.com
 
 # 方式一：
 Centos7修改方式为:
-
 vim /lib/systemd/system/docker.service
-ExecStart=/usr/bin/dockerd  --insecure-registry hub.wow
+
+ExecStart=/usr/bin/dockerd  --insecure-registry reg.hub.com
 
 systemctl daemon-reload
 systemctl reload docker
@@ -46,7 +46,7 @@ cat > /etc/docker/daemon.json << \EOF
 EOF
 
 # 测试
-[root@localhost harbor]# docker login -u admin -p Harbor12345 hub.wow
+[root@localhost harbor]# docker login -u admin -p Harbor12345 reg.hub.com
 
 官方仓库下载busybox镜像
 [root@localhost harbor]# docker pull busybox 
