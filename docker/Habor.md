@@ -45,6 +45,9 @@ cat > /etc/docker/daemon.json << \EOF
 }
 EOF
 
+systemctl daemon-reload
+systemctl reload docker
+
 # 测试
 [root@localhost harbor]# docker login -u admin -p Harbor12345 reg.hub.com
 
