@@ -5,10 +5,9 @@ chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow* && cha
 ```
 # 一、Habor部署配置
 ```
+cd /usr/local/src
 export version="v1.8.2"
-
 wget https://storage.googleapis.com/harbor-releases/release-1.8.0/harbor-offline-installer-v1.8.2.tgz
-
 tar xf harbor-offline-installer-${version}.tgz
 cd harbor/
 
