@@ -49,7 +49,19 @@ curl -sSL https://get.daocloud.io/docker | sh
 
 ```
 
-### 3.Docker服务文件
+## 3、调整一下防火墙的参数
+```
+# Docker从1.13版本开始调整了默认的防火墙规则，禁用了iptables filter表中FOWARD链，这样会引起Kubernetes集群中跨Node的Pod无法通信，执行下面命令
+iptables -P FORWARD ACCEPT
+
+# 修改docker的配置
+vim /usr/lib/systemd/system/docker.service
+
+#增加下面命令
+ExecStartPost=/usr/sbin/iptables -P FORWARD ACCEPT
+```
+
+## 4.Docker服务文件
 ```bash
 #注意，有变量的地方需要使用转义符号
 
@@ -69,6 +81,7 @@ Type=notify
 # for containers run by docker
 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 ExecReload=/bin/kill -s HUP \$MAINPID
+ExecStartPost=/usr/sbin/iptables -P FORWARD ACCEPT
 TimeoutSec=0
 RestartSec=2
 Restart=always
@@ -103,7 +116,7 @@ KillMode=process
 WantedBy=multi-user.target
 EOF
 ```
-## 3.1、配置docker加速器
+## 4.1、配置docker加速器
 ```bash
 cat > /etc/docker/daemon.json << \EOF
 {
@@ -116,12 +129,15 @@ cat > /etc/docker/daemon.json << \EOF
 EOF
 ```
 
-### 3.2、重新加载docker的配置文件
+### 4.2、重新加载docker的配置文件
 ```bash
+
+
+
 systemctl daemon-reload
 systemctl restart docker
 ```
-### 3.3、内核参数配置
+### 4.3、内核参数配置
 ```bash
 #编辑文件
 vim /etc/sysctl.conf
@@ -136,7 +152,11 @@ sysctl -p
 docker info
 ```
 
-## 4.通过测试镜像运行一个容器来验证Docker是否安装正确
+## 5.通过测试镜像运行一个容器来验证Docker是否安装正确
 ```bash
 docker run hello-world
 ```
+
+参考资料：
+
+https://biggerbrain.github.io/2017/11/01/cluster/
