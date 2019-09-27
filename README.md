@@ -1,6 +1,6 @@
 # study_docker
 
-## 1.安装Docker
+## 1、安装Docker
 
 第一步：使用国内Docker源
 ```
@@ -34,7 +34,7 @@ systemctl disable docker
 #Removed symlink /etc/systemd/system/multi-user.target.wants/docker.service.
 ```
 
-## 2.脚本安装Docker
+## 2、脚本安装Docker
 ```bash
 #2.1、Docker官方安装脚本
 curl -sSL https://get.docker.com/ | sh
@@ -61,7 +61,7 @@ vim /usr/lib/systemd/system/docker.service
 ExecStartPost=/usr/sbin/iptables -P FORWARD ACCEPT
 ```
 
-## 4.Docker服务文件
+## 4、Docker服务文件
 ```bash
 #注意，有变量的地方需要使用转义符号
 
@@ -131,9 +131,6 @@ EOF
 
 ### 4.2、重新加载docker的配置文件
 ```bash
-
-
-
 systemctl daemon-reload
 systemctl restart docker
 ```
