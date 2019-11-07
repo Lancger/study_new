@@ -115,9 +115,8 @@ salt '*' cmd.run   'df -h'         //远程执行命令
 yum install -y epel-release
 yum install -y salt-minion
 
-sudo tee /etc/salt/minion << 'EOF'
+sudo tee /etc/salt/minion << 'EOF'   # 默认使用主机名作为salt_minion_id
 master: 192.168.56.11
-id: slaver.test.com
 EOF
 
 systemctl enable salt-minion
