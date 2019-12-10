@@ -87,6 +87,7 @@ systemctl restart supervisord
 ```
 minion端需要删除旧的master的公钥
 
+>/etc/salt/minion_id
 sed -i 's/master.*/master: 139.180.210.37/g' /etc/salt/minion
 rm  -f /etc/salt/pki/minion/minion_master.pub
 systemctl stop supervisord
