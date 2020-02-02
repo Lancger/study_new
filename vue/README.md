@@ -41,3 +41,6 @@ https://my.oschina.net/u/3138954/blog/2056301
 
 
 https://www.cnblogs.com/limitcode/p/7906447.html   NPM install -save 和 -save-dev 傻傻分不清 
+
+https://github.com/woai3c/Front-end-basic-knowledge/blob/master/vue.md  vue知识点
+
