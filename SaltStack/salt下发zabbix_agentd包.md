@@ -68,8 +68,8 @@ sed -i 's/ServerActive.*/ServerActive=192.168.52.133/g' /srv/salt/zabbix_agentd.
 
 salt-cp -N aws001 zabbix_agentd.conf /opt/zabbix/etc/zabbix_agentd.conf
 或者
-salt -N aws001 cmd.run "sed -i 's/Server.*/Server=192.168.52.133/g' /srv/salt/zabbix_agentd.conf"
-salt -N aws001 cmd.run "sed -i 's/ServerActive.*/ServerActive=192.168.52.133/g' /srv/salt/zabbix_agentd.conf"
+salt -N aws001 cmd.run "sed -i 's/Server.*/Server=192.168.52.133/g' /opt/zabbix/etc/zabbix_agentd.conf"
+salt -N aws001 cmd.run "sed -i 's/ServerActive.*/ServerActive=192.168.52.133/g' /opt/zabbix/etc/zabbix_agentd.conf"
 
 #分发
 cd /srv/salt/
