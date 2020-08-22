@@ -45,7 +45,7 @@ node -v
 注：Nodejs 官网提供了编译好的Linux二进制包，你也可以下载下来直接应用。
 ```
 
-### 二、编译好的nodejs二进制包
+## 二、编译好的nodejs二进制包
 ```bash
 rm -rf /usr/local/node/
 wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz
@@ -65,12 +65,23 @@ v10.15.3
 
 root># npm -v
 4.2.0
-
-淘宝cnpm
-npm install cnpm -g --registry=https://registry.npm.taobao.org
 ```
 
-### 验证nodejs环境是否正常
+## 三、使用淘宝cnpm
+
+```yaml
+#命令提示符执行宝cnpm
+npm install cnpm -g --registry=https://registry.npm.taobao.org
+
+cnpm -v 来测试是否成功安装
+
+#通过改变地址来使用淘宝镜像
+npm的默认地址是https://registry.npmjs.org/
+可以使用 npm config get registry 查看npm的仓库地址
+可以使用 npm config set registry https://registry.npm.taobao.org 来改变默认下载地址，达到可以不安装cnpm就能采用淘宝镜像的目的，然后使用上面的get命令查看是否成功
+```
+
+## 四、验证nodejs环境是否正常
 
     参考  http://www.runoob.com/nodejs/nodejs-http-server.html
 
