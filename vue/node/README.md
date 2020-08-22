@@ -52,7 +52,7 @@ wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz
 tar -xf node-v10.15.3-linux-x64.tar.xz
 mv node-v10.15.3-linux-x64 /usr/local/node
 
-#vim /etc/profile
+vim /etc/profile
 添加
 #set for nodejs
 export NODE_HOME=/usr/local/node/
@@ -65,6 +65,9 @@ v10.15.3
 
 root># npm -v
 4.2.0
+
+淘宝cnpm
+npm install cnpm -g --registry=https://registry.npm.taobao.org
 ```
 
 ### 验证nodejs环境是否正常
